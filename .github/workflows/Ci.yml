@@ -18,16 +18,13 @@ jobs:
         run: flutter pub get
 
 
-      - name: Activate coverage package
-        run: |
-          dart pub global activate coverage
-          echo "::add-path::$HOME/.pub-cache/bin"
       - name: Run tests with coverage
         run: flutter test --coverage
 
+
       - name: Format coverage report
         run: |
-          dart pub global run coverage:format_coverage \
+          dart run coverage:format_coverage \
             --lcov \
             --in=coverage \
             --out=coverage/lcov.info \
