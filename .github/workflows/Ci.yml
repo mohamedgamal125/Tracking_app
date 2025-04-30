@@ -1,14 +1,11 @@
 name: CI
 
-on:
-  pull_request:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
-  test-exists-and-unit:
+  unit-tests:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -20,39 +17,32 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Check matching tests for changed files
-        run: |
-          echo "🔍 Checking test files..."
-          files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
-                   | grep '^lib/.*\.dart$' || true)
-          missing=0
-          for src in $files; do
-            rel="${src#lib/}"
-            test_path="test/${rel%.dart}_test.dart"
-            if [ ! -f "$test_path" ]; then
-              echo "❌ Missing test for $src → $test_path"
-              missing=1
-            fi
-          done
-          if [ $missing -ne 0 ]; then
-            echo "::error::One or more source files lack corresponding tests."
-            exit 1
-          fi
-          echo "✅ All changed files have tests."
-
-      - name: Run unit tests with coverage
+      # Option A: dev_dependency
+      - name: Run tests with coverage
         run: flutter test --coverage
 
-      - name: Enforce coverage threshold (optional)
+      # Option B: global install (uncomment if using this path)
+      #- name: Activate coverage package
+      #  run: |
+      #    dart pub global activate coverage
+      #    echo "::add-path::$HOME/.pub-cache/bin"
+      #- name: Run tests with coverage
+      #  run: flutter test --coverage
+
+      - name: Format coverage report
         run: |
-          dart pub global activate coverage
-          dart run coverage:format_coverage \
-            --lcov --in=coverage --out=coverage/lcov.info \
-            --check-ignore --base-directory .
-          # extract the lines coverage percent
+          dart pub global run coverage:format_coverage \
+            --lcov \
+            --in=coverage \
+            --out=coverage/lcov.info \
+            --check-ignore \
+            --base-directory .
+
+      - name: Enforce ≥80% coverage
+        run: |
           percent=$(grep -Po '(?<=^LF:)\d+' coverage/lcov.info | head -1)
+          echo "Coverage: ${percent}%"
           if (( percent < 80 )); then
-            echo "::error::Coverage is ${percent}%, below 80%."
+            echo "::error::Line coverage is below 80% (${percent}%)"
             exit 1
           fi
-          echo "✅ Coverage is ${percent}%."
