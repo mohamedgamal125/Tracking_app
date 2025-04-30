@@ -25,6 +25,7 @@ dependencies:
   retrofit: ^4.4.2
   flutter_svg: ^2.1.0
   get_it: ^8.0.3
+  json_annotation: ^4.9.0
 
 
 
@@ -36,6 +37,8 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   coverage: ^1.13.0
   build_runner: ^2.4.15
+  retrofit_generator: ^9.1.9
+  json_serializable: ^6.9.5
 
 
 flutter:
