@@ -21,11 +21,11 @@ void main() {
       expect(calc.add(-2, -3), -5);
     });
   });
-  // group('MathUtils.doubleIt', () {
-  //   test('should return double the input value', () {
-  //     expect(Calculator.doubleIt(2), 4);
-  //     expect(Calculator.doubleIt(-3), -6);
-  //     expect(Calculator.doubleIt(0), 0);
-  //   });
-  // });
+  group('MathUtils.doubleIt', () {
+    test('should return double the input value', () {
+      expect(Calculator.doubleIt(2), 4);
+      expect(Calculator.doubleIt(-3), -6);
+      expect(Calculator.doubleIt(0), 0);
+    });
+  });
 }
