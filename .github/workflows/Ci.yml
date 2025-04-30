@@ -17,17 +17,13 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # Option A: dev_dependency
+
+      - name: Activate coverage package
+        run: |
+          dart pub global activate coverage
+          echo "::add-path::$HOME/.pub-cache/bin"
       - name: Run tests with coverage
         run: flutter test --coverage
-
-      # Option B: global install (uncomment if using this path)
-      #- name: Activate coverage package
-      #  run: |
-      #    dart pub global activate coverage
-      #    echo "::add-path::$HOME/.pub-cache/bin"
-      #- name: Run tests with coverage
-      #  run: flutter test --coverage
 
       - name: Format coverage report
         run: |
