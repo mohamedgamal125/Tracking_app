@@ -1,6 +1,6 @@
 name: CI
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   unit-tests:
@@ -32,11 +32,19 @@ jobs:
             --check-ignore \
             --base-directory .
 
-      - name: Enforce ≥80% coverage
+      - name: Calculate and enforce ≥80% coverage
         run: |
-          percent=$(grep -Po '(?<=^LF:)\d+' coverage/lcov.info | head -1)
-          echo "Coverage: ${percent}%"
-          if (( percent < 80 )); then
-            echo "::error::Line coverage is below 80% (${percent}%)"
-            exit 1
-          fi
+            total=$(grep -c '^DA:' coverage/lcov.info || echo 0)
+            covered=$(grep -E '^DA:[0-9]+,[1-9]' coverage/lcov.info | wc -l || echo 0)
+            echo "Total lines: ${total}"
+            echo "Covered lines: ${covered}"
+            if [[ $total -eq 0 ]]; then
+              echo "::warning::No executable lines found (skipping)."
+              exit 0
+            fi
+            percent=$(( covered * 100 / total ))
+            echo "Coverage: ${percent}%"
+            if (( percent < 80 )); then
+              echo "::error::Coverage below 80% (${percent}%)."
+              exit 1
+            fi
