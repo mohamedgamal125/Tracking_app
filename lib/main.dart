@@ -41,4 +41,9 @@ class MainAppContent extends StatelessWidget {
       initialRoute: PagesRoutes.mainView,
     );
   }
+
+  int sum(int a, int b)
+  {
+    return a+b;
+  }
 }
