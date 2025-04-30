@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-exists-and-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Check matching tests for changed files
+        run: |
+          echo "🔍 Checking test files..."
+          files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
+                   | grep '^lib/.*\.dart$' || true)
+          missing=0
+          for src in $files; do
+            rel="${src#lib/}"
+            test_path="test/${rel%.dart}_test.dart"
+            if [ ! -f "$test_path" ]; then
+              echo "❌ Missing test for $src → $test_path"
+              missing=1
+            fi
+          done
+          if [ $missing -ne 0 ]; then
+            echo "::error::One or more source files lack corresponding tests."
+            exit 1
+          fi
+          echo "✅ All changed files have tests."
+
+      - name: Run unit tests with coverage
+        run: flutter test --coverage
+
+      - name: Enforce coverage threshold (optional)
+        run: |
+          dart pub global activate coverage
+          dart run coverage:format_coverage \
+            --lcov --in=coverage --out=coverage/lcov.info \
+            --check-ignore --base-directory .
+          # extract the lines coverage percent
+          percent=$(grep -Po '(?<=^LF:)\d+' coverage/lcov.info | head -1)
+          if (( percent < 80 )); then
+            echo "::error::Coverage is ${percent}%, below 80%."
+            exit 1
+          fi
+          echo "✅ Coverage is ${percent}%."
