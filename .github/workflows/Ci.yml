@@ -34,17 +34,40 @@ jobs:
 
       - name: Calculate and enforce ≥80% coverage
         run: |
-            total=$(grep -c '^DA:' coverage/lcov.info || echo 0)
-            covered=$(grep -E '^DA:[0-9]+,[1-9]' coverage/lcov.info | wc -l || echo 0)
-            echo "Total lines: ${total}"
-            echo "Covered lines: ${covered}"
-            if [[ $total -eq 0 ]]; then
-              echo "::warning::No executable lines found (skipping)."
-              exit 0
-            fi
-            percent=$(( covered * 100 / total ))
-            echo "Coverage: ${percent}%"
-            if (( percent < 80 )); then
-              echo "::error::Coverage below 80% (${percent}%)."
+            set -eu
+            
+            echo "🔍 Checking that coverage/lcov.info exists…"
+            if [ ! -f coverage/lcov.info ]; then
+              echo "::error::coverage/lcov.info not found!"
+              ls -R coverage
               exit 1
             fi
+            
+            echo "📝 First 20 lines of coverage/lcov.info:"
+            head -n 20 coverage/lcov.info || true
+            
+            # count DA: entries (total executable lines)
+            total=$(grep -c '^DA:' coverage/lcov.info || echo 0)
+            # count DA: entries where hit count > 0
+            covered=$(grep -E '^DA:[0-9]+,[1-9]' coverage/lcov.info | wc -l || echo 0)
+            
+            echo "📊 Total lines: $total"
+            echo "✅ Covered lines: $covered"
+            
+            # if no lines found, skip
+            if [ "$total" -eq 0 ]; then
+              echo "::warning::No executable lines found (total=0); skipping threshold check."
+              exit 0
+            fi
+            
+            # integer math for percentage
+            percent=$(( covered * 100 / total ))
+            echo "🎯 Coverage: ${percent}%"
+            
+            # fail if below threshold
+            if [ "$percent" -lt 80 ]; then
+              echo "::error::Line coverage is below 80% (${percent}%)."
+              exit 1
+            fi
+            
+            echo "✅ Coverage threshold met."
