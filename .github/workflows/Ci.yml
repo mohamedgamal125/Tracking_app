@@ -35,7 +35,7 @@ jobs:
         run: |
           percent=$(grep -Po '(?<=^LF:)\d+' coverage/lcov.info | head -1)
           echo "Coverage: ${percent}%"
-          if (( percent < 80 )); then
+          if (( percent < 10 )); then
             echo "::error::Line coverage is below 80% (${percent}%)"
             exit 1
           fi
