@@ -28,6 +28,7 @@ jobs:
             --lcov \
             --in=coverage \
             --out=coverage/lcov.info \
+            --report-on lib \
             --check-ignore \
             --base-directory .
 
@@ -35,7 +36,7 @@ jobs:
         run: |
           percent=$(grep -Po '(?<=^LF:)\d+' coverage/lcov.info | head -1)
           echo "Coverage: ${percent}%"
-          if (( percent < 10 )); then
+          if (( percent < 80 )); then
             echo "::error::Line coverage is below 80% (${percent}%)"
             exit 1
           fi
