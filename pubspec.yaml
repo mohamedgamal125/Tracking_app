@@ -1,0 +1,56 @@
+name: tracking_app
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  dio: ^5.8.0+1
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.0
+  shared_preferences: ^2.5.3
+  location: ^8.0.0
+  flutter_easyloading: ^3.0.5
+  injectable: ^2.5.0
+  pretty_dio_logger: ^1.4.0
+  internet_connection_checker: ^3.0.1
+  retrofit: ^4.4.2
+  flutter_svg: ^2.1.0
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+
+flutter:
+
+
+  uses-material-design: true
+  fonts:
+    - family: IM FELL English
+      fonts:
+        - asset: assets/fonts/IMFellEnglish-Regular.ttf
+
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/Outfit-Regular.ttf
+
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter_18pt-Regular.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
