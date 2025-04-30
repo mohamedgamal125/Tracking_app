@@ -1,24 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:tracking_app/core/router/pages_routes.dart';
+import 'package:tracking_app/core/router/routes_generator.dart';
+import 'package:tracking_app/core/services/screen_size_service.dart';
+import 'package:tracking_app/core/utils/theming.dart';
 
 import 'main_view.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(InitApp());
 }
 
-class MyApp extends StatelessWidget {
-   MyApp({super.key});
-
-  // This widget is the root of your application.
+class InitApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      debugShowCheckedModeBanner: false,
+
+      home: Builder(
+        builder: (context) {
+          ScreenSizeService.init(context);
+
+          return MainAppContent();
+        },
       ),
-      home: MainView(),
+      builder: EasyLoading.init(),
+    );
+  }
+}
+
+class MainAppContent extends StatelessWidget {
+  MainAppContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme(),
+      onGenerateRoute: RoutesGenerator.onGenerateRoute,
+      initialRoute: PagesRoutes.mainView,
     );
   }
 }
