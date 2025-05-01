@@ -13,37 +13,43 @@ class SuccessApplyViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: resposiveWidth(30)),
-        child: Column(
-          children: [
-            SizedBox(
-              height: resposiveHeight(123.86),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        // mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: resposiveWidth(30)),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: resposiveHeight(123.86),
+                ),
+                SvgPicture.asset(SvgImags.successApply),
+                SizedBox(
+                  height: resposiveHeight(64.86),
+                ),
+                Text(
+                  'Your application has been submitted!',
+                  style: AppTextStyles.inter600_18,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: resposiveHeight(16)),
+                Text(
+                    style: AppTextStyles.inter400_16,
+                    textAlign: TextAlign.center,
+                    'Thank you for providing your application, we will review your application and will get back to you soon.'),
+                SizedBox(height: resposiveHeight(24)),
+                ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Login',
+                        style: AppTextStyles.inter500_16
+                            .copyWith(color: Colors.white))),
+              ],
             ),
-            SvgPicture.asset(SvgImags.successApply),
-            SizedBox(
-              height: resposiveHeight(64.86),
-            ),
-            Text(
-              'Your application has been submitted!',
-              style: AppTextStyles.inter600_18,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: resposiveHeight(16)),
-            Text(
-                style: AppTextStyles.inter400_16,
-                textAlign: TextAlign.center,
-                'Thank you for providing your application, we will review your application and will get back to you soon.'),
-            SizedBox(height: resposiveHeight(24)),
-            ElevatedButton(
-                onPressed: () {},
-                child: Text('Login',
-                    style: AppTextStyles.inter500_16
-                        .copyWith(color: Colors.white))),
-            Spacer(),
-            SuccessApplyDecorationWidget(),
-          ],
-        ),
+          ),
+          Spacer(),
+          SuccessApplyDecorationWidget(),
+        ],
       ),
     );
   }

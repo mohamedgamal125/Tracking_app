@@ -7,10 +7,9 @@ import 'package:tracking_app/core/router/routes_generator.dart';
 import 'package:tracking_app/core/services/screen_size_service.dart';
 import 'package:tracking_app/core/services/shared_preference_services.dart';
 import 'package:tracking_app/core/utils/theming.dart';
-
 import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
-import 'main_view.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
