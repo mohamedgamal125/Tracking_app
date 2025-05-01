@@ -12,7 +12,7 @@ import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
 import 'main_view.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   Bloc.observer = MyBlocObserver();
@@ -26,7 +26,6 @@ class InitApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       home: Builder(
         builder: (context) {
           ScreenSizeService.init(context);
@@ -40,7 +39,7 @@ class InitApp extends StatelessWidget {
 }
 
 class MainAppContent extends StatelessWidget {
-  MainAppContent({super.key});
+  const MainAppContent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +47,11 @@ class MainAppContent extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme(),
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.mainView,
+      initialRoute: PagesRoutes.successApplyView,
     );
   }
 
-  int sum(int a, int b)
-  {
-    return a+b;
+  int sum(int a, int b) {
+    return a + b;
   }
 }

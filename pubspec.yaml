@@ -45,6 +45,9 @@ flutter:
 
 
   uses-material-design: true
+  assets:
+    - assets/svg/
+   
   fonts:
     - family: IM FELL English
       fonts:
@@ -61,3 +64,4 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
+  

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
+import 'package:tracking_app/feature/apply/presentation/view/success_apply_view.dart';
 import 'package:tracking_app/main_view.dart';
 
 class RoutesGenerator {
@@ -10,12 +11,17 @@ class RoutesGenerator {
         return MaterialPageRoute(
             builder: (context) => MainView(), settings: settings);
 
+      case PagesRoutes.successApplyView:
+        return MaterialPageRoute(
+          builder: (context) => const SuccessApplyView(),
+          settings: settings,
+        );
       default:
         return unDefinedRoute();
     }
   }
-
 }
+
 Route<dynamic> unDefinedRoute() {
   return MaterialPageRoute(
     builder: (_) {
