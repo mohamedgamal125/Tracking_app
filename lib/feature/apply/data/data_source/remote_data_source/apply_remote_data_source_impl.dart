@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mime/mime.dart';
 import 'package:tracking_app/core/api/api_client.dart';
 import 'package:tracking_app/feature/apply/data/data_source/remote_data_source/apply_remote_data_source.dart';
@@ -7,6 +8,7 @@ import 'package:tracking_app/feature/apply/data/model/apply_request_model.dart';
 import 'package:tracking_app/feature/apply/data/model/apply_response_dto.dart';
 import 'package:tracking_app/feature/apply/data/model/get_vehicles_response_dto.dart';
 
+@Injectable(as: ApplyRemoteDataSource)
 class ApplyRemoteDataSourceImpl implements ApplyRemoteDataSource {
   final ApiClient _apiClient;
   ApplyRemoteDataSourceImpl(this._apiClient);

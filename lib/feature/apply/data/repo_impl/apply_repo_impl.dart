@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api/api_execute.dart';
 import 'package:tracking_app/core/common/result.dart';
 import 'package:tracking_app/feature/apply/data/data_source/offline_data_source/apply_offline_data_source.dart';
@@ -7,6 +8,7 @@ import 'package:tracking_app/feature/apply/domain/entites/apply_response_entity.
 import 'package:tracking_app/feature/apply/domain/entites/get_vehicles_entity.dart';
 import 'package:tracking_app/feature/apply/domain/repo/apply_repo.dart';
 
+@Injectable(as: ApplyRepo)
 class ApplyRepoImpl implements ApplyRepo {
   final ApplyRemoteDataSource _applyRemoteDataSource;
   final ApplyOfflineDataSource _applyOfflineDataSource;

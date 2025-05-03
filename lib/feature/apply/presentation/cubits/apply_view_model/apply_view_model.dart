@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/common/result.dart';
 import 'package:tracking_app/feature/apply/data/model/apply_request_model.dart';
 import 'package:tracking_app/feature/apply/domain/use_case/apply_use_case.dart';
 import 'package:tracking_app/feature/apply/domain/use_case/get_vehicles_use_case.dart';
 import 'package:tracking_app/feature/apply/presentation/cubits/apply_view_model/apply_states.dart';
 
+@injectable
 class ApplyViewModel extends Cubit<ApplyState> {
   final ApplyUseCase _applyUseCase;
   final GetVehiclesUseCase _getVehiclesUseCase;
