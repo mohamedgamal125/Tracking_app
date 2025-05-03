@@ -29,22 +29,21 @@ class ApplyRemoteDataSourceImpl implements ApplyRemoteDataSource {
     //         MediaType.parse(lookupMimeType(request.vehicleLicense!.path)!),
     //   ),
     // });
-    final response = await _apiClient.apply(
-      request
-      // request.country!,
-      // request.firstName!,
-      // request.lastName!,
-      // request.vehicleType!,
-      // request.vehicleNumber!,
-      // request.vehicleLicense!,
-      // request.NID!,
-      // request.NIDImg!,
-      // request.email!,
-      // request.password!,
-      // request.rePassword!,
-      // request.gender!,
-      // request.phone!,
-    );
+    final response = await _apiClient.apply(request
+        // request.country!,
+        // request.firstName!,
+        // request.lastName!,
+        // request.vehicleType!,
+        // request.vehicleNumber!,
+        // request.vehicleLicense!,
+        // request.NID!,
+        // request.NIDImg!,
+        // request.email!,
+        // request.password!,
+        // request.rePassword!,
+        // request.gender!,
+        // request.phone!,
+        );
     return response.data;
   }
 

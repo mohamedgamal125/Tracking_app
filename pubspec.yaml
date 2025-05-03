@@ -50,6 +50,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/svg/
+    - assets/files/
    
   fonts:
     - family: IM FELL English
