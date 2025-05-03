@@ -29,7 +29,12 @@ class _ApiClient implements ApiClient {
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _options = _setStreamType<HttpResponse<ApplyResponseDTO>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+        method: 'POST',
+        headers: _headers,
+        extra: _extra,
+        contentType: 'multipart/form-data',
+      )
           .compose(
             _dio.options,
             '/apply',

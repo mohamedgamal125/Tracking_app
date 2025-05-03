@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/dio.dart';
@@ -20,19 +22,20 @@ abstract class ApiClient {
   @POST(ApiEndPoints.applyEndPoint)
   @MultiPart()
   Future<HttpResponse<ApplyResponseDTO>> apply(
-    @Body() String country,
-    @Body() String firstName,
-    @Body() String lastName,
-    @Body() String vehicleType,
-    @Body() String vehicleNumber,
-    @Body() FormData vehicleLicense,
-    @Body() String NID,
-    @Body() FormData NIDImg,
-    @Body() String email,
-    @Body() String password,
-    @Body() String rePassword,
-    @Body() String gender,
-    @Body() String phone,
+      @Body() ApplyRequestModel request,
+    // @Part(name: 'country') String country,
+    // @Part(name: 'firstName') String firstName,
+    // @Part(name: 'lastName') String lastName,
+    // @Part(name: 'vehicleType') String vehicleType,
+    // @Part(name: 'vehicleNumber') String vehicleNumber,
+    // @Part(name: 'vehicleLicense', contentType: "image/jpg") File vehicleLicense,
+    // @Part(name: 'NID') String NID,
+    // @Part(name: 'NIDImg', contentType: "image/jpg") File NIDImg,
+    // @Part(name: 'email') String email,
+    // @Part(name: 'password') String password,
+    // @Part(name: 'rePassword') String rePassword,
+    // @Part(name: 'gender') String gender,
+    // @Part(name: 'phone') String phone,
   );
 
   @GET(ApiEndPoints.allVehicleEndPoint)

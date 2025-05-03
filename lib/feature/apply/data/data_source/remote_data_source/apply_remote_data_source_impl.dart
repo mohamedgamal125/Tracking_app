@@ -12,37 +12,38 @@ class ApplyRemoteDataSourceImpl implements ApplyRemoteDataSource {
   ApplyRemoteDataSourceImpl(this._apiClient);
   @override
   Future<ApplyResponseDTO> apply(ApplyRequestModel request) async {
-    var NIDImg = FormData.fromMap({
-      'NIDImg': await MultipartFile.fromFile(
-        request.NIDImg!.path,
-        filename:
-            'upload_${DateTime.now().millisecondsSinceEpoch}.${request.NIDImg!.path.split('.').last}',
-        contentType: MediaType.parse(lookupMimeType(request.NIDImg!.path)!),
-      ),
-    });
-    var vehicleLicense = FormData.fromMap({
-      'vehicleLicense': await MultipartFile.fromFile(
-        request.vehicleLicense!.path,
-        filename:
-            'upload_${DateTime.now().millisecondsSinceEpoch}.${request.vehicleLicense!.path.split('.').last}',
-        contentType:
-            MediaType.parse(lookupMimeType(request.vehicleLicense!.path)!),
-      ),
-    });
+    // var NIDImg = FormData.fromMap({
+    //   'NIDImg': await MultipartFile.fromFile(
+    //     request.NIDImg!.path,
+    //     filename:
+    //         'upload_${DateTime.now().millisecondsSinceEpoch}.${request.NIDImg!.path.split('.').last}',
+    //     contentType: MediaType.parse(lookupMimeType(request.NIDImg!.path)!),
+    //   ),
+    // });
+    // var vehicleLicense = FormData.fromMap({
+    //   'vehicleLicense': await MultipartFile.fromFile(
+    //     request.vehicleLicense!.path,
+    //     filename:
+    //         'upload_${DateTime.now().millisecondsSinceEpoch}.${request.vehicleLicense!.path.split('.').last}',
+    //     contentType:
+    //         MediaType.parse(lookupMimeType(request.vehicleLicense!.path)!),
+    //   ),
+    // });
     final response = await _apiClient.apply(
-      request.country!,
-      request.firstName!,
-      request.lastName!,
-      request.vehicleType!,
-      request.vehicleNumber!,
-      vehicleLicense,
-      request.NID!,
-      NIDImg,
-      request.email!,
-      request.password!,
-      request.rePassword!,
-      request.gender!,
-      request.phone!,
+      request
+      // request.country!,
+      // request.firstName!,
+      // request.lastName!,
+      // request.vehicleType!,
+      // request.vehicleNumber!,
+      // request.vehicleLicense!,
+      // request.NID!,
+      // request.NIDImg!,
+      // request.email!,
+      // request.password!,
+      // request.rePassword!,
+      // request.gender!,
+      // request.phone!,
     );
     return response.data;
   }
