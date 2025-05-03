@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 class ApplyRequestModel {
@@ -6,9 +8,9 @@ class ApplyRequestModel {
   final String? lastName;
   final String? vehicleType;
   final String? vehicleNumber;
-  final FormData? vehicleLicense;
+  final File? vehicleLicense;
   final String? NID;
-  final FormData? NIDImg;
+  final File? NIDImg;
   final String? email;
   final String? password;
   final String? rePassword;

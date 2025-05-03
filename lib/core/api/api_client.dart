@@ -18,7 +18,22 @@ abstract class ApiClient {
   factory ApiClient(Dio dio) = _ApiClient;
 
   @POST(ApiEndPoints.applyEndPoint)
-  Future<HttpResponse<ApplyResponseDTO>> apply(ApplyRequestModel request);
+  @MultiPart()
+  Future<HttpResponse<ApplyResponseDTO>> apply(
+    @Body() String country,
+    @Body() String firstName,
+    @Body() String lastName,
+    @Body() String vehicleType,
+    @Body() String vehicleNumber,
+    @Body() FormData vehicleLicense,
+    @Body() String NID,
+    @Body() FormData NIDImg,
+    @Body() String email,
+    @Body() String password,
+    @Body() String rePassword,
+    @Body() String gender,
+    @Body() String phone,
+  );
 
   @GET(ApiEndPoints.allVehicleEndPoint)
   Future<HttpResponse<GetVehiclesResponseDTO>> getAllVehicles();
