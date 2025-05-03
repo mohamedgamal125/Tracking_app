@@ -8,7 +8,7 @@ class ApplyUseCase {
 
   ApplyUseCase(this._applyRepo);
 
-  Future<Result<ApplyResponseEntity>> apply(ApplyRequestModel request) async {
+  Future<Result<ApplyResponseEntity>> execute(ApplyRequestModel request) async {
     return await _applyRepo.apply(request);
   }
 }

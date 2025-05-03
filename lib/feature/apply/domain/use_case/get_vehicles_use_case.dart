@@ -7,7 +7,7 @@ class GetVehiclesUseCase {
 
   GetVehiclesUseCase(this._applyRepo);
 
-  Future<Result<GetVehiclesEntity>> getAllVehicles() async {
+  Future<Result<GetVehiclesEntity>> execute() async {
     return await _applyRepo.getAllVehicles();
   }
 }
