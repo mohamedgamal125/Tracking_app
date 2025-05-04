@@ -22,20 +22,21 @@ abstract class ApiClient {
   @POST(ApiEndPoints.applyEndPoint)
   @MultiPart()
   Future<HttpResponse<ApplyResponseDTO>> apply(
-      @Body() ApplyRequestModel request,
-    // @Part(name: 'country') String country,
-    // @Part(name: 'firstName') String firstName,
-    // @Part(name: 'lastName') String lastName,
-    // @Part(name: 'vehicleType') String vehicleType,
-    // @Part(name: 'vehicleNumber') String vehicleNumber,
-    // @Part(name: 'vehicleLicense', contentType: "image/jpg") File vehicleLicense,
-    // @Part(name: 'NID') String NID,
-    // @Part(name: 'NIDImg', contentType: "image/jpg") File NIDImg,
-    // @Part(name: 'email') String email,
-    // @Part(name: 'password') String password,
-    // @Part(name: 'rePassword') String rePassword,
-    // @Part(name: 'gender') String gender,
-    // @Part(name: 'phone') String phone,
+    // @Body() ApplyRequestModel request,
+    @Part(name: 'country') String country,
+    @Part(name: 'firstName') String firstName,
+    @Part(name: 'lastName') String lastName,
+    @Part(name: 'vehicleType') String vehicleType,
+    @Part(name: 'vehicleNumber') String vehicleNumber,
+    @Part(name: 'vehicleLicense', contentType: "image/jpeg")
+    File vehicleLicense,
+    @Part(name: 'NID') String NID,
+    @Part(name: 'NIDImg', contentType: "image/jpeg") File NIDImg,
+    @Part(name: 'email') String email,
+    @Part(name: 'password') String password,
+    @Part(name: 'rePassword') String rePassword,
+    @Part(name: 'gender') String gender,
+    @Part(name: 'phone') String phone,
   );
 
   @GET(ApiEndPoints.allVehicleEndPoint)

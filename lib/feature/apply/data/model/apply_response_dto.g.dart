@@ -8,9 +8,11 @@ part of 'apply_response_dto.dart';
 
 ApplyResponseDTO _$ApplyResponseDTOFromJson(Map<String, dynamic> json) =>
     ApplyResponseDTO(
-      message: json['message'] as String,
-      driver: Driver.fromJson(json['driver'] as Map<String, dynamic>),
-      token: json['token'] as String,
+      message: json['message'] as String?,
+      driver: json['driver'] == null
+          ? null
+          : Driver.fromJson(json['driver'] as Map<String, dynamic>),
+      token: json['token'] as String?,
     );
 
 Map<String, dynamic> _$ApplyResponseDTOToJson(ApplyResponseDTO instance) =>
@@ -21,21 +23,21 @@ Map<String, dynamic> _$ApplyResponseDTOToJson(ApplyResponseDTO instance) =>
     };
 
 Driver _$DriverFromJson(Map<String, dynamic> json) => Driver(
-      country: json['_id'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      vehicleType: json['vehicleType'] as String,
-      vehicleNumber: json['vehicleNumber'] as String,
-      vehicleLicense: json['vehicleLicense'] as String,
-      NID: json['NID'] as String,
-      NIDImg: json['NIDImg'] as String,
-      email: json['email'] as String,
-      gender: json['gender'] as String,
-      phone: json['phone'] as String,
-      photo: json['photo'] as String,
-      role: json['role'] as String,
-      id: json['id'] as String,
-      createdAt: json['createdAt'] as String,
+      country: json['_id'] as String?,
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
+      vehicleType: json['vehicleType'] as String?,
+      vehicleNumber: json['vehicleNumber'] as String?,
+      vehicleLicense: json['vehicleLicense'] as String?,
+      NID: json['NID'] as String?,
+      NIDImg: json['NIDImg'] as String?,
+      email: json['email'] as String?,
+      gender: json['gender'] as String?,
+      phone: json['phone'] as String?,
+      photo: json['photo'] as String?,
+      role: json['role'] as String?,
+      id: json['id'] as String?,
+      createdAt: json['createdAt'] as String?,
     );
 
 Map<String, dynamic> _$DriverToJson(Driver instance) => <String, dynamic>{
