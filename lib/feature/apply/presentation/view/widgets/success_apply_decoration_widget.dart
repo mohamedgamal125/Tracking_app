@@ -18,13 +18,17 @@ class SuccessApplyDecorationWidget extends StatelessWidget {
             fit: BoxFit.fitWidth,
           ),
           Positioned(
-            bottom: resposiveHeight(0),
-            left: resposiveWidth(78),
-            child: SvgPicture.asset(
-              SvgImags.decoration2,
-              width: resposiveWidth(320.81),
-              height: resposiveHeight(122.89),
-              // fit: BoxFit.fitHeight,
+            bottom: resposiveHeight(-3),
+            left: resposiveWidth(85.81),
+            child: SizedBox(
+              width: resposiveWidth(300.81),
+              child: SvgPicture.asset(
+                SvgImags.decoration2,
+                fit: BoxFit.contain,
+                // width: resposiveWidth(320.81),
+                height: resposiveHeight(122.89),
+                // fit: BoxFit.fitHeight,
+              ),
             ),
           ),
         ],
