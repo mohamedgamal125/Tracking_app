@@ -30,8 +30,8 @@ dependencies:
   lottie:
   mime: ^2.0.0
   mockito: ^5.4.5
-
-
+  flutter_localization: ^0.3.2
+  intl:
 
 dev_dependencies:
   flutter_test:

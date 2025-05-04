@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+import 'package:tracking_app/generated/l10n.dart';
 import '../../../../core/router/pages_routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_dialog.dart';
@@ -88,8 +89,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       }
                     },
                     decoration: InputDecoration(
-                      labelText: "Email",
-                      hintText: "Enter your email",
+                      labelText: S.of(context).email,
+                      hintText: S.of(context).enterYourEmail,
                       errorStyle: const TextStyle(color: AppColors.errorColor),
                       labelStyle: TextStyle(
                         color: viewModel.hasInteractedWithEmail &&
@@ -132,7 +133,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       minimumSize: Size.fromHeight(responsiveHeight(50)),
                     ),
                     child: Text(
-                      "Confirm",
+                      S.of(context).confirm,
                       style: AppTextStyles.inter500_16
                           .copyWith(color: AppColors.whiteColor),
                     ),
