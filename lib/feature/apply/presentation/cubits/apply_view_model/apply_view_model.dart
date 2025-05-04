@@ -10,8 +10,10 @@ import 'package:tracking_app/feature/apply/presentation/cubits/apply_view_model/
 class ApplyViewModel extends Cubit<ApplyState> {
   final ApplyUseCase _applyUseCase;
   final GetVehiclesUseCase _getVehiclesUseCase;
-  ApplyViewModel(this._applyUseCase, this._getVehiclesUseCase)
-      : super(ApplyInitialState());
+  ApplyViewModel(
+    this._applyUseCase,
+    this._getVehiclesUseCase,
+  ) : super(ApplyInitialState());
 
   void apply(ApplyRequestModel request) async {
     emit(ApplyLoadingState());

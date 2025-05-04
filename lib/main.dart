@@ -10,7 +10,6 @@ import 'package:tracking_app/core/utils/theming.dart';
 import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
@@ -46,7 +45,7 @@ class MainAppContent extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme(),
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.successApplyView,
+      initialRoute: PagesRoutes.applyView,
     );
   }
 

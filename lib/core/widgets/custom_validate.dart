@@ -1,4 +1,3 @@
-
 class AppValidate {
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -13,13 +12,24 @@ class AppValidate {
     return null;
   }
 
-  static String? validateFullName(String? value) {
+  static String? validateFirstName(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your full name ';
+      return 'Please enter your first name ';
     }
     final regex = RegExp(r'^[A-Za-z\s]+$');
     if (!regex.hasMatch(value)) {
-      return 'Please enter a valid full name ';
+      return 'Please enter a valid first name ';
+    }
+    return null;
+  }
+
+  static String? validateLastName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your last name ';
+    }
+    final regex = RegExp(r'^[A-Za-z\s]+$');
+    if (!regex.hasMatch(value)) {
+      return 'Please enter a valid last name ';
     }
     return null;
   }

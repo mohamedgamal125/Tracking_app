@@ -12,7 +12,7 @@ import 'package:tracking_app/feature/apply/data/model/get_vehicles_response_dto.
 
 part 'api_client.g.dart';
 
-@RestApi(baseUrl: "https://flower.elevateegy.com/api/v1/drivers/")
+@RestApi(baseUrl: "https://flower.elevateegy.com/api/v1")
 @singleton
 @injectable
 abstract class ApiClient {

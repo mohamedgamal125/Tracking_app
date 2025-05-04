@@ -28,3 +28,5 @@ class GetVehiclesErrorState extends ApplyState {
   final String error;
   GetVehiclesErrorState(this.error);
 }
+
+
