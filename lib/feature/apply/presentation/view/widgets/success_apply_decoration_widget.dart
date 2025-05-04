@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tracking_app/core/common/get_resposive_height_and_width.dart';
+import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_assets.dart';
 
 class SuccessApplyDecorationWidget extends StatelessWidget {
@@ -18,12 +18,12 @@ class SuccessApplyDecorationWidget extends StatelessWidget {
             fit: BoxFit.fitWidth,
           ),
           Positioned(
-            bottom: resposiveHeight(0),
-            left: resposiveWidth(78),
+            bottom: responsiveHeight(0),
+            left: responsiveWidth(78),
             child: SvgPicture.asset(
               SvgImags.decoration2,
-              width: resposiveWidth(320.81),
-              height: resposiveHeight(122.89),
+              width: responsiveWidth(320.81),
+              height: responsiveHeight(122.89),
               // fit: BoxFit.fitHeight,
             ),
           ),

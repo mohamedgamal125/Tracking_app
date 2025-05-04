@@ -21,6 +21,8 @@ void main() async {
 }
 
 class InitApp extends StatelessWidget {
+  const InitApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,7 +48,7 @@ class MainAppContent extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme(),
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.successApplyView,
+      initialRoute: PagesRoutes.forgetPassword,
     );
   }
 
