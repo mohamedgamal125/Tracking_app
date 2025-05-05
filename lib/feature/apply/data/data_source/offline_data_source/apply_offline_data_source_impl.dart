@@ -7,9 +7,10 @@ import 'package:tracking_app/feature/apply/data/data_source/offline_data_source/
 @Injectable(as: ApplyOfflineDataSource)
 class ApplyOfflineDataSourceImpl implements ApplyOfflineDataSource {
   @override
-  Future<List> getCountries() async {
-    String jsonString =
-        await rootBundle.loadString("assets/files/country.json");
-    return jsonDecode(jsonString);
+  Future<List<Map<String, dynamic>>> getCountries() async {
+    String jsonString = await rootBundle.loadString("assets/files/country.json");
+    final List<dynamic> jsonList = jsonDecode(jsonString);
+    return jsonList.map((item) => item as Map<String, dynamic>).toList();
   }
+
 }

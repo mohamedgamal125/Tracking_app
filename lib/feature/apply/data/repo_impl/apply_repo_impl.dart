@@ -30,7 +30,7 @@ class ApplyRepoImpl implements ApplyRepo {
   }
 
   @override
-  Future<List> getCountries() {
+  Future<List<Map<String,dynamic>>>  getCountries() {
     return _applyOfflineDataSource.getCountries();
   }
 }

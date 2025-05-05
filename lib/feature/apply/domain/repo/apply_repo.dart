@@ -6,5 +6,5 @@ import 'package:tracking_app/feature/apply/domain/entites/get_vehicles_entity.da
 abstract class ApplyRepo {
   Future<Result<ApplyResponseEntity>> apply(ApplyRequestModel request);
   Future<Result<GetVehiclesEntity>> getAllVehicles();
-  Future<List> getCountries();
+  Future<List<Map<String,dynamic>>>  getCountries();
 }

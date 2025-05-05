@@ -31,8 +31,11 @@ import '../../feature/apply/domain/use_case/get_vehicles_use_case.dart'
     as _i275;
 import '../../feature/apply/presentation/cubits/apply_view_model/apply_view_model.dart'
     as _i734;
+import '../../feature/apply/presentation/cubits/check_image_with_gemini_view_model/check_image_with_gemini_view_model.dart'
+    as _i101;
 import '../api/api_client.dart' as _i277;
 import '../api/network_factory.dart' as _i1013;
+import '../services/gemini_service.dart' as _i846;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -46,9 +49,12 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioProvider = _$DioProvider();
+    gh.factory<_i846.GeminiService>(() => _i846.GeminiService());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
+    gh.factory<_i101.CheckImageWithGeminiViewModel>(
+        () => _i101.CheckImageWithGeminiViewModel(gh<_i846.GeminiService>()));
     gh.factory<_i178.ApplyOfflineDataSource>(
         () => _i42.ApplyOfflineDataSourceImpl());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));

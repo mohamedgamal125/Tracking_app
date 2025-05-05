@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class GeminiService {
   final model = GenerativeModel(
     model: 'gemini-1.5-flash',
@@ -203,7 +205,7 @@ Only mark "Valid: true" if ALL the following are present:
 
     switch (isValid) {
       case 'true':
-        return '✅ National ID card for $country is valid.\n🆔 ID Number: ${id == "Not found" ? "Not visible" : id}';
+        return '✅ National ID card for $country is valid.\n🆔 ID Number: ${id == "Not found" ? "Not visible" : id}true';
       case 'false':
         return '❌ The uploaded image is not a valid national ID card for $country.';
       case 'unclear':
@@ -216,7 +218,7 @@ Only mark "Valid: true" if ALL the following are present:
   String generateDrivingLicenseMessage(String isValid, String country) {
     switch (isValid.toLowerCase()) {
       case 'true':
-        return '✅ The driving license from $country is valid.';
+        return '✅ The driving license from $country is valid.true';
       case 'false':
         return '❌ The uploaded image is not a valid driving license from $country.';
       case 'unclear':

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 
 class CountryDropdown extends StatelessWidget {
-  final List countries;
-  final String? selectedCountry;
-  final Function(String?) onCountrySelected;
+  final List<Map<String, dynamic>> countries;
+  final Map<String, dynamic>? selectedCountry;
+  final Function(Map<String, dynamic>?) onCountrySelected;
 
   const CountryDropdown({
     Key? key,
@@ -22,18 +22,18 @@ class CountryDropdown extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
+        child: DropdownButton<Map<String, dynamic>>(
           isExpanded: true,
           value: selectedCountry,
-          hint: Text('Select a country'),
+          hint: const Text('Select a country'),
           icon: const Icon(
             Icons.keyboard_arrow_down,
             color: AppColors.blackColor,
             size: 30,
           ),
-          items: countries.map<DropdownMenuItem<String>>((item) {
-            return DropdownMenuItem<String>(
-              value: item['name'],
+          items: countries.map<DropdownMenuItem<Map<String, dynamic>>>((item) {
+            return DropdownMenuItem<Map<String, dynamic>>(
+              value: item,
               child: Row(
                 children: [
                   Text(item['flag'], style: const TextStyle(fontSize: 20)),

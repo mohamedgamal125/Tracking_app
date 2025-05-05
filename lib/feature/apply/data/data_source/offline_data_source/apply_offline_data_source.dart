@@ -1,3 +1,3 @@
 abstract class ApplyOfflineDataSource {
-  Future<List> getCountries();
+  Future<List<Map<String,dynamic>>>  getCountries();
 }

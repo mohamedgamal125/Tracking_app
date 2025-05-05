@@ -7,7 +7,7 @@ class GetCountriesUseCase {
 
   GetCountriesUseCase(this._applyRepo);
 
-  Future<List> execute() async {
+  Future<List<Map<String,dynamic>>> execute() async {
     return _applyRepo.getCountries();
   }
 }
