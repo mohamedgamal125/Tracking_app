@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tracking_app/core/common/get_resposive_height_and_width.dart';
 import 'package:tracking_app/core/di/injectable_initializer.dart';
+import 'package:tracking_app/core/services/gemini_service.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/constans.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
@@ -181,16 +182,24 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                 SizedBox(
                   height: resposiveHeight(16),
                 ),
-                TextFormField(
-                  enabled: false,
-                  autovalidateMode: validateMode,
-                  // controller: _firstLegalNameController,
-                  decoration: InputDecoration(
-                      labelText: 'Vehicle license',
-                      hintText: 'Upload license photo',
-                      suffixIcon: Icon(Icons.upload_outlined)),
-                  // validator: AppValidate.validateMobile,
-                  onChanged: checkValidateForTextField,
+                InkWell(
+                  onTap: () async {
+                    image1 = await getImage();
+                    String result = await GeminiService()
+                        .validateVehicleLicense(image1!, dropDownValue!);
+                    print(result);
+                  },
+                  child: TextFormField(
+                    enabled: false,
+                    autovalidateMode: validateMode,
+                    // controller: _firstLegalNameController,
+                    decoration: InputDecoration(
+                        labelText: 'Vehicle license',
+                        hintText: 'Upload license photo',
+                        suffixIcon: Icon(Icons.upload_outlined)),
+                    // validator: AppValidate.validateMobile,
+                    onChanged: checkValidateForTextField,
+                  ),
                 ),
                 SizedBox(
                   height: resposiveHeight(16),
@@ -223,17 +232,29 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                 SizedBox(
                   height: resposiveHeight(16),
                 ),
-                TextFormField(
-                  enabled: false,
-                  autovalidateMode: validateMode,
-                  // controller: _firstLegalNameController,
-                  decoration: InputDecoration(
-                    labelText: 'ID image',
-                    hintText: 'Upload ID image',
-                    suffixIcon: Icon(Icons.upload_outlined),
+                InkWell(
+                  onTap: () async {
+                    image2 = await getImage();
+                    List result = await GeminiService()
+                        .validateNationalIdCard(image2!, dropDownValue!);
+                    print(result[0]);
+                    print(result[1]);
+                    setState(() {
+                      _nationalIdNumberController.text = result[1];
+                    });
+                  },
+                  child: TextFormField(
+                    enabled: false,
+                    autovalidateMode: validateMode,
+                    // controller: _firstLegalNameController,
+                    decoration: InputDecoration(
+                      labelText: 'ID image',
+                      hintText: 'Upload ID image',
+                      suffixIcon: Icon(Icons.upload_outlined),
+                    ),
+                    // validator: AppValidate.validateMobile,
+                    onChanged: checkValidateForTextField,
                   ),
-                  // validator: AppValidate.validateMobile,
-                  onChanged: checkValidateForTextField,
                 ),
                 SizedBox(
                   height: resposiveHeight(16),
