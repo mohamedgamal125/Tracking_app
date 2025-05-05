@@ -88,4 +88,17 @@ class AppValidate {
     }
     return null;
   }
+
+  static String? validatePhoneNumber(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Phone number is required';
+    }
+
+    final RegExp phoneExp = RegExp(r'^\+?[0-9]{7,15}$');
+
+    if (!phoneExp.hasMatch(value)) {
+      return 'Enter a valid phone number';
+    }
+    return null;
+  }
 }

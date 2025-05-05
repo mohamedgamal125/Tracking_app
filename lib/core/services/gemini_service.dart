@@ -92,8 +92,8 @@ Only return "Valid: true" if the image contains:
 ''';
   }
 
-
-  Future<List<String>> validateNationalIdCard(File image, String selectedCountry) async {
+  Future<List<String>> validateNationalIdCard(
+      File image, String selectedCountry) async {
     final imageBytes = await image.readAsBytes();
     try {
       final content = [
@@ -106,8 +106,13 @@ Only return "Valid: true" if the image contains:
       final response = await model.generateContent(content);
       final responseText = response.text ?? "No response";
 
-      final validMatch = RegExp(r'Valid:\s*(true|false|unclear)', caseSensitive: false).firstMatch(responseText);
-      final idMatch = RegExp(r'ID(?: Number)?:\s*([a-zA-Z0-9\-]{5,}|Not found|Unclear|Not applicable)', caseSensitive: false).firstMatch(responseText);
+      final validMatch =
+          RegExp(r'Valid:\s*(true|false|unclear)', caseSensitive: false)
+              .firstMatch(responseText);
+      final idMatch = RegExp(
+              r'ID(?: Number)?:\s*([a-zA-Z0-9\-]{5,}|Not found|Unclear|Not applicable)',
+              caseSensitive: false)
+          .firstMatch(responseText);
 
       return [
         validMatch?.group(1)?.toLowerCase() ?? "unknown",
@@ -119,7 +124,8 @@ Only return "Valid: true" if the image contains:
     }
   }
 
-  Future<String> validateVehicleLicense(File image, String selectedCountry) async {
+  Future<String> validateVehicleLicense(
+      File image, String selectedCountry) async {
     final imageBytes = await image.readAsBytes();
     try {
       final content = [
@@ -132,7 +138,9 @@ Only return "Valid: true" if the image contains:
       final response = await model.generateContent(content);
       final responseText = response.text ?? "No response";
 
-      final validMatch = RegExp(r'Valid:\s*(true|false|unclear)', caseSensitive: false).firstMatch(responseText);
+      final validMatch =
+          RegExp(r'Valid:\s*(true|false|unclear)', caseSensitive: false)
+              .firstMatch(responseText);
       return validMatch?.group(1)?.toLowerCase() ?? "unknown";
     } catch (e) {
       print('Error during vehicle license validation: $e');
@@ -189,4 +197,32 @@ Only mark "Valid: true" if ALL the following are present:
 ''';
   }
 
+  String generateNationalIdMessage(List<String> result, String country) {
+    final isValid = result[0].toLowerCase();
+    final id = result[1];
+
+    switch (isValid) {
+      case 'true':
+        return '✅ National ID card for $country is valid.\n🆔 ID Number: ${id == "Not found" ? "Not visible" : id}';
+      case 'false':
+        return '❌ The uploaded image is not a valid national ID card for $country.';
+      case 'unclear':
+        return '⚠️ Unable to verify the national ID card for $country due to poor image quality. Please upload a clearer photo.';
+      default:
+        return '❓ Unable to determine the result for the national ID. Please try again.';
+    }
+  }
+
+  String generateDrivingLicenseMessage(String isValid, String country) {
+    switch (isValid.toLowerCase()) {
+      case 'true':
+        return '✅ The driving license from $country is valid.';
+      case 'false':
+        return '❌ The uploaded image is not a valid driving license from $country.';
+      case 'unclear':
+        return '⚠️ Could not clearly validate the driving license from $country. Please try uploading a better image.';
+      default:
+        return '❓ Could not determine the result for the driving license. Please try again.';
+    }
+  }
 }

@@ -197,7 +197,6 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                         labelText: 'Vehicle license',
                         hintText: 'Upload license photo',
                         suffixIcon: Icon(Icons.upload_outlined)),
-                    // validator: AppValidate.validateMobile,
                     onChanged: checkValidateForTextField,
                   ),
                 ),
@@ -217,7 +216,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                 ),
                 TextFormField(
                   autovalidateMode: validateMode,
-                  controller: _phoneNumberController,
+                  controller: _nationalIdNumberController,
                   decoration: InputDecoration(
                       labelText: 'ID number',
                       hintText: 'Enter national ID number'),
