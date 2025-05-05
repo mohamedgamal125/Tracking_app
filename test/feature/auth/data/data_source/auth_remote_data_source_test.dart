@@ -5,7 +5,9 @@ import 'package:tracking_app/core/api/api_client.dart';
 import 'package:tracking_app/feature/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:tracking_app/feature/auth/data/model/forget_response_password_dto.dart';
 import 'package:tracking_app/feature/auth/data/model/reset_password_dto.dart';
+import 'package:tracking_app/feature/auth/data/model/sign_in_response_dto.dart';
 import 'package:tracking_app/feature/auth/data/model/verify_email_response_dto.dart';
+import 'package:tracking_app/feature/auth/domain/entity/sign_in_request.dart';
 
 import 'auth_remote_data_source_test.mocks.dart';
 
@@ -20,6 +22,21 @@ void main() {
   });
 
   group('AuthRemoteDataSourceImpl', () {
+    test("Should return SignInResponseDTO when calling signIn", () async {
+      final request = SignInRequest(email: "test@example.com", password: "password123");
+      final responseDto = SignInResponseDTO(
+        token: "abc123",
+        message: 'successes'
+      );
+
+      when(apiClient.signIn(request)).thenAnswer((_) async => responseDto);
+
+      final result = await dataSource.signIn(request);
+
+      verify(apiClient.signIn(request)).called(1);
+      expect(result, responseDto);
+    });
+
     test("Should return ForgetResponsePasswordDto when calling forgetPassword", () async {
       const email = "test@example.com";
       final responseDto = ForgetResponsePasswordDto(message: "Email sent");

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/widgets/custom_validate.dart';
 
-import '../../../../../../core/di/injectable_initializer.dart';
-import '../../../../../../core/router/pages_routes.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/text_styles.dart';
-import '../../../../../../core/widgets/custom_app_bar.dart';
-import '../../../../core/common/get_responsive_height_and_width.dart';
-import '../cubit/reset_password_cubit/reset_password_state.dart';
-import '../cubit/reset_password_cubit/reset_password_view_model.dart';
+import '../../../../../../../core/di/injectable_initializer.dart';
+import '../../../../../../../core/router/pages_routes.dart';
+import '../../../../../../../core/utils/app_colors.dart';
+import '../../../../../../../core/utils/text_styles.dart';
+import '../../../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/common/get_responsive_height_and_width.dart';
+import '../../cubit/reset_password_cubit/reset_password_state.dart';
+import '../../cubit/reset_password_cubit/reset_password_view_model.dart';
 
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -48,7 +48,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 backgroundColor: AppColors.greenColor,
               ),
             );
-            Navigator.pushReplacementNamed(context, PagesRoutes.onBoarding);
+            Navigator.pushReplacementNamed(context, PagesRoutes.signIn);
           }
         },
         child: Scaffold(

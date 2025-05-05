@@ -4,14 +4,14 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_icons.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
-import '../../../../core/router/pages_routes.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/widgets/custom_dialog.dart';
-import '../../../../core/di/injectable_initializer.dart';
-import '../cubit/verify_email_cubit/verify_email_state.dart';
-import '../cubit/verify_email_cubit/verify_email_vew_model.dart';
-import 'widgets/custom_verify_text_field.dart';
-import 'widgets/resend_otp_button.dart';
+import '../../../../../core/router/pages_routes.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/widgets/custom_dialog.dart';
+import '../../../../../core/di/injectable_initializer.dart';
+import '../../cubit/verify_email_cubit/verify_email_state.dart';
+import '../../cubit/verify_email_cubit/verify_email_vew_model.dart';
+import '../widgets/custom_verify_text_field.dart';
+import '../widgets/resend_otp_button.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({super.key});

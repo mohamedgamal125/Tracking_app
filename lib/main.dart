@@ -11,7 +11,7 @@ import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
 import 'core/services/localization_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-// import 'core/services/localization_service.dart';
+import 'package:provider/provider.dart';
 import 'generated/l10n.dart';
 
 
@@ -22,8 +22,15 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   ConfigLoading().showLoading();
   await SharedPreferenceServices.init();
-  runApp(InitApp());
+
+  runApp(
+    ChangeNotifierProvider<LocaleProvider>(
+      create: (_) => LocaleProvider(),
+      child: const InitApp(),
+    ),
+  );
 }
+
 
 class InitApp extends StatelessWidget {
   const InitApp({super.key});
@@ -63,7 +70,8 @@ class MainAppContent extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.forgetPassword,
+      // initialRoute: PagesRoutes.forgetPassword,
+      initialRoute: PagesRoutes.onBoarding,
     );
   }
 

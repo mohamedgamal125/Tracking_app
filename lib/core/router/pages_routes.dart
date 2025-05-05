@@ -1,5 +1,6 @@
 abstract class PagesRoutes {
   static const String onBoarding = "/on_boarding";
+  static const String signIn = "signIn";
   static const String mainView = "mainView";
   static const String successApplyView = 'successApplyView';
   static const String forgetPassword = 'forget_password';

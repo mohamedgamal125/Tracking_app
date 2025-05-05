@@ -6,9 +6,12 @@ import 'package:tracking_app/feature/auth/data/data_source/auth_local_data_sourc
 import 'package:tracking_app/feature/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:tracking_app/feature/auth/data/model/forget_response_password_dto.dart';
 import 'package:tracking_app/feature/auth/data/model/reset_password_dto.dart';
+import 'package:tracking_app/feature/auth/data/model/sign_in_response_dto.dart';
 import 'package:tracking_app/feature/auth/data/model/verify_email_response_dto.dart';
 import 'package:tracking_app/feature/auth/data/repository_imp/auth_repository_imp.dart';
 import 'package:tracking_app/feature/auth/domain/entity/reset_password_response_entity.dart';
+import 'package:tracking_app/feature/auth/domain/entity/sign_in_request.dart';
+import 'package:tracking_app/feature/auth/domain/entity/sign_in_response_entity.dart';
 import 'package:tracking_app/feature/auth/domain/entity/verify_email_response_entity.dart';
 
 import 'auth_repository_imp_test.mocks.dart';
@@ -30,6 +33,20 @@ void main() {
   });
 
   group('AuthRepositoryImpl tests', () {
+/*
+    test("Should call signIn and save token if success", () async {
+      final request = SignInRequest(email: "test@example.com", password: "123456");
+      final responseDto = SignInResponseDTO(token: "token_abc", message: 'success');
+
+      when(remoteDataSource.signIn(request)).thenAnswer((_) async => responseDto);
+        //   problem with SharedPref should edit it
+      final result = await repository.signIn(request);
+
+      verify(remoteDataSource.signIn(request)).called(1);
+      expect(result, isA<Success<SignUpResponseEntity>>());
+      expect((result as Success<SignUpResponseEntity>).data?.token, "token_abc");
+    });
+ */
     test("Should call forgetPassword and save email if success", () async {
       const email = "test@example.com";
       final dto = ForgetResponsePasswordDto(message: "success");

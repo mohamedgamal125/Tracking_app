@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 
@@ -45,7 +46,9 @@ class OnBoardingScreen extends StatelessWidget {
                 height: responsiveHeight(16),
               ),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, PagesRoutes.signIn);
+                  },
                   child: Text(
                     "Login",
                     style: AppTextStyles.inter500_16

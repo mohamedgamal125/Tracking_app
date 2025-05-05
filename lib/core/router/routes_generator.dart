@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
-import 'package:tracking_app/feature/apply/presentation/view/on_boarding_view.dart';
 import 'package:tracking_app/feature/apply/presentation/view/success_apply_view.dart';
-import 'package:tracking_app/feature/auth/presentation/views/email_verification_screen.dart';
-import 'package:tracking_app/feature/auth/presentation/views/forget_paswerd_screen.dart';
+import 'package:tracking_app/feature/auth/presentation/views/forget_password/email_verification_screen.dart';
+import 'package:tracking_app/feature/auth/presentation/views/forget_password/forget_paswerd_screen.dart';
+import 'package:tracking_app/feature/auth/presentation/views/sign_in/sign_in_screen.dart';
 import 'package:tracking_app/main_view.dart';
 
-import '../../feature/auth/presentation/views/reset_password_screen.dart';
+import '../../feature/auth/presentation/views/on_boarding/on_boarding_view.dart';
+import '../../feature/auth/presentation/views/forget_password/reset_password_screen.dart';
 
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case PagesRoutes.signIn:
+        return MaterialPageRoute(builder: (context) => SignInScreen(), settings: settings);
+
       case PagesRoutes.mainView:
         return MaterialPageRoute(
             builder: (context) => MainView(), settings: settings);

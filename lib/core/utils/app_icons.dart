@@ -5,4 +5,6 @@ class AppIcons {
   static const IconData edit = Icons.edit;
   static const IconData location = Icons.location_on;
   static const IconData error = Icons.error_outline;
+  static const IconData passwordVisibility = Icons.visibility;
+  static const IconData passwordVisibilityOff = Icons.visibility_off;
 }

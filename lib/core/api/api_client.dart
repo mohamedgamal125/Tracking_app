@@ -6,7 +6,9 @@ import 'package:tracking_app/core/utils/end_points.dart';
 
 import '../../feature/auth/data/model/forget_response_password_dto.dart';
 import '../../feature/auth/data/model/reset_password_dto.dart';
+import '../../feature/auth/data/model/sign_in_response_dto.dart';
 import '../../feature/auth/data/model/verify_email_response_dto.dart';
+import '../../feature/auth/domain/entity/sign_in_request.dart';
 
 part 'api_client.g.dart';
 
@@ -22,6 +24,10 @@ abstract class ApiClient {
 ///////////////////++++++++++++++++/////////////////
 ///////////////////    Auth api    /////////////////
 ///////////////////++++++++++++++++/////////////////
+
+  @POST(ApiEndPoints.signIn)
+  Future<SignInResponseDTO> signIn(@Body() SignInRequest data);
+
   @POST(ApiEndPoints.forgetPassword)
   Future<ForgetResponsePasswordDto> forgetPassword(
       @Body() Map<String, dynamic> data,
