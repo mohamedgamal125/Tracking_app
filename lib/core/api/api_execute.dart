@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-
+import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../common/result.dart';
@@ -19,8 +19,8 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
     }
   } catch (ex) {
     if (ex is DioException) {
-      print(ex.response?.statusCode.toString());
-      print(ex.response?.data.toString());
+      debugPrint(ex.response?.statusCode.toString());
+      debugPrint(ex.response?.data.toString());
       log(ex.message.toString());
       log(ex.error.toString());
       log('error 1');
