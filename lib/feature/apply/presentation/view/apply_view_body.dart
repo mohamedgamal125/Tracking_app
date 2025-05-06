@@ -203,14 +203,16 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   bloc: widget.checkImageViewModel,
                   listener: (context, state) {
                     if (state is CheckImageLicenseLoadingState) {
-                      EasyLoading.showInfo('Check of image is in progress');
+                      EasyLoading.show(status: 'Check of image is in progress');
                     } else if (state is CheckImageLicenseValidateState) {
                       EasyLoading.dismiss();
-                      EasyLoading.showSuccess(state.licenseValidate ?? '');
+                      EasyLoading.showInfo(state.licenseValidate ?? '');
                       if (state.licenseValidate!.contains('true')) {
                         _licenseImageNameController.text = image1!.path;
                       } else {
                         image1 = null;
+                        _licenseImageNameController.text ='';
+                        return;
                       }
                     } else if (state is CheckImageLicenseErrorState) {
                       EasyLoading.dismiss();
@@ -224,8 +226,15 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                         return;
                       }
                       image1 = await getImage();
-                      widget.checkImageViewModel.analyzeDrivingLicense(
-                          image1!, dropDownValue!['name']);
+                      final sizeInMB = await image1!.length() / (1024 * 1024);
+                      if (sizeInMB > 2) {
+                        EasyLoading.showError(
+                            'Image too large. Please select an image under 2MB.');
+                        return;
+                      } else {
+                        widget.checkImageViewModel.analyzeDrivingLicense(
+                            image1!, dropDownValue!['name']);
+                      }
                     },
                     child: TextFormField(
                       enabled: false,
@@ -287,7 +296,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   bloc: widget.checkImageViewModel,
                   listener: (context, state) {
                     if (state is CheckImageNationalIdLoadingState) {
-                      EasyLoading.showInfo('Check of image is in progress');
+                      EasyLoading.show(status: 'Check of image is in progress');
                     } else if (state is CheckImageNationalIdValidateState) {
                       EasyLoading.dismiss();
                       EasyLoading.showSuccess(state.nationalIdValidate ?? '');
@@ -297,6 +306,8 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                             state.nationalId ?? '';
                       } else {
                         image2 = null;
+                        _nationalIdNumberController.text = '';
+                        return;
                       }
                     } else if (state is CheckImageNationalIdErrorState) {
                       EasyLoading.dismiss();
@@ -310,13 +321,20 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                         return;
                       }
                       image2 = await getImage();
-                      widget.checkImageViewModel
-                          .analyzeNationalId(image2!, dropDownValue!['name']);
+                      final sizeInMB = await image2!.length() / (1024 * 1024);
+                      if (sizeInMB > 2) {
+                        EasyLoading.showError(
+                            'Image too large. Please select an image under 2MB.');
+                        return;
+                      } else {
+                        widget.checkImageViewModel
+                            .analyzeNationalId(image2!, dropDownValue!['name']);
+                      }
                     },
                     child: TextFormField(
                       enabled: false,
                       autovalidateMode: validateMode,
-                      controller: _nationalIdNumberController,
+                      controller: _nationalIdImageNameController,
                       decoration: InputDecoration(
                         labelText: 'ID image',
                         hintText: 'Upload ID image',
