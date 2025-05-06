@@ -227,9 +227,9 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                       }
                       image1 = await getImage();
                       final sizeInMB = await image1!.length() / (1024 * 1024);
-                      if (sizeInMB > 2) {
+                      if (sizeInMB > 1) {
                         EasyLoading.showError(
-                            'Image too large. Please select an image under 2MB.');
+                            'Image too large. Please select an image under 1MB.');
                         return;
                       } else {
                         widget.checkImageViewModel.analyzeDrivingLicense(
@@ -255,7 +255,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   autovalidateMode: validateMode,
                   controller: _emailController,
                   decoration: InputDecoration(
-                      labelText: 'Email', hintText: 'Enter your name'),
+                      labelText: 'Email', hintText: 'Enter your Email'),
                   validator: AppValidate.validateEmail,
                   onChanged: checkValidateForTextField,
                 ),
@@ -322,9 +322,9 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                       }
                       image2 = await getImage();
                       final sizeInMB = await image2!.length() / (1024 * 1024);
-                      if (sizeInMB > 2) {
+                      if (sizeInMB > 1) {
                         EasyLoading.showError(
-                            'Image too large. Please select an image under 2MB.');
+                            'Image too large. Please select an image under 1MB.');
                         return;
                       } else {
                         widget.checkImageViewModel
