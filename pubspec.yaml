@@ -27,7 +27,13 @@ dependencies:
   get_it: ^8.0.3
   json_annotation: ^4.9.0
   animated_text_kit: ^4.2.3
+  lottie:
   mime: ^2.0.0
+  mockito: ^5.4.5
+  flutter_localization: ^0.3.2
+  intl:
+  equatable: ^2.0.7
+  provider: ^6.1.5
   http_parser: ^4.1.2
   image_picker: ^1.1.2
   google_generative_ai: ^0.4.7
@@ -44,6 +50,7 @@ dev_dependencies:
   build_runner: ^2.4.15
   retrofit_generator: ^9.1.9
   json_serializable: ^6.9.5
+  mockito: ^5.4.5
 
 
 flutter:
@@ -52,8 +59,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/svg/
+    - assets/animations/onboarding_animation.json
+
     - assets/files/
-   
+
   fonts:
     - family: IM FELL English
       fonts:

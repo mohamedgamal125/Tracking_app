@@ -44,40 +44,42 @@ class DialogUtils {
     String? negativeActionName,
     void Function()? negativeAction,
   }) {
-    List<Widget>? actions = [];
-    if (postActionName != null) {
-      actions.add(
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-            postAction?.call();
-          },
-          child: Text(
-            postActionName,
-            style: TextStyle(color: AppColors.primaryColor),
-          ),
-        ),
-      );
-      if (negativeActionName != null) {
-        actions.add(
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              negativeAction?.call();
-            },
-            child: Text(
-              negativeActionName,
-              style: TextStyle(color: AppColors.primaryColor),
-            ),
-          ),
-        );
-      }
-    }
-
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
+        List<Widget> actions = [];
+
+        if (postActionName != null) {
+          actions.add(
+            TextButton(
+              onPressed: () {
+                Navigator.pop(dialogContext);
+                postAction?.call();
+              },
+              child: Text(
+                postActionName,
+                style: TextStyle(color: AppColors.primaryColor),
+              ),
+            ),
+          );
+        }
+
+        if (negativeActionName != null) {
+          actions.add(
+            TextButton(
+              onPressed: () {
+                Navigator.pop(dialogContext);
+                negativeAction?.call();
+              },
+              child: Text(
+                negativeActionName,
+                style: TextStyle(color: AppColors.primaryColor),
+              ),
+            ),
+          );
+        }
+
         return AlertDialog(
           content: Text(message, style: AppTextStyles.inter400_14),
           title: Text(title),
@@ -86,4 +88,5 @@ class DialogUtils {
       },
     );
   }
+
 }
