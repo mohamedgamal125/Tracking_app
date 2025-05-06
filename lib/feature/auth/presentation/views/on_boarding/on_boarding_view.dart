@@ -59,7 +59,9 @@ class OnBoardingScreen extends StatelessWidget {
                     backgroundColor: AppColors.whiteColor,
                     side: BorderSide(color: AppColors.greyDarkColor),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, PagesRoutes.applyView);
+                  },
                   child: Text(
                     "Apply now",
                     style: AppTextStyles.inter500_16

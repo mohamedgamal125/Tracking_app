@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tracking_app/core/common/get_resposive_height_and_width.dart';
+import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/di/injectable_initializer.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/services/gemini_service.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
-import 'package:tracking_app/core/utils/constans.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/core/widgets/custom_validate.dart';
 import 'package:tracking_app/feature/apply/data/model/apply_request_model.dart';
@@ -94,7 +94,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
       },
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: resposiveWidth(16)),
+          padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
           child: Form(
             key: _formKey,
             autovalidateMode: validateMode,
@@ -102,7 +102,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
               children: [
                 WelcomeMessage(),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 CountryDropdown(
                   countries: countries,
@@ -119,7 +119,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   },
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 TextFormField(
                   autovalidateMode: validateMode,
@@ -136,7 +136,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   onChanged: checkValidateForTextField,
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 TextFormField(
                   autovalidateMode: validateMode,
@@ -153,7 +153,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   onChanged: checkValidateForTextField,
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 BlocBuilder<ApplyViewModel, ApplyState>(
                   builder: (context, state) {
@@ -179,7 +179,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   },
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 TextFormField(
                   autovalidateMode: validateMode,
@@ -196,7 +196,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   onChanged: checkValidateForTextField,
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 BlocListener<CheckImageWithGeminiViewModel,
                     CheckImageWithGeminiStates>(
@@ -249,7 +249,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   ),
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 TextFormField(
                   autovalidateMode: validateMode,
@@ -260,7 +260,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   onChanged: checkValidateForTextField,
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 TextFormField(
                   autovalidateMode: validateMode,
@@ -272,7 +272,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   onChanged: checkValidateForTextField,
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 TextFormField(
                   autovalidateMode: validateMode,
@@ -289,7 +289,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   onChanged: checkValidateForTextField,
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 BlocListener<CheckImageWithGeminiViewModel,
                     CheckImageWithGeminiStates>(
@@ -346,7 +346,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   ),
                 ),
                 SizedBox(
-                  height: resposiveHeight(16),
+                  height: responsiveHeight(16),
                 ),
                 Row(
                   children: [
@@ -361,7 +361,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                       ),
                     ),
                     SizedBox(
-                      width: resposiveWidth(8),
+                      width: responsiveWidth(8),
                     ),
                     Expanded(
                       child: TextFormField(
@@ -382,7 +382,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   ],
                 ),
                 SizedBox(
-                  height: resposiveHeight(8),
+                  height: responsiveHeight(8),
                 ),
                 GenderSelection(
                   selectedGender: selectedGender,
@@ -393,7 +393,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                   },
                 ),
                 SizedBox(
-                  height: resposiveHeight(8),
+                  height: responsiveHeight(8),
                 ),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -446,7 +446,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                           .copyWith(color: AppColors.whiteColor),
                     )),
                 SizedBox(
-                  height: resposiveHeight(8),
+                  height: responsiveHeight(8),
                 ),
               ],
             ),

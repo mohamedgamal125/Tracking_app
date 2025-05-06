@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
-import 'package:tracking_app/core/utils/constans.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+
+import '../../../../../core/utils/constants.dart';
 
 class GenderSelection extends StatelessWidget {
   final String? selectedGender;

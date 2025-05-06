@@ -12,8 +12,6 @@ import '../../feature/auth/data/model/reset_password_dto.dart';
 import '../../feature/auth/data/model/sign_in_response_dto.dart';
 import '../../feature/auth/data/model/verify_email_response_dto.dart';
 import '../../feature/auth/domain/entity/sign_in_request.dart';
-import 'package:tracking_app/core/utils/end_points.dart';
-import 'package:tracking_app/feature/apply/data/model/apply_request_model.dart';
 import 'package:tracking_app/feature/apply/data/model/apply_response_dto.dart';
 import 'package:tracking_app/feature/apply/data/model/get_vehicles_response_dto.dart';
 

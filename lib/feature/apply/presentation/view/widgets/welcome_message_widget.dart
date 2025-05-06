@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tracking_app/core/common/get_resposive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+
+import '../../../../../core/common/get_responsive_height_and_width.dart';
 
 class WelcomeMessage extends StatelessWidget {
   const WelcomeMessage({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class WelcomeMessage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: resposiveHeight(8),
+          height: responsiveHeight(8),
         ),
         Text(
           'Welcome!!',
