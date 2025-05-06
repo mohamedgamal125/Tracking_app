@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:tracking_app/core/di/injectable_initializer.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
@@ -9,6 +9,11 @@ import 'package:tracking_app/core/services/shared_preference_services.dart';
 import 'package:tracking_app/core/utils/theming.dart';
 import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
+import 'core/services/localization_service.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+import 'generated/l10n.dart';
+
 
 
 void main() async {
@@ -17,10 +22,19 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   ConfigLoading().showLoading();
   await SharedPreferenceServices.init();
-  runApp(InitApp());
+
+  runApp(
+    ChangeNotifierProvider<LocaleProvider>(
+      create: (_) => LocaleProvider(),
+      child: const InitApp(),
+    ),
+  );
 }
 
+
 class InitApp extends StatelessWidget {
+  const InitApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,11 +56,22 @@ class MainAppContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localeProvider = context.watch<LocaleProvider>();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
+      locale: localeProvider.locale,
+      supportedLocales: S.delegate.supportedLocales,
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.successApplyView,
+      // initialRoute: PagesRoutes.forgetPassword,
+      initialRoute: PagesRoutes.onBoarding,
     );
   }
 

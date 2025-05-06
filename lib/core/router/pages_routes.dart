@@ -1,4 +1,9 @@
 abstract class PagesRoutes {
+  static const String onBoarding = "/on_boarding";
+  static const String signIn = "signIn";
   static const String mainView = "mainView";
   static const String successApplyView = 'successApplyView';
+  static const String forgetPassword = 'forget_password';
+  static const String emailVerification = 'email_verification';
+  static const String resetPassword = 'reset_password';
 }

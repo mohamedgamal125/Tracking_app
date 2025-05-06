@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tracking_app/core/common/get_resposive_height_and_width.dart';
+import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_assets.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/apply/presentation/view/widgets/success_apply_decoration_widget.dart';
@@ -26,15 +26,15 @@ class _SuccessApplyViewBodyState extends State<SuccessApplyViewBody> {
         // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: resposiveWidth(30)),
+            padding: EdgeInsets.symmetric(horizontal: responsiveWidth(30)),
             child: Column(
               children: [
                 SizedBox(
-                  height: resposiveHeight(123.86),
+                  height: responsiveHeight(123.86),
                 ),
                 SvgPicture.asset(SvgImags.successApply),
                 SizedBox(
-                  height: resposiveHeight(64.86),
+                  height: responsiveHeight(64.86),
                 ),
                 AnimatedTextKit(
                   animatedTexts: [
@@ -54,12 +54,12 @@ class _SuccessApplyViewBodyState extends State<SuccessApplyViewBody> {
                 //   style: AppTextStyles.inter600_18,
                 //   textAlign: TextAlign.center,
                 // ),
-                SizedBox(height: resposiveHeight(16)),
+                SizedBox(height: responsiveHeight(16)),
                 Text(
                     style: AppTextStyles.inter400_16,
                     textAlign: TextAlign.center,
                     'Thank you for providing your application, we will review your application and will get back to you soon.'),
-                SizedBox(height: resposiveHeight(24)),
+                SizedBox(height: responsiveHeight(24)),
                 ElevatedButton(
                     onPressed: () {},
                     child: Text('Login',
