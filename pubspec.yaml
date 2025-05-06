@@ -34,6 +34,11 @@ dependencies:
   intl:
   equatable: ^2.0.7
   provider: ^6.1.5
+  http_parser: ^4.1.2
+  image_picker: ^1.1.2
+  google_generative_ai: ^0.4.7
+
+
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +60,8 @@ flutter:
   assets:
     - assets/svg/
     - assets/animations/onboarding_animation.json
+
+    - assets/files/
 
   fonts:
     - family: IM FELL English

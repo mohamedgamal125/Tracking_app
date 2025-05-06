@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
+import 'package:tracking_app/feature/apply/presentation/view/apply_view.dart';
 import 'package:tracking_app/feature/apply/presentation/view/success_apply_view.dart';
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/email_verification_screen.dart';
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/forget_paswerd_screen.dart';
@@ -23,6 +24,11 @@ class RoutesGenerator {
       case PagesRoutes.successApplyView:
         return MaterialPageRoute(
           builder: (context) => const SuccessApplyView(),
+          settings: settings,
+        );
+      case PagesRoutes.applyView:
+        return MaterialPageRoute(
+          builder: (context) => ApplyView(),
           settings: settings,
         );
       case PagesRoutes.onBoarding:
