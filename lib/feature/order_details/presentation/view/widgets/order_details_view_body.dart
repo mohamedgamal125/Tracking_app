@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/custom_step_widget.dart';
+
+class OrderDetailsViewBody extends StatefulWidget {
+  const OrderDetailsViewBody({super.key});
+
+  @override
+  State<OrderDetailsViewBody> createState() => _OrderDetailsViewBodyState();
+}
+
+class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
+  int index = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: responsiveWidth(8)),
+      child: Column(
+        children: [
+          CustomStepWidget(
+            stepCount: 5,
+            currentStep: index,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
