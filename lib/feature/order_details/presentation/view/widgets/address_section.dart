@@ -27,9 +27,9 @@ class AddressSection extends StatelessWidget {
         SizedBox(height: responsiveHeight(16)),
         Container(
           padding: EdgeInsets.only(
-              left: responsiveWidth(16),
-              top: responsiveHeight(16),
-              bottom: responsiveHeight(16)),
+              left: responsiveWidth(4),
+              top: responsiveHeight(8),
+              bottom: responsiveHeight(8)),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -60,15 +60,18 @@ class AddressSection extends StatelessWidget {
             title: Text(
               name,
               style:
-                  AppTextStyles.inter400_13.copyWith(color: Color(0xff535353)),
+                  AppTextStyles.roboto500_13.copyWith(color: Color(0xff535353)),
             ),
             subtitle: Row(
               children: [
                 SvgPicture.asset(SvgImags.locationIcon),
-                Text(
-                  address,
-                  style: AppTextStyles.inter400_13
-                      .copyWith(color: Color(0xff0C1015)),
+                Expanded(
+                  child: Text(
+                    overflow: TextOverflow.clip,
+                    address,
+                    style: AppTextStyles.inter400_13
+                        .copyWith(color: Color(0xff0C1015)),
+                  ),
                 ),
               ],
             ),

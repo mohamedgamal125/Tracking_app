@@ -3,6 +3,7 @@ import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/address_section.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/custom_step_widget.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_details_section.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_status_widget.dart';
 
 class OrderDetailsViewBody extends StatefulWidget {
@@ -24,7 +25,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: responsiveWidth(8)),
+      padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,12 +42,22 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
             address: '20th st, Sheikh Zayed, Giza ',
             // image: ,
           ),
+          SizedBox(
+            height: responsiveHeight(24),
+          ),
           AddressSection(
             sectionTitle: 'User address',
             name: 'omar elsayed',
             address: '20th st, Sheikh Zayed, Giza ',
             // !  use this image in case of user only  image: ,
           ),
+          SizedBox(height: responsiveHeight(24)),
+          Text('Order details', style: AppTextStyles.inter500_18),
+          SizedBox(height: responsiveHeight(16)),
+          OrderDetailsSection(
+              name: 'Red roses,15 Pink Rose Bouquet',
+              price: 'EGP 600',
+              quantity: '1'),
         ],
       ),
     );
