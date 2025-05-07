@@ -14,8 +14,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'generated/l10n.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
@@ -30,7 +28,6 @@ void main() async {
     ),
   );
 }
-
 
 class InitApp extends StatelessWidget {
   const InitApp({super.key});
@@ -71,7 +68,7 @@ class MainAppContent extends StatelessWidget {
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       // initialRoute: PagesRoutes.forgetPassword,
-      initialRoute: PagesRoutes.onBoarding,
+      initialRoute: PagesRoutes.orderDetails,
     );
   }
 

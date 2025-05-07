@@ -5,6 +5,7 @@ import 'package:tracking_app/feature/apply/presentation/view/success_apply_view.
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/email_verification_screen.dart';
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/forget_paswerd_screen.dart';
 import 'package:tracking_app/feature/auth/presentation/views/sign_in/sign_in_screen.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/order_details_view.dart';
 import 'package:tracking_app/main_view.dart';
 
 import '../../feature/auth/presentation/views/on_boarding/on_boarding_view.dart';
@@ -39,7 +40,9 @@ class RoutesGenerator {
 
       case PagesRoutes.emailVerification:
         return MaterialPageRoute(builder: (context) => EmailVerificationScreen(), settings: settings);
-
+      case PagesRoutes.orderDetails:
+        return MaterialPageRoute(builder: (context) => OrderDetailsView(), settings: settings);
+      
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(builder: (context) => ResetPasswordScreen(), settings: settings);
       default:
