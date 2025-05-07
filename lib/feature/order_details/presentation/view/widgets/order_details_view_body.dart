@@ -26,39 +26,48 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomStepWidget(
-            stepCount: 5,
-            currentStep: index,
-          ),
-          SizedBox(height: responsiveHeight(24)),
-          OrderStatusWidget(statusList: statusList, index: index),
-          SizedBox(height: responsiveHeight(16)),
-          AddressSection(
-            sectionTitle: 'Pickup address',
-            name: 'Flowerly store',
-            address: '20th st, Sheikh Zayed, Giza ',
-            // image: ,
-          ),
-          SizedBox(
-            height: responsiveHeight(24),
-          ),
-          AddressSection(
-            sectionTitle: 'User address',
-            name: 'omar elsayed',
-            address: '20th st, Sheikh Zayed, Giza ',
-            // !  use this image in case of user only  image: ,
-          ),
-          SizedBox(height: responsiveHeight(24)),
-          Text('Order details', style: AppTextStyles.inter500_18),
-          SizedBox(height: responsiveHeight(16)),
-          OrderDetailsSection(
-              name: 'Red roses,15 Pink Rose Bouquet',
-              price: 'EGP 600',
-              quantity: '1'),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomStepWidget(
+              stepCount: 5,
+              currentStep: index,
+            ),
+            SizedBox(height: responsiveHeight(24)),
+            OrderStatusWidget(statusList: statusList, index: index),
+            SizedBox(height: responsiveHeight(16)),
+            AddressSection(
+              sectionTitle: 'Pickup address',
+              name: 'Flowerly store',
+              address: '20th st, Sheikh Zayed, Giza ',
+              // image: ,
+            ),
+            SizedBox(
+              height: responsiveHeight(24),
+            ),
+            AddressSection(
+              sectionTitle: 'User address',
+              name: 'omar elsayed',
+              address: '20th st, Sheikh Zayed, Giza ',
+              // !  use this image in case of user only  image: ,
+            ),
+            SizedBox(height: responsiveHeight(24)),
+            Text('Order details', style: AppTextStyles.inter500_18),
+            SizedBox(height: responsiveHeight(16)),
+            OrderDetailsSection(
+                name: 'Red roses,15 Pink Rose Bouquet',
+                price: 'EGP 600',
+                quantity: '1'),
+            SizedBox(
+              height: responsiveHeight(8),
+            ),
+            OrderDetailsSection(
+                name: 'Red roses,15 Pink Rose Bouquet',
+                price: 'EGP 600',
+                quantity: '1'),
+          ],
+        ),
       ),
     );
   }
