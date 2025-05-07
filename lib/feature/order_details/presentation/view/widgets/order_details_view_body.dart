@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/address_section.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/custom_card.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/custom_step_widget.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_details_section.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_status_widget.dart';
@@ -66,6 +67,11 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                 name: 'Red roses,15 Pink Rose Bouquet',
                 price: 'EGP 600',
                 quantity: '1'),
+
+                SizedBox(height: responsiveHeight(24)),
+                CustomCard(title: 'Total', value: 'EGP 600'),
+                SizedBox(height: responsiveHeight(24)),
+                CustomCard(title: 'Payment method', value: 'Cash on delivery'),
           ],
         ),
       ),

@@ -105,6 +105,11 @@ abstract class AppTextStyles {
         fontWeight: FontWeight.w500,
         fontSize: _responsiveFontSize(13),
       );
+  static TextStyle get roboto500_14 => TextStyle(
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(14),
+      );
 
   static TextStyle get roboto400_18 => TextStyle(
         fontFamily: 'Roboto',
