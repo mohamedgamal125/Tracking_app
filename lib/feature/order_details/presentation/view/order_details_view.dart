@@ -11,6 +11,8 @@ class OrderDetailsView extends StatelessWidget {
       appBar: buildCustomAppBar(
           title: "Order Details", isVisible: false, context: context),
       body: OrderDetailsViewBody(),
+    // bottomNavigationBar: ,
+    
     );
   }
 }

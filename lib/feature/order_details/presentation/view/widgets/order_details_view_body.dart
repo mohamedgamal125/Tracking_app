@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/core/utils/text_styles.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/address_section.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/custom_step_widget.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_status_widget.dart';
 
@@ -24,6 +26,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: responsiveWidth(8)),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomStepWidget(
             stepCount: 5,
@@ -32,6 +35,18 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
           SizedBox(height: responsiveHeight(24)),
           OrderStatusWidget(statusList: statusList, index: index),
           SizedBox(height: responsiveHeight(16)),
+          AddressSection(
+            sectionTitle: 'Pickup address',
+            name: 'Flowerly store',
+            address: '20th st, Sheikh Zayed, Giza ',
+            // image: ,
+          ),
+          AddressSection(
+            sectionTitle: 'User address',
+            name: 'omar elsayed',
+            address: '20th st, Sheikh Zayed, Giza ',
+            // !  use this image in case of user only  image: ,
+          ),
         ],
       ),
     );
