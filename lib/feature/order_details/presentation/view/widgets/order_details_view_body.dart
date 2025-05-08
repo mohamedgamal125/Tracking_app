@@ -26,60 +26,68 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
     'Delivered'
   ];
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomStepWidget(
-              stepCount: 5,
-              currentStep: context.select((StatesCubit cubit) => cubit.state),
-            ),
-            SizedBox(height: responsiveHeight(24)),
-            BlocBuilder<StatesCubit, int>(
-              builder: (context, index) {
-                return OrderStatusWidget(statusList: statusList, index: index);
-              },
-            ),
-            SizedBox(height: responsiveHeight(16)),
-            AddressSection(
-              sectionTitle: 'Pickup address',
-              name: 'Flowerly store',
-              address: '20th st, Sheikh Zayed, Giza ',
-              // image: ,
-            ),
-            SizedBox(
-              height: responsiveHeight(24),
-            ),
-            AddressSection(
-              sectionTitle: 'User address',
-              name: 'omar elsayed',
-              address: '20th st, Sheikh Zayed, Giza ',
-              // !  use this image in case of user only  image: ,
-            ),
-            SizedBox(height: responsiveHeight(24)),
-            Text('Order details', style: AppTextStyles.inter500_18),
-            SizedBox(height: responsiveHeight(16)),
-            OrderDetailsSection(
-                name: 'Red roses,15 Pink Rose Bouquet',
-                price: 'EGP 600',
-                quantity: '1'),
-            SizedBox(
-              height: responsiveHeight(8),
-            ),
-            OrderDetailsSection(
-                name: 'Red roses,15 Pink Rose Bouquet',
-                price: 'EGP 600',
-                quantity: '1'),
-            SizedBox(height: responsiveHeight(24)),
-            CustomCard(title: 'Total', value: 'EGP 600'),
-            SizedBox(height: responsiveHeight(24)),
-            CustomCard(title: 'Payment method', value: 'Cash on delivery'),
-          ],
+Widget build(BuildContext context) {
+  final currentIndex = context.select((StatesCubit cubit) => cubit.state);
+
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // 🔒 Fixed (non-scrollable)
+        CustomStepWidget(
+          stepCount: 5,
+          currentStep: currentIndex,
         ),
-      ),
-    );
-  }
+        SizedBox(height: responsiveHeight(24)),
+        BlocBuilder<StatesCubit, int>(
+          builder: (context, index) {
+            return OrderStatusWidget(statusList: statusList, index: index);
+          },
+        ),
+        SizedBox(height: responsiveHeight(16)),
+
+        // 🔓 Scrollable section starts here
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AddressSection(
+                  sectionTitle: 'Pickup address',
+                  name: 'Flowerly store',
+                  address: '20th st, Sheikh Zayed, Giza ',
+                ),
+                SizedBox(height: responsiveHeight(24)),
+                AddressSection(
+                  sectionTitle: 'User address',
+                  name: 'omar elsayed',
+                  address: '20th st, Sheikh Zayed, Giza ',
+                ),
+                SizedBox(height: responsiveHeight(24)),
+                Text('Order details', style: AppTextStyles.inter500_18),
+                SizedBox(height: responsiveHeight(16)),
+                OrderDetailsSection(
+                    name: 'Red roses,15 Pink Rose Bouquet',
+                    price: 'EGP 600',
+                    quantity: '1'),
+                SizedBox(height: responsiveHeight(8)),
+                OrderDetailsSection(
+                    name: 'Red roses,15 Pink Rose Bouquet',
+                    price: 'EGP 600',
+                    quantity: '1'),
+                SizedBox(height: responsiveHeight(24)),
+                CustomCard(title: 'Total', value: 'EGP 600'),
+                SizedBox(height: responsiveHeight(24)),
+                CustomCard(title: 'Payment method', value: 'Cash on delivery'),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }
+  
+  }
+
