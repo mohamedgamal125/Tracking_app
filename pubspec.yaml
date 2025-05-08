@@ -37,6 +37,7 @@ dependencies:
   http_parser: ^4.1.2
   image_picker: ^1.1.2
   google_generative_ai: ^0.4.7
+  firebase_core: ^3.13.0
 
 
 
