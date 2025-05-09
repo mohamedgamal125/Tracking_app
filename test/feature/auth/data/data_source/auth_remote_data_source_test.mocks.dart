@@ -248,4 +248,21 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
           ),
         )),
       ) as _i8.Future<_i2.HttpResponse<_i12.GetVehiclesResponseDTO>>);
+
+  @override
+  _i8.Future<void> updateOrderState(
+    String? orderId,
+    Map<String, dynamic>? data,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateOrderState,
+          [
+            orderId,
+            data,
+          ],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
 }

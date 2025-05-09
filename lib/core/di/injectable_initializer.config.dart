@@ -50,6 +50,14 @@ import '../../feature/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.d
     as _i741;
 import '../../feature/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i798;
+import '../../feature/order_details/data/data_source/update_order_state_remote_data_source.dart'
+    as _i377;
+import '../../feature/order_details/data/data_source/update_order_state_remote_data_source_imp.dart'
+    as _i197;
+import '../../feature/order_details/data/repository_imp/update_order_state_repo_imp.dart'
+    as _i528;
+import '../../feature/order_details/domain/repository/update_order_state_repo.dart'
+    as _i476;
 import '../api/api_client.dart' as _i277;
 import '../api/network_factory.dart' as _i1013;
 import '../services/gemini_service.dart' as _i846;
@@ -81,6 +89,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i140.AuthRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i602.ApplyRemoteDataSource>(
         () => _i625.ApplyRemoteDataSourceImpl(gh<_i277.ApiClient>()));
+    gh.factory<_i377.UpdateOrderStateRemoteDataSource>(
+        () => _i197.UpdateOrderStateRemoteDataSourceImp(gh<_i277.ApiClient>()));
+    gh.factory<_i476.UpdateOrderStateRepo>(() => _i528.UpdateOrderStateRepoImp(
+        gh<_i377.UpdateOrderStateRemoteDataSource>()));
     gh.factory<_i884.AuthRepository>(() => _i384.AuthRepositoryImpl(
           gh<_i140.AuthRemoteDataSource>(),
           gh<_i804.AuthLocalDataSource>(),

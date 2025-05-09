@@ -9,4 +9,5 @@ class ApiEndPoints {
   static const String resetPassword = "resetPassword";
   static const String applyEndPoint = "/drivers/apply";
   static const String allVehicleEndPoint = "/vehicles";
+  static const String updateOrderStateEndPoint = "orders/state";
 }

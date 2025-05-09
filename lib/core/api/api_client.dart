@@ -17,8 +17,7 @@ import 'package:tracking_app/feature/apply/data/model/get_vehicles_response_dto.
 
 part 'api_client.g.dart';
 
-@RestApi(baseUrl: "https://flower.elevateegy.com/api/v1/drivers/")
-
+// @RestApi(baseUrl: "https://flower.elevateegy.com/api/v1/drivers/")
 @RestApi(baseUrl: "https://flower.elevateegy.com/api/v1")
 @singleton
 @injectable
@@ -54,16 +53,21 @@ abstract class ApiClient {
 
   @POST(ApiEndPoints.forgetPassword)
   Future<ForgetResponsePasswordDto> forgetPassword(
-      @Body() Map<String, dynamic> data,
-      );
+    @Body() Map<String, dynamic> data,
+  );
 
   @POST(ApiEndPoints.verifyResetCode)
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
 
   @PUT(ApiEndPoints.resetPassword)
   Future<ResetPasswordResponseDTO> resetPassword(
-      @Body() Map<String, dynamic> data,
-      );
+    @Body() Map<String, dynamic> data,
+  );
   @GET(ApiEndPoints.allVehicleEndPoint)
   Future<HttpResponse<GetVehiclesResponseDTO>> getAllVehicles();
+
+  @PUT("${ApiEndPoints.updateOrderStateEndPoint}/{orderId}")
+  Future<void> updateOrderState(
+    @Path("orderId") String orderId,
+    @Body() Map<String, dynamic> data);
 }
