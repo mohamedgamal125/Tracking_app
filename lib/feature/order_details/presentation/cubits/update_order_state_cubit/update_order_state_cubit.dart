@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/common/result.dart';
@@ -21,7 +23,10 @@ class UpdateOrderStateCubit extends Cubit<UpdateOrderStateStates> {
         emit(UpdateOrderStateSuccess());
         break;
       case Error():
-        emit(UpdateOrderStateError());
+        log(result.exception.toString() + "+++++++++++++++++++++++++++++++");
+        emit(UpdateOrderStateError(
+          message: result.exception.toString(),
+        ));
         break;
     }
   }

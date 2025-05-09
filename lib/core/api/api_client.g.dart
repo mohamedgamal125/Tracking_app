@@ -10,7 +10,7 @@ part of 'api_client.dart';
 
 class _ApiClient implements ApiClient {
   _ApiClient(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://flower.elevateegy.com/api/v1';
+    baseUrl ??= 'https://flower.elevateegy.com/api/v1/';
   }
 
   final Dio _dio;
