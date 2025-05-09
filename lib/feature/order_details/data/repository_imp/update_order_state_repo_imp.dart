@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api/api_execute.dart';
+import 'package:tracking_app/core/common/result.dart';
 import 'package:tracking_app/feature/order_details/data/data_source/update_order_state_remote_data_source.dart';
 import 'package:tracking_app/feature/order_details/domain/repository/update_order_state_repo.dart';
 
@@ -9,8 +10,9 @@ class UpdateOrderStateRepoImp implements UpdateOrderStateRepo {
 
   UpdateOrderStateRepoImp(this._updateOrderStateRemoteDataSource);
   @override
-  Future<void> updateOrderState(String orderId, Map<String, dynamic> data) {
-    return executeApi<void>(
+  Future<Result<void>> updateOrderState(
+      String orderId, Map<String, dynamic> data) async {
+    return await executeApi<void>(
       () async {
         await _updateOrderStateRemoteDataSource.updateOrderState(orderId, data);
       },
