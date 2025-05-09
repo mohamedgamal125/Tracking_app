@@ -46,7 +46,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
           case SignInSuccessState():
             _saveToken(state);
             EasyLoading.dismiss();
-            Navigator.pushReplacementNamed(context, PagesRoutes.onBoarding);
+            Navigator.pushReplacementNamed(context, PagesRoutes.layoutView);
           case SignInErrorState():
             EasyLoading.dismiss();
             EasyLoading.showError(state.message);
@@ -89,7 +89,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     hintText: S.of(context).enterYourPassword,
                     suffixIcon: IconButton(
                       icon: Icon(
-                        isPasswordVisible ? AppIcons.passwordVisibility : AppIcons.passwordVisibilityOff,
+                        isPasswordVisible
+                            ? AppIcons.passwordVisibility
+                            : AppIcons.passwordVisibilityOff,
                       ),
                       onPressed: () {
                         setState(() {
@@ -124,20 +126,18 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                           color: AppColors.blackColor,
                           decoration: TextDecoration.underline,
                           decorationColor: AppColors.blackColor,
-
                         ),
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: responsiveHeight(20)),
-          Spacer(),
+                Spacer(),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        validateMode == AutovalidateMode.disabled
-                            ? AppColors.primaryColor
-                            : AppColors.greyColor,
+                    backgroundColor: validateMode == AutovalidateMode.disabled
+                        ? AppColors.primaryColor
+                        : AppColors.greyColor,
                   ),
                   onPressed: () {
                     if (validateMode == AutovalidateMode.always) {
