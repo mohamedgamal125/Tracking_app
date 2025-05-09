@@ -8,6 +8,7 @@ import 'package:tracking_app/feature/order_details/presentation/cubits/update_or
 import 'package:tracking_app/feature/order_details/presentation/cubits/update_order_state_cubit/update_order_state_states.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/elevate_button_bloc_builder.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_details_view_body.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_details_view_body_bloc_listener.dart';
 
 class OrderDetailsView extends StatelessWidget {
   const OrderDetailsView({super.key});
@@ -25,7 +26,7 @@ class OrderDetailsView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => StatesCubit(),
+          create: (context) => getIt.get<StatesCubit>(),
         ),
         BlocProvider(
           create: (context) => getIt.get<UpdateOrderStateCubit>(),
@@ -37,23 +38,11 @@ class OrderDetailsView extends StatelessWidget {
           isVisible: false,
           context: context,
         ),
-        body: BlocListener<UpdateOrderStateCubit, UpdateOrderStateStates>(
-            listener: (context, state) {
-              if (state is UpdateOrderStateLoading) {
-                EasyLoading.show();
-              } else if (state is UpdateOrderStateSuccess) {
-                EasyLoading.dismiss();
-              } else if (state is UpdateOrderStateError) {
-                EasyLoading.dismiss();
-                EasyLoading.showError(
-                  state.message,
-                );
-              }
-            },
-            child: OrderDetailsViewBody()),
+        body: OrderDetailsViewBodyBlocListener(),
         bottomNavigationBar:
             ElevatedButtonBlocBuilder(bottonStatus: bottonStatus),
       ),
     );
   }
 }
+

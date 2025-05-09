@@ -58,6 +58,8 @@ import '../../feature/order_details/data/repository_imp/update_order_state_repo_
     as _i528;
 import '../../feature/order_details/domain/repository/update_order_state_repo.dart'
     as _i476;
+import '../../feature/order_details/presentation/cubits/states_cubit.dart'
+    as _i146;
 import '../../feature/order_details/presentation/cubits/update_order_state_cubit/update_order_state_cubit.dart'
     as _i718;
 import '../api/api_client.dart' as _i277;
@@ -77,6 +79,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final dioProvider = _$DioProvider();
     gh.factory<_i846.GeminiService>(() => _i846.GeminiService());
+    gh.factory<_i146.StatesCubit>(() => _i146.StatesCubit());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());

@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class StatesCubit extends Cubit<int> {
   StatesCubit() : super(0);
   void changeState() {
