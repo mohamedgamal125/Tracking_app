@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
 
 part 'pending_orders_response_dto.g.dart';
 
@@ -18,6 +19,13 @@ class PendingOrdersResponseDTO {
       _$PendingOrdersResponseDTOFromJson(json);
 
   Map<String, dynamic> toJson() => _$PendingOrdersResponseDTOToJson(this);
+
+  PendingOrdersResponseEntity toEntity() {
+    return PendingOrdersResponseEntity(
+      message: message,
+      orders: orders?.map((order) => order.toEntity()).toList(),
+    );
+  }
 }
 
 @JsonSerializable()
@@ -76,6 +84,24 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderToJson(this);
+
+  OrderEntity toEntity() {
+    return OrderEntity(
+      id: id,
+      user: user?.toEntity(),
+      orderItems: orderItems?.map((item) => item.toEntity()).toList(),
+      totalPrice: totalPrice,
+      paymentType: paymentType,
+      isPaid: isPaid,
+      isDelivered: isDelivered,
+      state: state,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      orderNumber: orderNumber,
+      v: v,
+      store: store?.toEntity(),
+    );
+  }
 }
 
 @JsonSerializable()
@@ -102,6 +128,18 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  UserEntity toEntity() {
+    return UserEntity(
+      lastName: lastName,
+      firstName: firstName,
+      gender: gender,
+      phone: phone,
+      email: email,
+      id: id,
+      photo: photo,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -118,6 +156,14 @@ class OrderItem {
       _$OrderItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderItemToJson(this);
+  OrderItemEntity toEntity() {
+    return OrderItemEntity(
+      product: product?.toEntity(),
+      price: price,
+      quantity: quantity,
+      id: id,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -167,6 +213,29 @@ class Product {
       _$ProductFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductToJson(this);
+
+  ProductEntity toEntity() {
+    return ProductEntity(
+      id: id,
+      title: title,
+      slug: slug,
+      description: description,
+      imgCover: imgCover,
+      images: images,
+      price: price,
+      priceAfterDiscount: priceAfterDiscount,
+      quantity: quantity,
+      category: category,
+      occasion: occasion,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      v: v,
+      discount: discount,
+      sold: sold,
+      rateAvg: rateAvg,
+      rateCount: rateCount,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -182,4 +251,14 @@ class Store {
   factory Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);
 
   Map<String, dynamic> toJson() => _$StoreToJson(this);
+
+  StoreEntity toEntity() {
+    return StoreEntity(
+      name: name,
+      image: image,
+      address: address,
+      phoneNumber: phoneNumber,
+      latLong: latLong,
+    );
+  }
 }
