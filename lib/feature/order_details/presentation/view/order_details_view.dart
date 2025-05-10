@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:tracking_app/core/di/injectable_initializer.dart';
 import 'package:tracking_app/core/widgets/custom_app_bar.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/states_cubit.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/update_order_state_cubit/update_order_state_cubit.dart';
-import 'package:tracking_app/feature/order_details/presentation/cubits/update_order_state_cubit/update_order_state_states.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/elevate_button_bloc_builder.dart';
-import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_details_view_body.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_details_view_body_bloc_listener.dart';
 
 class OrderDetailsView extends StatelessWidget {

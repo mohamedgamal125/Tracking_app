@@ -38,6 +38,7 @@ dependencies:
   image_picker: ^1.1.2
   google_generative_ai: ^0.4.7
   firebase_core: ^3.13.0
+  url_launcher: ^6.3.1
 
 
 

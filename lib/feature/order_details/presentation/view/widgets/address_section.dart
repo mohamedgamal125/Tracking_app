@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_assets.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AddressSection extends StatelessWidget {
   const AddressSection(
@@ -80,12 +82,31 @@ class AddressSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(SvgImags.callIcon),
-                SvgPicture.asset(SvgImags.whatsappIcon),
+                InkWell(
+                    onTap: () async {
+                      await _launchWhatsApp(phoneNumber: '+20 1124107203');
+                    },
+                    child: SvgPicture.asset(SvgImags.whatsappIcon)),
               ],
             ),
           ),
         )
       ],
     );
+  }
+
+  Future<void> _launchWhatsApp({
+    required String phoneNumber,
+    String message = '',
+  }) async {
+    final Uri whatsappUri =
+        Uri.parse("whatsapp://send?phone=$phoneNumber&text=$message");
+
+    if (await canLaunchUrl(whatsappUri)) {
+      await launchUrl(whatsappUri);
+    } else {
+       EasyLoading.showError('Could not launch WhatsApp');
+      throw Exception('Could not launch WhatsApp');
+    }
   }
 }
