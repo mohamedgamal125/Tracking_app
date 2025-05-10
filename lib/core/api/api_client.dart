@@ -6,6 +6,7 @@ import 'package:retrofit/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:tracking_app/core/utils/end_points.dart';
+import 'package:tracking_app/feature/home/data/model/pending_orders_response_dto.dart';
 
 import '../../feature/auth/data/model/forget_response_password_dto.dart';
 import '../../feature/auth/data/model/reset_password_dto.dart';
@@ -16,7 +17,6 @@ import 'package:tracking_app/feature/apply/data/model/apply_response_dto.dart';
 import 'package:tracking_app/feature/apply/data/model/get_vehicles_response_dto.dart';
 
 part 'api_client.g.dart';
-
 
 @RestApi(baseUrl: "https://flower.elevateegy.com/api/v1")
 @singleton
@@ -53,16 +53,19 @@ abstract class ApiClient {
 
   @POST(ApiEndPoints.forgetPassword)
   Future<ForgetResponsePasswordDto> forgetPassword(
-      @Body() Map<String, dynamic> data,
-      );
+    @Body() Map<String, dynamic> data,
+  );
 
   @POST(ApiEndPoints.verifyResetCode)
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
 
   @PUT(ApiEndPoints.resetPassword)
   Future<ResetPasswordResponseDTO> resetPassword(
-      @Body() Map<String, dynamic> data,
-      );
+    @Body() Map<String, dynamic> data,
+  );
   @GET(ApiEndPoints.allVehicleEndPoint)
   Future<HttpResponse<GetVehiclesResponseDTO>> getAllVehicles();
+
+  @GET(ApiEndPoints.pendingOrdersEndPoint)
+  Future<HttpResponse<PendingOrdersResponseDTO>> getPendingOrders();
 }

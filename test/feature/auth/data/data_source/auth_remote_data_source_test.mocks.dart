@@ -23,6 +23,8 @@ import 'package:tracking_app/feature/auth/data/model/verify_email_response_dto.d
     as _i5;
 import 'package:tracking_app/feature/auth/domain/entity/sign_in_request.dart'
     as _i11;
+import 'package:tracking_app/feature/home/data/model/pending_orders_response_dto.dart'
+    as _i13;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -248,4 +250,22 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
           ),
         )),
       ) as _i8.Future<_i2.HttpResponse<_i12.GetVehiclesResponseDTO>>);
+
+  @override
+  _i8.Future<_i2.HttpResponse<_i13.PendingOrdersResponseDTO>>
+      getPendingOrders() => (super.noSuchMethod(
+            Invocation.method(
+              #getPendingOrders,
+              [],
+            ),
+            returnValue: _i8
+                .Future<_i2.HttpResponse<_i13.PendingOrdersResponseDTO>>.value(
+                _FakeHttpResponse_0<_i13.PendingOrdersResponseDTO>(
+              this,
+              Invocation.method(
+                #getPendingOrders,
+                [],
+              ),
+            )),
+          ) as _i8.Future<_i2.HttpResponse<_i13.PendingOrdersResponseDTO>>);
 }
