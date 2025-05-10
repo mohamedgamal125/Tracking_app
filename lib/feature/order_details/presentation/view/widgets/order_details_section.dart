@@ -22,7 +22,12 @@ class OrderDetailsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(responsiveWidth(8)),
+      padding: EdgeInsets.only(
+          left: responsiveWidth(8),
+          right: responsiveWidth(8),
+          top: responsiveHeight(16),
+          bottom: responsiveHeight(16)
+          ),
       margin: EdgeInsets.only(bottom: responsiveHeight(8)),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -61,6 +66,7 @@ class OrderDetailsSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  overflow: TextOverflow.ellipsis,
                   name,
                   style: AppTextStyles.inter400_13.copyWith(
                     color: const Color(0xff535353),

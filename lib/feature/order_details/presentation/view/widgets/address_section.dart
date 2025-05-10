@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_assets.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
-import 'package:url_launcher/url_launcher.dart';
-part 'address_section_communications_functions.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/communication_widget.dart';
 
 class AddressSection extends StatelessWidget {
   const AddressSection(
@@ -30,6 +27,7 @@ class AddressSection extends StatelessWidget {
         ),
         SizedBox(height: responsiveHeight(16)),
         Container(
+          // height: responsiveHeight(40),
           padding: EdgeInsets.only(
               left: responsiveWidth(4),
               top: responsiveHeight(8),
@@ -71,28 +69,16 @@ class AddressSection extends StatelessWidget {
                 SvgPicture.asset(SvgImags.locationIcon),
                 Expanded(
                   child: Text(
-                      overflow: TextOverflow.clip,
+                      overflow: TextOverflow.ellipsis,
                       address,
                       style: AppTextStyles.inter400_13
                           .copyWith(color: Color(0xff0C1015))),
                 ),
               ],
             ),
-            trailing: Row(
-              spacing: responsiveWidth(4),
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                InkWell(
-                    onTap: () async {
-                      await _callPhoneNumber('+20 1124107203');
-                    },
-                    child: SvgPicture.asset(SvgImags.callIcon)),
-                InkWell(
-                    onTap: () async {
-                      await _launchWhatsApp(phoneNumber: '+20 1124107203');
-                    },
-                    child: SvgPicture.asset(SvgImags.whatsappIcon)),
-              ],
+            trailing: CommunicationWidget(
+              phoneNumber: '+20 1124107203',
+              whatsAppNumber: '+20 1124107203',
             ),
           ),
         )

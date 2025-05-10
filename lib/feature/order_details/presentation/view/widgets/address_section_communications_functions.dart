@@ -1,4 +1,4 @@
-part of 'address_section.dart';
+part of 'communication_widget.dart';
 
 Future<void> _launchWhatsApp({
   required String phoneNumber,
