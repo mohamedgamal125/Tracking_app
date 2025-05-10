@@ -6,7 +6,7 @@ import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_assets.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'address_section_fun.dart';
+part 'address_section_communications_functions.dart';
 
 class AddressSection extends StatelessWidget {
   const AddressSection(
@@ -71,11 +71,10 @@ class AddressSection extends StatelessWidget {
                 SvgPicture.asset(SvgImags.locationIcon),
                 Expanded(
                   child: Text(
-                    overflow: TextOverflow.clip,
-                    address,
-                    style: AppTextStyles.inter400_13
-                        .copyWith(color: Color(0xff0C1015)),
-                  ),
+                      overflow: TextOverflow.clip,
+                      address,
+                      style: AppTextStyles.inter400_13
+                          .copyWith(color: Color(0xff0C1015))),
                 ),
               ],
             ),
@@ -85,12 +84,12 @@ class AddressSection extends StatelessWidget {
               children: [
                 InkWell(
                     onTap: () async {
-                      await callPhoneNumber('+20 1124107203');
+                      await _callPhoneNumber('+20 1124107203');
                     },
                     child: SvgPicture.asset(SvgImags.callIcon)),
                 InkWell(
                     onTap: () async {
-                      await launchWhatsApp(phoneNumber: '+20 1124107203');
+                      await _launchWhatsApp(phoneNumber: '+20 1124107203');
                     },
                     child: SvgPicture.asset(SvgImags.whatsappIcon)),
               ],
@@ -100,6 +99,4 @@ class AddressSection extends StatelessWidget {
       ],
     );
   }
-
-
 }
