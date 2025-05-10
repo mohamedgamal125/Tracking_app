@@ -6,6 +6,7 @@ import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_assets.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'address_section_fun.dart';
 
 class AddressSection extends StatelessWidget {
   const AddressSection(
@@ -84,12 +85,12 @@ class AddressSection extends StatelessWidget {
               children: [
                 InkWell(
                     onTap: () async {
-                      await __callPhoneNumber('+20 1124107203');
+                      await callPhoneNumber('+20 1124107203');
                     },
                     child: SvgPicture.asset(SvgImags.callIcon)),
                 InkWell(
                     onTap: () async {
-                      await _launchWhatsApp(phoneNumber: '+20 1124107203');
+                      await launchWhatsApp(phoneNumber: '+20 1124107203');
                     },
                     child: SvgPicture.asset(SvgImags.whatsappIcon)),
               ],
@@ -100,24 +101,5 @@ class AddressSection extends StatelessWidget {
     );
   }
 
-  Future<void> _launchWhatsApp({
-    required String phoneNumber,
-    String message = '',
-  }) async {
-    final Uri whatsappUri =
-        Uri.parse("whatsapp://send?phone=$phoneNumber&text=$message");
 
-    if (await canLaunchUrl(whatsappUri)) {
-      await launchUrl(whatsappUri);
-    } else {
-      await EasyLoading.showError('Could not launch WhatsApp');
-      // throw Exception('Could not launch WhatsApp');
-    }
-  }
-
-  Future<bool?> __callPhoneNumber(String phoneNumber) async {
-    // Ensure no whitespace in the number
-    final sanitizedNumber = phoneNumber.replaceAll(' ', '');
-    return await FlutterPhoneDirectCaller.callNumber(sanitizedNumber);
-  }
 }
