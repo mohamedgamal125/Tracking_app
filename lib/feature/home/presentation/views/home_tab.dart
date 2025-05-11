@@ -8,6 +8,7 @@ import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
 import 'package:tracking_app/feature/home/presentation/cubits/home_states.dart';
 import 'package:tracking_app/feature/home/presentation/cubits/home_view_model.dart';
+import 'package:tracking_app/feature/home/presentation/views/widgets/order_card.dart';
 
 class HomeTab extends StatefulWidget {
   HomeTab({super.key});
@@ -63,177 +64,13 @@ class _HomeTabState extends State<HomeTab> {
                         itemBuilder: (context, index) {
                           List<OrderEntity> orders = state.pendingOrders ?? [];
                           final order = orders[index];
-                          final store = order.store;
-                          final user = order.user;
-
-                          return Container(
-                            margin: const EdgeInsets.only(bottom: 12),
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.05),
-                                  blurRadius: 12,
-                                  spreadRadius: 1,
-                                  offset: Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Flower Order',
-                                    style: AppTextStyles.iMFeel400_20),
-                                const SizedBox(height: 8),
-                                Text('Pickup Address',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 8),
-                                Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.05),
-                                        blurRadius: 12,
-                                        spreadRadius: 1,
-                                        offset: Offset(0, 4),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundImage: store?.image != null &&
-                                                store!.image!.isNotEmpty
-                                            ? NetworkImage(store.image!)
-                                            : null,
-                                        backgroundColor: Colors.grey[300],
-                                      ),
-                                      SizedBox(width: responsiveWidth(8)),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(store?.name ?? ''),
-                                          Row(
-                                            children: [
-                                              const Icon(
-                                                  Icons.location_on_outlined,
-                                                  size: 16),
-                                              Text(store?.address ?? ''),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 12),
-                                Text('User Address',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 8),
-                                Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.05),
-                                        blurRadius: 12,
-                                        spreadRadius: 1,
-                                        offset: Offset(0, 4),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundImage: user?.photo != null &&
-                                                user!.photo!.isNotEmpty
-                                            ? NetworkImage(user.photo!)
-                                            : null,
-                                        backgroundColor: Colors.grey[300],
-                                      ),
-                                      SizedBox(width: responsiveWidth(8)),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                                '${user?.firstName ?? ''} ${user?.lastName ?? ''}'),
-                                            if (order.shippingAddress != null)
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  const Icon(
-                                                      Icons
-                                                          .location_on_outlined,
-                                                      size: 16),
-                                                  SizedBox(width: 4),
-                                                  Expanded(
-                                                    child: Text(
-                                                      order.shippingAddress
-                                                              ?.street ??
-                                                          '',
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      maxLines: 2,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                Row(
-                                  children: [
-                                    Text('EGP ${order.totalPrice}'),
-                                    SizedBox(
-                                      width: responsiveWidth(16),
-                                    ),
-                                    SizedBox(
-                                      height: responsiveHeight(36),
-                                      width: responsiveWidth(112),
-                                      child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor:
-                                                AppColors.whiteColor,
-                                            side: BorderSide(
-                                                color: AppColors.primaryColor),
-                                          ),
-                                          onPressed: () {
-                                            orders.removeAt(index);
-                                            setState(() {});
-                                          },
-                                          child: Text('Reject')),
-                                    ),
-                                    SizedBox(
-                                      width: responsiveWidth(8),
-                                    ),
-                                    SizedBox(
-                                      height: responsiveHeight(36),
-                                      width: responsiveWidth(112),
-                                      child: ElevatedButton(
-                                          onPressed: () {},
-                                          child: Text('Accept')),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          return OrderCard(
+                            order: order,
+                            onReject: () {
+                              orders.removeAt(index);
+                              setState(() {});
+                            },
+                            onAccept: () {},
                           );
                         },
                       );

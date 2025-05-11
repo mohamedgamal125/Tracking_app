@@ -13,6 +13,7 @@ class LayoutScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocBuilder<LayoutViewModel, LayoutStates>(
+        bloc: viewModel,
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: true,
