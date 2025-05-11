@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/common/result.dart';
 import 'package:tracking_app/feature/home/domain/use_case/get_pending_orders_use_case.dart';
 import 'package:tracking_app/feature/home/presentation/cubits/home_states.dart';
 
+@injectable
 class HomeViewModel extends Cubit<HomeState> {
   final GetPendingOrdersUseCase _getPendingOrdersUseCase;
   HomeViewModel(this._getPendingOrdersUseCase) : super(HomeInitialState());

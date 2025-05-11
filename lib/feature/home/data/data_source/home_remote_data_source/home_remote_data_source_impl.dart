@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api/api_client.dart';
 import 'package:tracking_app/feature/home/data/data_source/home_remote_data_source/home_remote_data_source.dart';
 import 'package:tracking_app/feature/home/data/model/pending_orders_response_dto.dart';
 
+@Injectable(as: HomeRemoteDataSource)
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   final ApiClient _apiClient;
   HomeRemoteDataSourceImpl(this._apiClient);
