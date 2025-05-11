@@ -50,6 +50,16 @@ import '../../feature/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.d
     as _i741;
 import '../../feature/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i798;
+import '../../feature/home/data/data_source/home_remote_data_source/home_remote_data_source.dart'
+    as _i825;
+import '../../feature/home/data/data_source/home_remote_data_source/home_remote_data_source_impl.dart'
+    as _i421;
+import '../../feature/home/data/repo_impl/pending_orders_repo_impl.dart'
+    as _i551;
+import '../../feature/home/domain/repo/pending_orders_repo.dart' as _i220;
+import '../../feature/home/domain/use_case/get_pending_orders_use_case.dart'
+    as _i158;
+import '../../feature/home/presentation/cubits/home_view_model.dart' as _i949;
 import '../api/api_client.dart' as _i277;
 import '../api/network_factory.dart' as _i1013;
 import '../services/gemini_service.dart' as _i846;
@@ -77,6 +87,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i804.AuthLocalDataSource>(
         () => _i804.AuthLocalDataSourceImpl());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i825.HomeRemoteDataSource>(
+        () => _i421.HomeRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i140.AuthRemoteDataSource>(
         () => _i140.AuthRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i602.ApplyRemoteDataSource>(
@@ -89,6 +101,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i602.ApplyRemoteDataSource>(),
           gh<_i178.ApplyOfflineDataSource>(),
         ));
+    gh.factory<_i220.PendingOrdersRepo>(
+        () => _i551.PendingOrdersRepoImpl(gh<_i825.HomeRemoteDataSource>()));
     gh.factory<_i137.AuthUseCase>(
         () => _i137.AuthUseCase(gh<_i884.AuthRepository>()));
     gh.factory<_i189.SignInUseCase>(
@@ -97,6 +111,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1056.ForgetPasswordViewModel(gh<_i137.AuthUseCase>()));
     gh.factory<_i828.ResetPasswordViewModel>(
         () => _i828.ResetPasswordViewModel(gh<_i137.AuthUseCase>()));
+    gh.factory<_i158.GetPendingOrdersUseCase>(
+        () => _i158.GetPendingOrdersUseCase(gh<_i220.PendingOrdersRepo>()));
     gh.factory<_i628.ApplyUseCase>(
         () => _i628.ApplyUseCase(gh<_i1036.ApplyRepo>()));
     gh.factory<_i150.GetCountriesUseCase>(
@@ -105,6 +121,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i275.GetVehiclesUseCase(gh<_i1036.ApplyRepo>()));
     gh.factory<_i741.SignInViewModel>(
         () => _i741.SignInViewModel(gh<_i189.SignInUseCase>()));
+    gh.factory<_i949.HomeViewModel>(
+        () => _i949.HomeViewModel(gh<_i158.GetPendingOrdersUseCase>()));
     gh.factory<_i798.VerifyEmailViewModel>(
         () => _i798.VerifyEmailViewModel(gh<_i137.AuthUseCase>()));
     gh.factory<_i734.ApplyViewModel>(() => _i734.ApplyViewModel(

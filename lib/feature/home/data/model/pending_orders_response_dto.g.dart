@@ -60,6 +60,10 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       store: json['store'] == null
           ? null
           : Store.fromJson(json['store'] as Map<String, dynamic>),
+      shippingAddress: json['shippingAddress'] == null
+          ? null
+          : ShippingAddress.fromJson(
+              json['shippingAddress'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
@@ -67,6 +71,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'user': instance.user,
       'orderItems': instance.orderItems,
       'totalPrice': instance.totalPrice,
+      'shippingAddress': instance.shippingAddress,
       'paymentType': instance.paymentType,
       'isPaid': instance.isPaid,
       'isDelivered': instance.isDelivered,
@@ -86,6 +91,14 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       gender: json['gender'] as String?,
       phone: json['phone'] as String?,
       photo: json['photo'] as String?,
+      passwordResetCode: json['passwordResetCode'] as String?,
+      passwordResetExpires: json['passwordResetExpires'] == null
+          ? null
+          : DateTime.parse(json['passwordResetExpires'] as String),
+      resetCodeVerified: json['resetCodeVerified'] as bool?,
+      passwordChangedAt: json['passwordChangedAt'] == null
+          ? null
+          : DateTime.parse(json['passwordChangedAt'] as String),
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -96,6 +109,10 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'gender': instance.gender,
       'phone': instance.phone,
       'photo': instance.photo,
+      'passwordResetCode': instance.passwordResetCode,
+      'passwordResetExpires': instance.passwordResetExpires?.toIso8601String(),
+      'resetCodeVerified': instance.resetCodeVerified,
+      'passwordChangedAt': instance.passwordChangedAt?.toIso8601String(),
     };
 
 OrderItem _$OrderItemFromJson(Map<String, dynamic> json) => OrderItem(
@@ -112,6 +129,24 @@ Map<String, dynamic> _$OrderItemToJson(OrderItem instance) => <String, dynamic>{
       'price': instance.price,
       'quantity': instance.quantity,
       '_id': instance.id,
+    };
+
+ShippingAddress _$ShippingAddressFromJson(Map<String, dynamic> json) =>
+    ShippingAddress(
+      street: json['street'] as String?,
+      city: json['city'] as String?,
+      phone: json['phone'] as String?,
+      lat: json['lat'] as String?,
+      long: json['long'] as String?,
+    );
+
+Map<String, dynamic> _$ShippingAddressToJson(ShippingAddress instance) =>
+    <String, dynamic>{
+      'street': instance.street,
+      'city': instance.city,
+      'phone': instance.phone,
+      'lat': instance.lat,
+      'long': instance.long,
     };
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(

@@ -13,6 +13,7 @@ class OrderEntity {
   final UserEntity? user;
   final List<OrderItemEntity>? orderItems;
   final int? totalPrice;
+  final ShippingAddressEntity? shippingAddress;
   final String? paymentType;
   final bool? isPaid;
   final bool? isDelivered;
@@ -37,6 +38,7 @@ class OrderEntity {
     this.orderNumber,
     this.v,
     this.store,
+    this.shippingAddress,
   });
 }
 
@@ -48,6 +50,10 @@ class UserEntity {
   final String? gender;
   final String? phone;
   final String? photo;
+  final String? passwordResetCode;
+  final DateTime? passwordResetExpires;
+  final bool? resetCodeVerified;
+  final DateTime? passwordChangedAt;
 
   UserEntity({
     this.id,
@@ -57,6 +63,10 @@ class UserEntity {
     this.gender,
     this.phone,
     this.photo,
+    this.passwordResetCode,
+    this.passwordResetExpires,
+    this.resetCodeVerified,
+    this.passwordChangedAt,
   });
 }
 
@@ -71,6 +81,22 @@ class OrderItemEntity {
     this.price,
     this.quantity,
     this.id,
+  });
+}
+
+class ShippingAddressEntity {
+  final String? street;
+  final String? city;
+  final String? phone;
+  final String? lat;
+  final String? long;
+
+  ShippingAddressEntity({
+    this.street,
+    this.city,
+    this.phone,
+    this.lat,
+    this.long,
   });
 }
 

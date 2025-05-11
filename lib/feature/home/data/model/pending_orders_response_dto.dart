@@ -55,6 +55,7 @@ class Order {
   final User? user;
   final List<OrderItem>? orderItems;
   final int? totalPrice;
+  final ShippingAddress? shippingAddress;
   final String? paymentType;
   final bool? isPaid;
   final bool? isDelivered;
@@ -79,6 +80,7 @@ class Order {
     this.orderNumber,
     this.v,
     this.store,
+    this.shippingAddress,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
@@ -100,6 +102,7 @@ class Order {
       orderNumber: orderNumber,
       v: v,
       store: store?.toEntity(),
+      shippingAddress: shippingAddress?.toEntity(),
     );
   }
 }
@@ -114,6 +117,10 @@ class User {
   final String? gender;
   final String? phone;
   final String? photo;
+  final String? passwordResetCode;
+  final DateTime? passwordResetExpires;
+  final bool? resetCodeVerified;
+  final DateTime? passwordChangedAt;
 
   User({
     this.id,
@@ -123,6 +130,10 @@ class User {
     this.gender,
     this.phone,
     this.photo,
+    this.passwordResetCode,
+    this.passwordResetExpires,
+    this.resetCodeVerified,
+    this.passwordChangedAt,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -138,6 +149,10 @@ class User {
       email: email,
       id: id,
       photo: photo,
+      passwordResetCode: passwordResetCode,
+      passwordResetExpires: passwordResetExpires,
+      resetCodeVerified: resetCodeVerified,
+      passwordChangedAt: passwordChangedAt,
     );
   }
 }
@@ -162,6 +177,38 @@ class OrderItem {
       price: price,
       quantity: quantity,
       id: id,
+    );
+  }
+}
+
+@JsonSerializable()
+class ShippingAddress {
+  final String? street;
+  final String? city;
+  final String? phone;
+  final String? lat;
+  final String? long;
+
+  ShippingAddress({
+    this.street,
+    this.city,
+    this.phone,
+    this.lat,
+    this.long,
+  });
+
+  factory ShippingAddress.fromJson(Map<String, dynamic> json) =>
+      _$ShippingAddressFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ShippingAddressToJson(this);
+
+  ShippingAddressEntity toEntity() {
+    return ShippingAddressEntity(
+      street: street,
+      city: city,
+      phone: phone,
+      lat: lat,
+      long: long,
     );
   }
 }

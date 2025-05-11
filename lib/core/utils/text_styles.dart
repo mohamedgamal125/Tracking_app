@@ -116,4 +116,9 @@ abstract class AppTextStyles {
     height: 1.2, // 120%
     letterSpacing: 0.3,
   );
+  static TextStyle get iMFeel400_20 => TextStyle(
+    fontFamily: 'IM FELL English',
+    fontWeight: FontWeight.w400,
+    fontSize: _responsiveFontSize(20),
+  );
 }
