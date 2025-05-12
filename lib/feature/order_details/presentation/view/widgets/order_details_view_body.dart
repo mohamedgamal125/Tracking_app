@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
@@ -30,7 +33,8 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
   @override
   Widget build(BuildContext context) {
     final currentIndex = context.select((StatesCubit cubit) => cubit.state);
-
+    log(widget.order.createdAt.toString() +
+        "+++++++++++++++++++++++++++++++++");
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
       child: Column(
@@ -44,7 +48,10 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
           SizedBox(height: responsiveHeight(24)),
           BlocBuilder<StatesCubit, int>(
             builder: (context, index) {
-              return OrderStatusWidget(statusList: statusList, index: index,
+              return OrderStatusWidget(
+                  date: widget.order.createdAt ?? '',
+                  statusList: statusList,
+                  index: index,
                   orderNumber: widget.order.orderNumber ?? '');
             },
           ),
@@ -60,6 +67,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                     sectionTitle: 'Pickup address',
                     name: widget.order.store?.name ?? '',
                     address: widget.order.store?.address ?? '',
+                    phone: widget.order.store!.phoneNumber ?? '',
                   ),
                   SizedBox(height: responsiveHeight(24)),
                   AddressSection(
@@ -67,6 +75,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                     name:
                         '${widget.order.user?.firstName ?? ''} ${widget.order.user?.lastName ?? ''}',
                     address: widget.order.shippingAddress?.street ?? '',
+                    phone: widget.order.shippingAddress?.phone ?? '',
                   ),
                   SizedBox(height: responsiveHeight(24)),
                   Text('Order details', style: AppTextStyles.inter500_18),
@@ -88,15 +97,15 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                         itemCount: widget.order.orderItems?.length ?? 0,
                         itemBuilder: (context, index) {
                           return OrderDetailsSection(
+                              image: widget
+                                  .order.orderItems?[index].product?.imgCover ,
                               name: widget.order.orderItems?[index].product
                                       ?.title ??
                                   '',
-                              price: widget
-                                      .order.orderItems?[index].price
+                              price: widget.order.orderItems?[index].price
                                       .toString() ??
                                   '',
-                              quantity: widget.order.orderItems?[index]
-                                      .quantity
+                              quantity: widget.order.orderItems?[index].quantity
                                       .toString() ??
                                   '');
                         }),

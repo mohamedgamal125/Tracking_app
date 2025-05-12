@@ -42,7 +42,7 @@ class OrderDetailsView extends StatelessWidget {
           order: order,
         ),
         bottomNavigationBar:
-            ElevatedButtonBlocBuilder(bottonStatus: bottonStatus,),
+            ElevatedButtonBlocBuilder(bottonStatus: bottonStatus,order: order,),
       ),
     );
   }

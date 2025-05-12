@@ -11,11 +11,13 @@ class AddressSection extends StatelessWidget {
       required this.sectionTitle,
       required this.name,
       required this.address,
+      required this.phone,
       this.image});
   final String sectionTitle;
   final String name;
   final String address;
   final String? image;
+  final String phone;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -77,8 +79,8 @@ class AddressSection extends StatelessWidget {
               ],
             ),
             trailing: CommunicationWidget(
-              phoneNumber: '+20 1124107203',
-              whatsAppNumber: '+20 1124107203',
+              phoneNumber: phone,
+              whatsAppNumber: phone,
             ),
           ),
         )

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
@@ -25,6 +27,7 @@ class CommunicationWidget extends StatelessWidget {
         InkWell(
             onTap: () async {
               await _callPhoneNumber(phoneNumber);
+              log(phoneNumber + ' ny phine number');
             },
             child: SvgPicture.asset(
               SvgImags.callIcon,
