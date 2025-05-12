@@ -56,6 +56,15 @@ abstract class AppTextStyles {
         fontWeight: FontWeight.w600,
         fontSize: _responsiveFontSize(12),
       );
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: _responsiveFontSize(12),
+  );
+  static TextStyle get inter600_14 => TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: _responsiveFontSize(14),
+  );
   static TextStyle get inter600_18 => TextStyle(
         fontFamily: 'Inter',
         fontWeight: FontWeight.w600,
@@ -136,4 +145,15 @@ abstract class AppTextStyles {
         height: 1.2, // 120%
         letterSpacing: 0.3,
       );
+    fontFamily: 'Outfit',
+    fontWeight: FontWeight.w500,
+    fontSize: _responsiveFontSize(16),
+    height: 1.2, // 120%
+    letterSpacing: 0.3,
+  );
+  static TextStyle get iMFeel400_20 => TextStyle(
+    fontFamily: 'IM FELL English',
+    fontWeight: FontWeight.w400,
+    fontSize: _responsiveFontSize(20),
+  );
 }

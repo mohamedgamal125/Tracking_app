@@ -6,6 +6,7 @@ import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/router/routes_generator.dart';
 import 'package:tracking_app/core/services/screen_size_service.dart';
 import 'package:tracking_app/core/services/shared_preference_services.dart';
+import 'package:tracking_app/core/utils/constant_manager.dart';
 import 'package:tracking_app/core/utils/theming.dart';
 import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
@@ -28,6 +29,7 @@ void main() async {
     ),
   );
 }
+
 
 class InitApp extends StatelessWidget {
   const InitApp({super.key});
@@ -68,7 +70,13 @@ class MainAppContent extends StatelessWidget {
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       // initialRoute: PagesRoutes.forgetPassword,
-      initialRoute: PagesRoutes.orderDetails,
+      initialRoute:
+          (SharedPreferenceServices.getData(AppConstants.token) != null &&
+                  (SharedPreferenceServices.getData(AppConstants.rememberMe)
+                          as bool? ??
+                      false))
+              ? PagesRoutes.layoutView
+              : PagesRoutes.onBoarding,
     );
   }
 

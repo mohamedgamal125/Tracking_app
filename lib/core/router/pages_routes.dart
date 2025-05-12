@@ -8,4 +8,5 @@ abstract class PagesRoutes {
   static const String resetPassword = 'reset_password';
   static const String applyView = 'applyView';
   static const String orderDetails = 'orderDetails';
+  static const String layoutView = 'layoutView';
 }
