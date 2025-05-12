@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/states_cubit.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/address_section.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/custom_card.dart';
@@ -10,7 +11,8 @@ import 'package:tracking_app/feature/order_details/presentation/view/widgets/ord
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/order_status_widget.dart';
 
 class OrderDetailsViewBody extends StatefulWidget {
-  const OrderDetailsViewBody({super.key});
+  const OrderDetailsViewBody({super.key, required this.order});
+  final OrderEntity order;
 
   @override
   State<OrderDetailsViewBody> createState() => _OrderDetailsViewBodyState();
@@ -42,7 +44,8 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
           SizedBox(height: responsiveHeight(24)),
           BlocBuilder<StatesCubit, int>(
             builder: (context, index) {
-              return OrderStatusWidget(statusList: statusList, index: index);
+              return OrderStatusWidget(statusList: statusList, index: index,
+                  orderNumber: widget.order.orderNumber ?? '');
             },
           ),
           SizedBox(height: responsiveHeight(16)),
@@ -55,32 +58,56 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                 children: [
                   AddressSection(
                     sectionTitle: 'Pickup address',
-                    name: 'Flowerly store',
-                    address: '20th st, Sheikh Zayed, Giza ',
+                    name: widget.order.store?.name ?? '',
+                    address: widget.order.store?.address ?? '',
                   ),
                   SizedBox(height: responsiveHeight(24)),
                   AddressSection(
                     sectionTitle: 'User address',
-                    name: 'omar elsayed',
-                    address: '20th st, Sheikh Zayed, Giza ',
+                    name:
+                        '${widget.order.user?.firstName ?? ''} ${widget.order.user?.lastName ?? ''}',
+                    address: widget.order.shippingAddress?.street ?? '',
                   ),
                   SizedBox(height: responsiveHeight(24)),
                   Text('Order details', style: AppTextStyles.inter500_18),
-                  SizedBox(height: responsiveHeight(16)),
-                  OrderDetailsSection(
-                      name: 'Red roses,15 Pink Rose Bouquet',
-                      price: 'EGP 600',
-                      quantity: '1'),
-                  SizedBox(height: responsiveHeight(8)),
-                  OrderDetailsSection(
-                      name: 'Red roses,15 Pink Rose Bouquet',
-                      price: 'EGP 600',
-                      quantity: '1'),
+                  // SizedBox(height: responsiveHeight(16)),
+                  // OrderDetailsSection(
+                  //     name: 'Red roses,15 Pink Rose Bouquet',
+                  //     price: 'EGP 600',
+                  //     quantity: '1'),
+                  // SizedBox(height: responsiveHeight(8)),
+                  // OrderDetailsSection(
+                  //     name: 'Red roses,15 Pink Rose Bouquet',
+                  //     price: 'EGP 600',
+                  //     quantity: '1'),
                   SizedBox(height: responsiveHeight(24)),
-                  CustomCard(title: 'Total', value: 'EGP 600'),
+                  SizedBox(
+                    height: responsiveHeight(150),
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: widget.order.orderItems?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return OrderDetailsSection(
+                              name: widget.order.orderItems?[index].product
+                                      ?.title ??
+                                  '',
+                              price: widget
+                                      .order.orderItems?[index].price
+                                      .toString() ??
+                                  '',
+                              quantity: widget.order.orderItems?[index]
+                                      .quantity
+                                      .toString() ??
+                                  '');
+                        }),
+                  ),
+                  SizedBox(height: responsiveHeight(16)),
+                  CustomCard(
+                      title: 'Total', value: 'EGP ${widget.order.totalPrice}'),
                   SizedBox(height: responsiveHeight(24)),
                   CustomCard(
-                      title: 'Payment method', value: 'Cash on delivery'),
+                      title: 'Payment method',
+                      value: '${widget.order.paymentType}'),
                 ],
               ),
             ),

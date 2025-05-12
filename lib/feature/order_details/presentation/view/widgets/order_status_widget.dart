@@ -8,10 +8,12 @@ class OrderStatusWidget extends StatelessWidget {
     super.key,
     required this.statusList,
     required this.index,
+  required this.orderNumber,
   });
 
   final List<String> statusList;
   final int index;
+  final String orderNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class OrderStatusWidget extends StatelessWidget {
             style:
                 AppTextStyles.inter600_16.copyWith(color: AppColors.greenColor),
           ),
-          Text('Order ID : # 123456', style: AppTextStyles.inter500_16),
+          Text('Order ID : $orderNumber', style: AppTextStyles.inter500_16),
           Text(
             'Wed, 03 Sep 2024, 11:00 AM ',
             style: AppTextStyles.inter500_14.copyWith(

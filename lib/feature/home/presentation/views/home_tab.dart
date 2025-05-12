@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/di/injectable_initializer.dart';
+import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
@@ -70,7 +71,9 @@ class _HomeTabState extends State<HomeTab> {
                               orders.removeAt(index);
                               setState(() {});
                             },
-                            onAccept: () {},
+                            onAccept: () {
+                              Navigator.pushNamed(context, PagesRoutes.orderDetails,arguments: order);
+                            },
                           );
                         },
                       );
