@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
@@ -8,12 +9,14 @@ class OrderStatusWidget extends StatelessWidget {
     super.key,
     required this.statusList,
     required this.index,
-  required this.orderNumber,
+    required this.orderNumber,
+    required this.date,
   });
 
   final List<String> statusList;
   final int index;
   final String orderNumber;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class OrderStatusWidget extends StatelessWidget {
           ),
           Text('Order ID : $orderNumber', style: AppTextStyles.inter500_16),
           Text(
-            'Wed, 03 Sep 2024, 11:00 AM ',
+            _formatDate(date),
             style: AppTextStyles.inter500_14.copyWith(
               color: Color(0xff535353),
             ),
@@ -45,5 +48,10 @@ class OrderStatusWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _formatDate(String isoDate) {
+    final date = DateTime.parse(isoDate).toLocal();
+    return DateFormat('E, dd MMM yyyy, hh:mm a').format(date);
   }
 }
