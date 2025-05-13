@@ -13,8 +13,4 @@ class AppConstants {
   static const String areaKey = "area";
   static const String cityKey = "city";
   static const String locationKey = "location";
-  static const String orderCollection = "order";
-  static const String orderStatus = "status";
-
- 
 }

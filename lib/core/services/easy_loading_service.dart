@@ -14,7 +14,7 @@ class ConfigLoading {
       ..progressColor = Colors.red
       ..indicatorColor = AppColors.primaryColor
       ..textColor = Colors.grey
-      ..maskColor = Colors.blue
+      ..maskColor = Colors.blue.withOpacity(0.5)
       ..userInteractions = false
       ..dismissOnTap = false;
   }
