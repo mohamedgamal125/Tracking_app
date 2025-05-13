@@ -1,3 +1,4 @@
+
 class AppValidate {
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -12,24 +13,13 @@ class AppValidate {
     return null;
   }
 
-  static String? validateFirstName(String? value) {
+  static String? validateFullName(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your first name ';
+      return 'Please enter your full name ';
     }
     final regex = RegExp(r'^[A-Za-z\s]+$');
     if (!regex.hasMatch(value)) {
-      return 'Please enter a valid first name ';
-    }
-    return null;
-  }
-
-  static String? validateLastName(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your last name ';
-    }
-    final regex = RegExp(r'^[A-Za-z\s]+$');
-    if (!regex.hasMatch(value)) {
-      return 'Please enter a valid last name ';
+      return 'Please enter a valid full name ';
     }
     return null;
   }
@@ -85,19 +75,6 @@ class AppValidate {
       return 'Please enter mobile number';
     } else if (!regExp.hasMatch(value)) {
       return 'Please enter a valid mobile number (e.g., +201010700999)';
-    }
-    return null;
-  }
-
-  static String? validatePhoneNumber(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Phone number is required';
-    }
-
-    final RegExp phoneExp = RegExp(r'^\+?[0-9]{7,15}$');
-
-    if (!phoneExp.hasMatch(value)) {
-      return 'Enter a valid phone number';
     }
     return null;
   }

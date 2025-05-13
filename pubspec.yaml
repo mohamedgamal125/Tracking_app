@@ -24,24 +24,6 @@ dependencies:
   internet_connection_checker: ^3.0.1
   retrofit: ^4.4.2
   flutter_svg: ^2.1.0
-  get_it: ^8.0.3
-  json_annotation: ^4.9.0
-  animated_text_kit: ^4.2.3
-  lottie:
-  mime: ^2.0.0
-  mockito: ^5.4.5
-  flutter_localization: ^0.3.2
-  intl:
-  equatable: ^2.0.7
-  provider: ^6.1.5
-  http_parser: ^4.1.2
-  image_picker: ^1.1.2
-  google_generative_ai: ^0.4.7
-  firebase_core: ^3.13.0
-  url_launcher: ^6.3.1
-  flutter_phone_direct_caller: ^2.2.1
-  cloud_firestore: ^5.6.7
-  bloc_test: ^10.0.0
 
 
 
@@ -49,25 +31,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  injectable_generator:
   flutter_lints: ^5.0.0
   coverage: ^1.13.0
-  build_runner: ^2.4.15
-  retrofit_generator: ^9.1.9
-  json_serializable: ^6.9.5
-  mockito: ^5.4.5
 
 
 flutter:
 
 
   uses-material-design: true
-  assets:
-    - assets/svg/
-    - assets/animations/onboarding_animation.json
-
-    - assets/files/
-
   fonts:
     - family: IM FELL English
       fonts:
@@ -84,4 +55,3 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
-  
