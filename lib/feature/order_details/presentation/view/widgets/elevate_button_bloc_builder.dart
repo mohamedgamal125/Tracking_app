@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tracking_app/core/utils/constant_manager.dart';
 import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/states_cubit.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/update_order_state_cubit/update_order_state_cubit.dart';
@@ -17,7 +18,8 @@ class ElevatedButtonBlocBuilder extends StatelessWidget {
   final OrderEntity order;
   @override
   Widget build(BuildContext context) {
-    CollectionReference orders = FirebaseFirestore.instance.collection('order');
+    CollectionReference orders =
+        FirebaseFirestore.instance.collection(AppConstants.orderCollection);
     int index = context.select((StatesCubit cubit) => cubit.state);
 
     return BlocBuilder<StatesCubit, int>(
@@ -27,20 +29,25 @@ class ElevatedButtonBlocBuilder extends StatelessWidget {
             index: state,
             onPressed: () {
               context.read<StatesCubit>().changeState();
-              _updateOrderStateFun(state, context);
+              _updateOrderStatusInFirebase(orders, index);
 
-              orders.doc('${order.id}').set({'status': index});
+              _updateOrderStateFun(state, context);
             });
       },
     );
   }
 
+  void _updateOrderStatusInFirebase(
+      CollectionReference<Object?> orders, int index) {
+    orders.doc('${order.id}').set({AppConstants.orderStatus: index});
+  }
+
   void _updateOrderStateFun(int state, BuildContext context) {
     if (state == 4) {
       context.read<UpdateOrderStateCubit>().updateOrderState(
-        ' 678a9bb63745562ff48ce07b',
+        '${order.id}',
         {
-          'status': 'completed',
+          AppConstants.orderStatus: 'completed',
         },
       );
     }

@@ -42,6 +42,12 @@
   "notifications": "Notifications",
   "language": "Language",
   "cont": "Continue",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "orderDetails": "Order Details",
+    "paymentMethod": "Payment method",
+  "total": "Total",
+  "userAddress": "User address",
+  "pickupAddress": "Pickup address",
+  "egp": "EGP"
 
 }
