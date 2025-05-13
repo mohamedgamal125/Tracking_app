@@ -42,6 +42,12 @@
   "notifications": "الإشعارات",
   "language": "اللغة",
   "cont": "متابعة",
-  "arabic": "العربية"
+  "arabic": "العربية",
+  "orderDetails": "تفاصيل الطلب",
+    "paymentMethod": "طريقة الدفع",
+  "total": "الإجمالي",
+  "userAddress": "عنوان المستخدم",
+  "pickupAddress": "عنوان الاستلام",
+   "egp": "ج.م"
 
 }

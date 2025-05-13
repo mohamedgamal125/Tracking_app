@@ -66,6 +66,11 @@ abstract class ApiClient {
   @GET(ApiEndPoints.allVehicleEndPoint)
   Future<HttpResponse<GetVehiclesResponseDTO>> getAllVehicles();
 
+  @PUT("${ApiEndPoints.updateOrderStateEndPoint}/{orderId}")
+  Future<void> updateOrderState(
+    @Path("orderId") String orderId,
+    @Body() Map<String, dynamic> data);
+
   @GET(ApiEndPoints.pendingOrdersEndPoint)
   Future<HttpResponse<PendingOrdersResponseDTO>> getPendingOrders();
 }
