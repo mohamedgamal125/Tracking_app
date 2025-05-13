@@ -5,6 +5,8 @@ import 'package:tracking_app/feature/apply/presentation/view/success_apply_view.
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/email_verification_screen.dart';
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/forget_paswerd_screen.dart';
 import 'package:tracking_app/feature/auth/presentation/views/sign_in/sign_in_screen.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/order_details_view.dart';
+import 'package:tracking_app/layout/presentation/views/layout_screen.dart';
 import 'package:tracking_app/main_view.dart';
 
 import '../../feature/auth/presentation/views/on_boarding/on_boarding_view.dart';
@@ -15,11 +17,16 @@ class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case PagesRoutes.signIn:
-        return MaterialPageRoute(builder: (context) => SignInScreen(), settings: settings);
+        return MaterialPageRoute(
+          builder: (context) => SignInScreen(),
+          settings: settings,
+        );
 
       case PagesRoutes.mainView:
         return MaterialPageRoute(
-            builder: (context) => MainView(), settings: settings);
+          builder: (context) => MainView(),
+          settings: settings,
+        );
 
       case PagesRoutes.successApplyView:
         return MaterialPageRoute(
@@ -32,16 +39,36 @@ class RoutesGenerator {
           settings: settings,
         );
       case PagesRoutes.onBoarding:
-        return MaterialPageRoute(builder: (context) => OnBoardingScreen(), settings: settings);
+        return MaterialPageRoute(
+          builder: (context) => OnBoardingScreen(),
+          settings: settings,
+        );
 
       case PagesRoutes.forgetPassword:
-        return MaterialPageRoute(builder: (context) => ForgetPasswordScreen(), settings: settings);
+        return MaterialPageRoute(
+          builder: (context) => ForgetPasswordScreen(),
+          settings: settings,
+        );
 
       case PagesRoutes.emailVerification:
+        return MaterialPageRoute(
+            builder: (context) => EmailVerificationScreen(),
+            settings: settings);
+
         return MaterialPageRoute(builder: (context) => EmailVerificationScreen(), settings: settings);
+      case PagesRoutes.orderDetails:
+        return MaterialPageRoute(builder: (context) => OrderDetailsView(), settings: settings);
 
       case PagesRoutes.resetPassword:
-        return MaterialPageRoute(builder: (context) => ResetPasswordScreen(), settings: settings);
+        return MaterialPageRoute(
+          builder: (context) => ResetPasswordScreen(),
+          settings: settings,
+        );
+      case PagesRoutes.layoutView:
+        return MaterialPageRoute(
+          builder: (context) => LayoutScreen(),
+          settings: settings,
+        );
       default:
         return unDefinedRoute();
     }

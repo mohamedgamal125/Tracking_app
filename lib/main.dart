@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -6,7 +7,9 @@ import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/router/routes_generator.dart';
 import 'package:tracking_app/core/services/screen_size_service.dart';
 import 'package:tracking_app/core/services/shared_preference_services.dart';
+import 'package:tracking_app/core/utils/constant_manager.dart';
 import 'package:tracking_app/core/utils/theming.dart';
+import 'package:tracking_app/firebase_options.dart';
 import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
 import 'core/services/localization_service.dart';
@@ -14,10 +17,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'generated/l10n.dart';
 
-
-
 void main() async {
+ 
   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  
   configureDependencies();
   Bloc.observer = MyBlocObserver();
   ConfigLoading().showLoading();
@@ -71,7 +77,13 @@ class MainAppContent extends StatelessWidget {
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       // initialRoute: PagesRoutes.forgetPassword,
-      initialRoute: PagesRoutes.onBoarding,
+      initialRoute:
+          (SharedPreferenceServices.getData(AppConstants.token) != null &&
+                  (SharedPreferenceServices.getData(AppConstants.rememberMe)
+                          as bool? ??
+                      false))
+              ? PagesRoutes.layoutView
+              : PagesRoutes.onBoarding,
     );
   }
 
