@@ -6,6 +6,7 @@ import 'package:tracking_app/feature/auth/presentation/views/forget_password/ema
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/forget_paswerd_screen.dart';
 import 'package:tracking_app/feature/auth/presentation/views/sign_in/sign_in_screen.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/order_details_view.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/success_view.dart';
 import 'package:tracking_app/layout/presentation/views/layout_screen.dart';
 import 'package:tracking_app/main_view.dart';
 
@@ -69,6 +70,12 @@ class RoutesGenerator {
           builder: (context) => LayoutScreen(),
           settings: settings,
         );
+      case PagesRoutes.SuccessView :
+        return MaterialPageRoute(
+          builder: (_)=>SuccessView(),
+          settings: settings
+        );
+
       default:
         return unDefinedRoute();
     }
