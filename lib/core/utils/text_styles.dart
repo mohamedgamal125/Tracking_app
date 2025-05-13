@@ -8,112 +8,144 @@ abstract class AppTextStyles {
   }
 
   static TextStyle get inter500_20 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(20),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(20),
+      );
   static TextStyle get inter500_14 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(14),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(14),
+      );
   static TextStyle get inter500_13 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(13),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(13),
+      );
 
   static TextStyle get inter400_14 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w400,
-    fontSize: _responsiveFontSize(14),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(14),
+      );
   static TextStyle get inter400_16 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w400,
-    fontSize: _responsiveFontSize(16),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(16),
+      );
 
   static TextStyle get inter400_12 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w400,
-    fontSize: _responsiveFontSize(12),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(12),
+      );
+  static TextStyle get inter400_13 => TextStyle(
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(13),
+      );
 
   static TextStyle get inter500_16 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(16),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(16),
+      );
 
   static TextStyle get inter600_12 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w600,
-    fontSize: _responsiveFontSize(12),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        fontSize: _responsiveFontSize(12),
+      );
+
+  static TextStyle get inter600_14 => TextStyle(
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        fontSize: _responsiveFontSize(14),
+      );
   static TextStyle get inter600_18 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w600,
-    fontSize: _responsiveFontSize(18),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        fontSize: _responsiveFontSize(18),
+      );
+  static TextStyle get inter600_16 => TextStyle(
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w600,
+        fontSize: _responsiveFontSize(16),
+      );
   static TextStyle get inter700_20 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w700,
-    fontSize: _responsiveFontSize(20),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w700,
+        fontSize: _responsiveFontSize(20),
+      );
   static TextStyle get inter500_18 => TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(18),
-  );
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(18),
+      );
 
   // Roboto Fonts
   static TextStyle get roboto400_12 => TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400,
-    fontSize: _responsiveFontSize(12),
-  );
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(12),
+      );
 
   static TextStyle get roboto400_14 => TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400,
-    fontSize: _responsiveFontSize(14),
-  );
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(14),
+      );
   static TextStyle get roboto400_16 => TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400,
-    fontSize: _responsiveFontSize(16),
-  );
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(16),
+      );
 
   static TextStyle get roboto500_16 => TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(16),
-  );
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(16),
+      );
+  static TextStyle get roboto500_13 => TextStyle(
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(13),
+      );
+  static TextStyle get roboto500_14 => TextStyle(
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(14),
+      );
 
   static TextStyle get roboto400_18 => TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w400,
-    fontSize: _responsiveFontSize(18),
-  );
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(18),
+      );
 
   static TextStyle get roboto500_18 => TextStyle(
-    fontFamily: 'Roboto',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(18),
-  );
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(18),
+      );
   static TextStyle get outfit700_20 => TextStyle(
-    fontFamily: 'Outfit',
-    fontWeight: FontWeight.w700,
-    fontSize: _responsiveFontSize(20),
-    height: 1.2, // 120%
-    letterSpacing: 0.3,
-  );
+        fontFamily: 'Outfit',
+        fontWeight: FontWeight.w700,
+        fontSize: _responsiveFontSize(20),
+        height: 1.2, // 120%
+        letterSpacing: 0.3,
+      );
   static TextStyle get outfitMedium_16 => TextStyle(
-    fontFamily: 'Outfit',
-    fontWeight: FontWeight.w500,
-    fontSize: _responsiveFontSize(16),
-    height: 1.2, // 120%
-    letterSpacing: 0.3,
-  );
+        fontFamily: 'Outfit',
+        fontWeight: FontWeight.w500,
+        fontSize: _responsiveFontSize(16),
+        height: 1.2, // 120%
+        letterSpacing: 0.3,
+      );
+
+  static TextStyle get iMFeel400_20 => TextStyle(
+        fontFamily: 'IM FELL English',
+        fontWeight: FontWeight.w400,
+        fontSize: _responsiveFontSize(20),
+      );
 }
