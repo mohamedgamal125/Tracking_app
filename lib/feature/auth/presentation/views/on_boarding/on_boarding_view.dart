@@ -15,29 +15,31 @@ class OnBoardingScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16),vertical: responsiveHeight(8)),
           child: Column(
-             mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            // SizedBox(height: responsiveHeight(48),),
+              // SizedBox(height: responsiveHeight(48),),
               Spacer(),
-            Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 8.0),
-              child: SizedBox(
-              width: double.infinity,
-              height: responsiveHeight(300),
-              child: Center(
-                child: Transform.scale(
-                  scale: 1.7,
-                  child: Lottie.asset(
-                    'assets/animations/onboarding_animation.json',
-                    fit: BoxFit.cover,
+              Expanded(
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 8.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: responsiveHeight(300),
+                    child: Center(
+                      child: Transform.scale(
+                        scale: 1.7,
+                        child: Lottie.asset(
+                          'assets/animations/onboarding_animation.json',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-                        ),
-            ),
-            
-              SizedBox(height: 8),
+
+              SizedBox(height: 24),
               Text(
                 "Welcome to\nFlowery rider app",
                 style: AppTextStyles.inter500_20,
@@ -54,6 +56,7 @@ class OnBoardingScreen extends StatelessWidget {
                     style: AppTextStyles.inter500_16
                         .copyWith(color: AppColors.whiteColor),
                   )),
+              SizedBox(height: responsiveHeight(24),),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.whiteColor,
