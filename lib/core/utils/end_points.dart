@@ -9,6 +9,6 @@ class ApiEndPoints {
   static const String resetPassword = "/drivers/resetPassword";
   static const String applyEndPoint = "/drivers/apply";
   static const String allVehicleEndPoint = "/vehicles";
-  static const String updateOrderStateEndPoint = "orders/state";
+  static const String updateOrderStateEndPoint = "/orders/state";
   static const String pendingOrdersEndPoint = "/orders/pending-orders";
 }

@@ -255,7 +255,7 @@ class _ApiClient implements ApiClient {
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'orders/state/${orderId}',
+            '/orders/state/${orderId}',
             queryParameters: queryParameters,
             data: _data,
           )
