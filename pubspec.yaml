@@ -65,7 +65,7 @@ flutter:
   assets:
     - assets/svg/
     - assets/animations/onboarding_animation.json
-
+    - assets/images/    
     - assets/files/
 
   fonts:

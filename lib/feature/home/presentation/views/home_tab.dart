@@ -6,6 +6,7 @@ import 'package:tracking_app/core/di/injectable_initializer.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+import 'package:tracking_app/feature/home/data/model/pending_orders_response_dto.dart';
 import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
 import 'package:tracking_app/feature/home/presentation/cubits/home_states.dart';
 import 'package:tracking_app/feature/home/presentation/cubits/home_view_model.dart';
@@ -40,12 +41,10 @@ class _HomeTabState extends State<HomeTab> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Flowery rider',
-                style: AppTextStyles.iMFeel400_20.copyWith(
-                  color: AppColors.primaryColor,
-                ),
-              ),
+              Text('Flowery rider',
+                  style: AppTextStyles.iMFeel400_20.copyWith(
+                    color: AppColors.primaryColor,
+                  )),
               SizedBox(height: responsiveHeight(16)),
               Expanded(
                 child: BlocConsumer<HomeViewModel, HomeState>(
@@ -65,6 +64,9 @@ class _HomeTabState extends State<HomeTab> {
                         itemBuilder: (context, index) {
                           List<OrderEntity> orders = state.pendingOrders ?? [];
                           final order = orders[index];
+                          if (order.shippingAddress == null) {
+                            order.shippingAddress = shippingAddresses[index];
+                          }
                           return OrderCard(
                             order: order,
                             onReject: () {
@@ -72,7 +74,9 @@ class _HomeTabState extends State<HomeTab> {
                               setState(() {});
                             },
                             onAccept: () {
-                              Navigator.pushNamed(context, PagesRoutes.orderDetails,arguments: order);
+                              Navigator.pushNamed(
+                                  context, PagesRoutes.orderDetails,
+                                  arguments: order);
                             },
                           );
                         },

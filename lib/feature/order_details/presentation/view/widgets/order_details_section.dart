@@ -26,8 +26,7 @@ class OrderDetailsSection extends StatelessWidget {
           left: responsiveWidth(8),
           right: responsiveWidth(8),
           top: responsiveHeight(16),
-          bottom: responsiveHeight(16)
-          ),
+          bottom: responsiveHeight(16)),
       margin: EdgeInsets.only(bottom: responsiveHeight(8)),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -48,15 +47,12 @@ class OrderDetailsSection extends StatelessWidget {
           SizedBox(
             width: responsiveWidth(44),
             height: responsiveHeight(44),
-            child: image != null
-                ? Image.asset(
+            child: image!.contains('http')
+                ? Image.network(
                     image!,
                     fit: BoxFit.cover,
                   )
-                : SvgPicture.asset(
-                    SvgImags.flowerlyLogo,
-                    fit: BoxFit.contain,
-                  ),
+                : Image.asset('assets/images/flower_pocket.png'),
           ),
           SizedBox(width: responsiveWidth(12)),
 

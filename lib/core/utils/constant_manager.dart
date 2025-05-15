@@ -14,7 +14,7 @@ class AppConstants {
   static const String cityKey = "city";
   static const String locationKey = "location";
   static const String orderCollection = "order";
-  static const String orderStatus = "status";
+  static const String orderStatus = "state";
 
  
 }

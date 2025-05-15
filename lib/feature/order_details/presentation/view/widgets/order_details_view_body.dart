@@ -69,6 +69,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                   ),
                   SizedBox(height: responsiveHeight(24)),
                   AddressSection(
+                    image:'assets/images/profile-user.png' ,
                     sectionTitle: 'User address',
                     name:
                         '${widget.order.user?.firstName ?? ''} ${widget.order.user?.lastName ?? ''}',
