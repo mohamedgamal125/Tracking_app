@@ -94,13 +94,16 @@ class EditProfileTextFields extends StatelessWidget {
           obscuringCharacter: '★',
           decoration: InputDecoration(
             labelText: 'Password',
-            suffixIcon: InkWell(
-              onTap: () {
+            suffixIcon:
+            TextButton(
+              onPressed: () {
                 Navigator.pushNamed(context, PagesRoutes.changePassword);
               },
               child: Text(
                 'change',
-                style: TextStyle(color: AppColors.blackColor),
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                    color: AppColors.blackColor),
               ),
             ),
           ),
