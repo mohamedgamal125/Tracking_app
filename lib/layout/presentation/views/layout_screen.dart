@@ -6,17 +6,19 @@ import 'package:tracking_app/layout/presentation/cubit/layout_view_model.dart';
 import '../../../core/utils/app_icons.dart';
 
 class LayoutScreen extends StatelessWidget {
-  LayoutScreen({super.key});
+  LayoutScreen({super.key, this.initialIndex = 0});
+  final int initialIndex;
 
-  LayoutViewModel viewModel = LayoutViewModel();
+  // LayoutViewModel viewModel = LayoutViewModel(initialIndex);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => viewModel,
+      create: (context) => LayoutViewModel(initialIndex),
       child: BlocBuilder<LayoutViewModel, LayoutStates>(
-        bloc: viewModel,
+        // bloc: viewModel,
         builder: (context, state) {
+          final viewModel = context.read<LayoutViewModel>();
           return Scaffold(
             resizeToAvoidBottomInset: true,
             body: viewModel.tabs[viewModel.currentIndex],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/utils/app_icons.dart';
-import 'package:tracking_app/feature/profile/presentation/views/widget/edit_profile_view_body.dart';
+import 'package:tracking_app/feature/profile/presentation/views/widget/edit_profile_widgets/edit_profile_view_body.dart';
 
 import '../../../../../core/di/injectable_initializer.dart';
 import '../../../../core/utils/constant_manager.dart';
@@ -41,11 +41,10 @@ class EditProfileView extends StatelessWidget {
           leading: IconButton(
             icon: Icon(AppIcons.back),
             onPressed: () {
-              // Navigator.pop(context);
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LayoutScreen(),
+                  builder: (context) => LayoutScreen(initialIndex: 2,),
                 ),
               );
             },

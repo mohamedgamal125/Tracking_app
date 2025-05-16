@@ -7,7 +7,7 @@ import 'package:tracking_app/feature/profile/presentation/views/profile_tab.dart
 import 'package:tracking_app/layout/presentation/cubit/layout_states.dart';
 
 class LayoutViewModel extends Cubit<LayoutStates> {
-  LayoutViewModel() : super(LayoutInitialState());
+  LayoutViewModel(this.currentIndex) : super(LayoutInitialState());
 
   int currentIndex = 0;
   final List<Widget> tabs = [
