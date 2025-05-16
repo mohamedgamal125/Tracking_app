@@ -18,12 +18,11 @@ import 'package:provider/provider.dart';
 import 'generated/l10n.dart';
 
 void main() async {
- 
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   configureDependencies();
   Bloc.observer = MyBlocObserver();
   ConfigLoading().showLoading();
@@ -36,7 +35,6 @@ void main() async {
     ),
   );
 }
-
 
 class InitApp extends StatelessWidget {
   const InitApp({super.key});
@@ -77,13 +75,13 @@ class MainAppContent extends StatelessWidget {
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       // initialRoute: PagesRoutes.forgetPassword,
-      initialRoute:
-          (SharedPreferenceServices.getData(AppConstants.token) != null &&
-                  (SharedPreferenceServices.getData(AppConstants.rememberMe)
-                          as bool? ??
-                      false))
-              ? PagesRoutes.layoutView
-              : PagesRoutes.onBoarding,
+      initialRoute: PagesRoutes.routeView,
+      // (SharedPreferenceServices.getData(AppConstants.token) != null &&
+      //         (SharedPreferenceServices.getData(AppConstants.rememberMe)
+      //                 as bool? ??
+      //             false))
+      //     ? PagesRoutes.layoutView
+      //     : PagesRoutes.onBoarding,
     );
   }
 
