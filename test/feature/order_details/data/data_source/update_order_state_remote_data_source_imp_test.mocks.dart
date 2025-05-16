@@ -3,16 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i8;
-import 'dart:io' as _i10;
+import 'dart:async' as _i10;
+import 'dart:io' as _i12;
 
+import 'package:dio/dio.dart' as _i17;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:retrofit/dio.dart' as _i2;
-import 'package:tracking_app/core/api/api_client.dart' as _i7;
+import 'package:tracking_app/core/api/api_client.dart' as _i9;
 import 'package:tracking_app/feature/apply/data/model/apply_response_dto.dart'
-    as _i9;
+    as _i11;
 import 'package:tracking_app/feature/apply/data/model/get_vehicles_response_dto.dart'
-    as _i12;
+    as _i14;
 import 'package:tracking_app/feature/auth/data/model/forget_response_password_dto.dart'
     as _i4;
 import 'package:tracking_app/feature/auth/data/model/reset_password_dto.dart'
@@ -22,9 +23,15 @@ import 'package:tracking_app/feature/auth/data/model/sign_in_response_dto.dart'
 import 'package:tracking_app/feature/auth/data/model/verify_email_response_dto.dart'
     as _i5;
 import 'package:tracking_app/feature/auth/domain/entity/sign_in_request.dart'
-    as _i11;
-import 'package:tracking_app/feature/home/data/model/pending_orders_response_dto.dart'
     as _i13;
+import 'package:tracking_app/feature/home/data/model/pending_orders_response_dto.dart'
+    as _i15;
+import 'package:tracking_app/feature/profile/data/model/change_password_dto.dart'
+    as _i8;
+import 'package:tracking_app/feature/profile/data/model/change_password_request_model.dart'
+    as _i16;
+import 'package:tracking_app/feature/profile/data/model/profile_response_dto.dart'
+    as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -95,24 +102,46 @@ class _FakeResetPasswordResponseDTO_4 extends _i1.SmartFake
         );
 }
 
+class _FakeProfileResponseDTO_5 extends _i1.SmartFake
+    implements _i7.ProfileResponseDTO {
+  _FakeProfileResponseDTO_5(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeChangePasswordDTO_6 extends _i1.SmartFake
+    implements _i8.ChangePasswordDTO {
+  _FakeChangePasswordDTO_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiClient extends _i1.Mock implements _i7.ApiClient {
+class MockApiClient extends _i1.Mock implements _i9.ApiClient {
   MockApiClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i8.Future<_i2.HttpResponse<_i9.ApplyResponseDTO>> apply(
+  _i10.Future<_i2.HttpResponse<_i11.ApplyResponseDTO>> apply(
     String? country,
     String? firstName,
     String? lastName,
     String? vehicleType,
     String? vehicleNumber,
-    _i10.File? vehicleLicense,
+    _i12.File? vehicleLicense,
     String? NID,
-    _i10.File? NIDImg,
+    _i12.File? NIDImg,
     String? email,
     String? password,
     String? rePassword,
@@ -138,8 +167,8 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
             phone,
           ],
         ),
-        returnValue: _i8.Future<_i2.HttpResponse<_i9.ApplyResponseDTO>>.value(
-            _FakeHttpResponse_0<_i9.ApplyResponseDTO>(
+        returnValue: _i10.Future<_i2.HttpResponse<_i11.ApplyResponseDTO>>.value(
+            _FakeHttpResponse_0<_i11.ApplyResponseDTO>(
           this,
           Invocation.method(
             #apply,
@@ -160,34 +189,34 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
             ],
           ),
         )),
-      ) as _i8.Future<_i2.HttpResponse<_i9.ApplyResponseDTO>>);
+      ) as _i10.Future<_i2.HttpResponse<_i11.ApplyResponseDTO>>);
 
   @override
-  _i8.Future<_i3.SignInResponseDTO> signIn(_i11.SignInRequest? data) =>
+  _i10.Future<_i3.SignInResponseDTO> signIn(_i13.SignInRequest? data) =>
       (super.noSuchMethod(
         Invocation.method(
           #signIn,
           [data],
         ),
         returnValue:
-            _i8.Future<_i3.SignInResponseDTO>.value(_FakeSignInResponseDTO_1(
+            _i10.Future<_i3.SignInResponseDTO>.value(_FakeSignInResponseDTO_1(
           this,
           Invocation.method(
             #signIn,
             [data],
           ),
         )),
-      ) as _i8.Future<_i3.SignInResponseDTO>);
+      ) as _i10.Future<_i3.SignInResponseDTO>);
 
   @override
-  _i8.Future<_i4.ForgetResponsePasswordDto> forgetPassword(
+  _i10.Future<_i4.ForgetResponsePasswordDto> forgetPassword(
           Map<String, dynamic>? data) =>
       (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [data],
         ),
-        returnValue: _i8.Future<_i4.ForgetResponsePasswordDto>.value(
+        returnValue: _i10.Future<_i4.ForgetResponsePasswordDto>.value(
             _FakeForgetResponsePasswordDto_2(
           this,
           Invocation.method(
@@ -195,17 +224,17 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
             [data],
           ),
         )),
-      ) as _i8.Future<_i4.ForgetResponsePasswordDto>);
+      ) as _i10.Future<_i4.ForgetResponsePasswordDto>);
 
   @override
-  _i8.Future<_i5.VerifyEmailResponseDto> verifyEmail(
+  _i10.Future<_i5.VerifyEmailResponseDto> verifyEmail(
           Map<String, String>? code) =>
       (super.noSuchMethod(
         Invocation.method(
           #verifyEmail,
           [code],
         ),
-        returnValue: _i8.Future<_i5.VerifyEmailResponseDto>.value(
+        returnValue: _i10.Future<_i5.VerifyEmailResponseDto>.value(
             _FakeVerifyEmailResponseDto_3(
           this,
           Invocation.method(
@@ -213,17 +242,17 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
             [code],
           ),
         )),
-      ) as _i8.Future<_i5.VerifyEmailResponseDto>);
+      ) as _i10.Future<_i5.VerifyEmailResponseDto>);
 
   @override
-  _i8.Future<_i6.ResetPasswordResponseDTO> resetPassword(
+  _i10.Future<_i6.ResetPasswordResponseDTO> resetPassword(
           Map<String, dynamic>? data) =>
       (super.noSuchMethod(
         Invocation.method(
           #resetPassword,
           [data],
         ),
-        returnValue: _i8.Future<_i6.ResetPasswordResponseDTO>.value(
+        returnValue: _i10.Future<_i6.ResetPasswordResponseDTO>.value(
             _FakeResetPasswordResponseDTO_4(
           this,
           Invocation.method(
@@ -231,28 +260,28 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
             [data],
           ),
         )),
-      ) as _i8.Future<_i6.ResetPasswordResponseDTO>);
+      ) as _i10.Future<_i6.ResetPasswordResponseDTO>);
 
   @override
-  _i8.Future<_i2.HttpResponse<_i12.GetVehiclesResponseDTO>> getAllVehicles() =>
+  _i10.Future<_i2.HttpResponse<_i14.GetVehiclesResponseDTO>> getAllVehicles() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllVehicles,
           [],
         ),
         returnValue:
-            _i8.Future<_i2.HttpResponse<_i12.GetVehiclesResponseDTO>>.value(
-                _FakeHttpResponse_0<_i12.GetVehiclesResponseDTO>(
+            _i10.Future<_i2.HttpResponse<_i14.GetVehiclesResponseDTO>>.value(
+                _FakeHttpResponse_0<_i14.GetVehiclesResponseDTO>(
           this,
           Invocation.method(
             #getAllVehicles,
             [],
           ),
         )),
-      ) as _i8.Future<_i2.HttpResponse<_i12.GetVehiclesResponseDTO>>);
+      ) as _i10.Future<_i2.HttpResponse<_i14.GetVehiclesResponseDTO>>);
 
   @override
-  _i8.Future<void> updateOrderState(
+  _i10.Future<void> updateOrderState(
     String? orderId,
     Map<String, dynamic>? data,
   ) =>
@@ -264,25 +293,86 @@ class MockApiClient extends _i1.Mock implements _i7.ApiClient {
             data,
           ],
         ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
 
   @override
-  _i8.Future<_i2.HttpResponse<_i13.PendingOrdersResponseDTO>>
+  _i10.Future<_i2.HttpResponse<_i15.PendingOrdersResponseDTO>>
       getPendingOrders() => (super.noSuchMethod(
             Invocation.method(
               #getPendingOrders,
               [],
             ),
-            returnValue: _i8
-                .Future<_i2.HttpResponse<_i13.PendingOrdersResponseDTO>>.value(
-                _FakeHttpResponse_0<_i13.PendingOrdersResponseDTO>(
+            returnValue: _i10
+                .Future<_i2.HttpResponse<_i15.PendingOrdersResponseDTO>>.value(
+                _FakeHttpResponse_0<_i15.PendingOrdersResponseDTO>(
               this,
               Invocation.method(
                 #getPendingOrders,
                 [],
               ),
             )),
-          ) as _i8.Future<_i2.HttpResponse<_i13.PendingOrdersResponseDTO>>);
+          ) as _i10.Future<_i2.HttpResponse<_i15.PendingOrdersResponseDTO>>);
+
+  @override
+  _i10.Future<_i7.ProfileResponseDTO> getProfileData() => (super.noSuchMethod(
+        Invocation.method(
+          #getProfileData,
+          [],
+        ),
+        returnValue:
+            _i10.Future<_i7.ProfileResponseDTO>.value(_FakeProfileResponseDTO_5(
+          this,
+          Invocation.method(
+            #getProfileData,
+            [],
+          ),
+        )),
+      ) as _i10.Future<_i7.ProfileResponseDTO>);
+
+  @override
+  _i10.Future<_i8.ChangePasswordDTO> changePassword(
+          _i16.ChangePasswordRequestModel? data) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changePassword,
+          [data],
+        ),
+        returnValue:
+            _i10.Future<_i8.ChangePasswordDTO>.value(_FakeChangePasswordDTO_6(
+          this,
+          Invocation.method(
+            #changePassword,
+            [data],
+          ),
+        )),
+      ) as _i10.Future<_i8.ChangePasswordDTO>);
+
+  @override
+  _i10.Future<_i7.ProfileResponseDTO> editProfile(Map<String, dynamic>? data) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProfile,
+          [data],
+        ),
+        returnValue:
+            _i10.Future<_i7.ProfileResponseDTO>.value(_FakeProfileResponseDTO_5(
+          this,
+          Invocation.method(
+            #editProfile,
+            [data],
+          ),
+        )),
+      ) as _i10.Future<_i7.ProfileResponseDTO>);
+
+  @override
+  _i10.Future<String?> uploadPhoto(_i17.FormData? formData) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadPhoto,
+          [formData],
+        ),
+        returnValue: _i10.Future<String?>.value(),
+      ) as _i10.Future<String?>);
 }

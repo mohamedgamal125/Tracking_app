@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/layout/presentation/cubit/layout_states.dart';
 import 'package:tracking_app/layout/presentation/cubit/layout_view_model.dart';
 
+import '../../../core/utils/app_icons.dart';
+
 class LayoutScreen extends StatelessWidget {
   LayoutScreen({super.key});
 
@@ -25,15 +27,15 @@ class LayoutScreen extends StatelessWidget {
               },
               items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined),
+                  icon: Icon(AppIcons.homeIcon),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.fact_check_outlined),
+                  icon: Icon(AppIcons.orderIcon),
                   label: 'Orders',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outline_rounded),
+                  icon: Icon(AppIcons.profileIcon),
                   label: 'Profile',
                 ),
               ],

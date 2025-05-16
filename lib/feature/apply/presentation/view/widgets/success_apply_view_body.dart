@@ -32,7 +32,7 @@ class _SuccessApplyViewBodyState extends State<SuccessApplyViewBody> {
                 SizedBox(
                   height: responsiveHeight(123.86),
                 ),
-                SvgPicture.asset(SvgImags.successApply),
+                SvgPicture.asset(SvgImages.successApply),
                 SizedBox(
                   height: responsiveHeight(64.86),
                 ),

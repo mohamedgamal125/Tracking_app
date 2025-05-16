@@ -30,7 +30,7 @@ class CommunicationWidget extends StatelessWidget {
               log(phoneNumber + ' ny phine number');
             },
             child: SvgPicture.asset(
-              SvgImags.callIcon,
+              SvgImages.callIcon,
               height: responsiveHeight(20),
               width: responsiveWidth(20),
             )),
@@ -39,7 +39,7 @@ class CommunicationWidget extends StatelessWidget {
               await _launchWhatsApp(phoneNumber: whatsAppNumber);
             },
             child: SvgPicture.asset(
-              SvgImags.whatsappIcon,
+              SvgImages.whatsappIcon,
               height: responsiveHeight(25),
               width: responsiveWidth(25),
               fit: BoxFit.contain,
