@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_app/feature/profile/presentation/views/widget/language_widget.dart';
+import 'package:tracking_app/feature/profile/presentation/views/widget/logout_widget.dart';
+import 'package:tracking_app/feature/profile/presentation/views/widget/vehicle_information_widget.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
 import '../../../../../core/di/injectable_initializer.dart';
@@ -59,6 +62,12 @@ class ProfileTab extends StatelessWidget {
                       UserInformationWidget(
                         userData: state.user!,
                       ),
+                      VehicleInformationWidget(
+                        userData: state.user!,
+                      ),
+                      const LanguageWidget(),
+                      const LogoutWidget(),
+
                     ],
                   ),
                 );

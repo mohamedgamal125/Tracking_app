@@ -14,6 +14,9 @@ class ProfileUseCase {
     return await _profileRepository.getProfileData();
   }
 
+  Future<Result<void>> callLogout() async {
+    return _profileRepository.logout();
+  }
   Future<String?> getToken() async {
     return _profileRepository.getToken();
   }

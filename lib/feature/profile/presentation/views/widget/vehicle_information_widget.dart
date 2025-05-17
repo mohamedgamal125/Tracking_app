@@ -5,8 +5,8 @@ import '../../../../../../core/utils/text_styles.dart';
 import '../../../../../core/router/pages_routes.dart';
 import '../../../domain/entity/profile_response_entity.dart';
 
-class UserInformationWidget extends StatelessWidget {
-  const UserInformationWidget({super.key, required this.userData});
+class VehicleInformationWidget extends StatelessWidget {
+  const VehicleInformationWidget({super.key, required this.userData});
   final DriverEntity userData;
 
   @override
@@ -42,13 +42,10 @@ class UserInformationWidget extends StatelessWidget {
               child:ListTile(
                 title: Column(
                   children: [
-                    Text('${userData.firstName ?? ''} ${userData.lastName ?? ''}'),
-                    Text(userData.email ?? ''),
-                    Text(userData.phone ?? ''),
+                    Text('Vehicle info'),
+                    Text(userData.vehicleType ?? ''),
+                    Text(userData.vehicleNumber ?? ''),
                   ],
-                ),
-                leading: CircleAvatar(
-                  child: Image.network(userData.photo ?? '',fit: BoxFit.cover,),
                 ),
               ),
 

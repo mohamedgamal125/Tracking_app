@@ -10,6 +10,7 @@ abstract class ProfileRepository {
   Future<Result<ProfileResponseEntity>> getProfileData();
   Future<Result<ProfileResponseEntity>> editProfile(Map<String, dynamic> data);
   Future<Result<String?>> uploadPhoto(File photo);
+  Future<Result<void>> logout();
   Future<String?> getToken();
   Future<void> deleteToken();
   Future<Result<ChangePasswordEntity>> changePassword(ChangePasswordRequestModel data,);

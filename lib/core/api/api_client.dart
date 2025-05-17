@@ -101,4 +101,7 @@ abstract class ApiClient {
   Future<String?> uploadPhoto(
     @Body() FormData formData,
   );
+
+  @GET(ApiEndPoints.logout)
+  Future<HttpResponse<void>> logout();
 }

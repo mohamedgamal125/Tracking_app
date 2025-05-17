@@ -45,7 +45,13 @@ class ProfileRepositoryImpl implements ProfileRepository {
   Future<Result<ChangePasswordEntity>> changePassword(ChangePasswordRequestModel data,) async {
     return await _profileRemoteDataSource.changePassword(data);
   }
-
+  @override
+  Future<Result<void>> logout() async {
+    return executeApi<void>(() async {
+      await _profileRemoteDataSource.logout();
+      await _profileLocalDataSource.deleteToken();
+    });
+  }
 
   @override
   Future<String?> getToken() async {

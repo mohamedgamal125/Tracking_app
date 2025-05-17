@@ -5,7 +5,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/common/result.dart';
 import '../../domain/use_case/profile_screen_use_case.dart';
-import '../../domain/entity/profile_response_entity.dart';
 import '../cubit/profile_state.dart';
 import '../../data/data_source/profile_local_data_source.dart';
 
@@ -21,6 +20,11 @@ class ProfileViewModel extends Cubit<ProfileState> {
     switch (profileIntent) {
       case ProfileClickedIntent():
         _getProfile();
+        break;
+
+
+      case LogoutClickedIntent():
+        _logout();
         break;
     }
   }
@@ -52,8 +56,29 @@ class ProfileViewModel extends Cubit<ProfileState> {
         break;
     }
   }
+
+  Future<void> _logout() async {
+    emit(LoadingProfileState());
+
+    final result = await _profileUseCase.callLogout();
+
+    switch (result) {
+      case Success():
+        await _localDataSource.deleteToken();
+        emit(LogoutSuccessState());
+        log("User logged out successfully");
+        break;
+
+      case Error():
+        emit(ErrorProfileState("Logout failed: ${result.exception}"));
+        log("Logout error: ${result.exception}");
+        break;
+    }
+  }
 }
 
 sealed class ProfileIntent {}
 
 class ProfileClickedIntent extends ProfileIntent {}
+
+class LogoutClickedIntent extends ProfileIntent {}

@@ -375,4 +375,20 @@ class MockApiClient extends _i1.Mock implements _i9.ApiClient {
         ),
         returnValue: _i10.Future<String?>.value(),
       ) as _i10.Future<String?>);
+
+  @override
+  _i10.Future<_i2.HttpResponse<void>> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue:
+            _i10.Future<_i2.HttpResponse<void>>.value(_FakeHttpResponse_0<void>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i10.Future<_i2.HttpResponse<void>>);
 }

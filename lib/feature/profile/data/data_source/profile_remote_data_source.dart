@@ -17,7 +17,7 @@ abstract class ProfileRemoteDataSource {
   Future<ProfileResponseDTO> editProfile(Map<String, dynamic> data);
   Future<Result<String?>> uploadPhoto(File photo);
   Future<Result<ChangePasswordEntity>> changePassword(ChangePasswordRequestModel data);
-
+  Future<void> logout();
 }
 
 @Injectable(as: ProfileRemoteDataSource)
@@ -63,5 +63,9 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       log("response ${response.message}");
       return response;
     });
+  }
+  @override
+  Future<void> logout() async {
+    await _apiClient.logout();
   }
 }
