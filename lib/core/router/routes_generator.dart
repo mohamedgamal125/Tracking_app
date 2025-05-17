@@ -13,6 +13,7 @@ import 'package:tracking_app/main_view.dart';
 
 import '../../feature/auth/presentation/views/on_boarding/on_boarding_view.dart';
 import '../../feature/auth/presentation/views/forget_password/reset_password_screen.dart';
+import '../../feature/home/domain/entites/pending_orders_response_entity.dart';
 import '../../feature/order_details/presentation/cubits/routes_cubit/routes_cubit.dart';
 import '../di/injectable_initializer.dart';
 
@@ -73,10 +74,16 @@ class RoutesGenerator {
           settings: settings,
         );
       case PagesRoutes.routeView:
+        final args = settings.arguments as Map<String, dynamic>;
+        final OrderEntity order = args['order'];
+        final String selectedAddress = args['selectedAddress'];
         return MaterialPageRoute(
           builder: (context) => BlocProvider<RouteCubit>(
             create: (_) => getIt<RouteCubit>()..loadRoute(),
-            child: const RouteView(),
+            child: RouteView(
+              order: order,
+              selectedAddress: selectedAddress,
+            ),
           ),
           settings: settings,
         );

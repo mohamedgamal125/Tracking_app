@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/core/utils/app_colors.dart';
+import 'package:tracking_app/core/utils/app_icons.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/widgets/bottom_info_card.dart';
 
+import '../../../home/domain/entites/pending_orders_response_entity.dart';
+import '../../data/models/location_info.dart';
 import '../cubits/routes_cubit/routes_cubit.dart';
 import '../cubits/routes_cubit/routes_state.dart';
+
+
 class RouteView extends StatefulWidget {
-  const RouteView({super.key});
+  final OrderEntity order;
+  final String selectedAddress;
+  const RouteView({Key? key, required this.order,required this.selectedAddress}) : super(key: key);
 
   @override
   State<RouteView> createState() => _RouteViewState();
@@ -18,32 +28,115 @@ class _RouteViewState extends State<RouteView> {
   @override
   void initState() {
     super.initState();
-    context.read<RouteCubit>().loadRoute();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadCorrectRoute();
+    });
+  }
+
+  Future<void> _loadCorrectRoute() async {
+    print('📍 selectedAddress: ${widget.selectedAddress}');
+
+    if (widget.selectedAddress == 'user') {
+      final user = widget.order.shippingAddress;
+
+      final lat = double.tryParse(user?.lat ?? '');
+      final lng = double.tryParse(user?.long ?? '');
+
+      if (lat == null || lng == null) {
+        print('⚠ CAN NOT USER LOCATION');
+        return;
+      }
+
+      final userLatLng = LatLngModel(latitude: lat, longitude: lng);
+
+      context.read<RouteCubit>().loadRoute(
+        isPickup: false,
+        userLatLng: userLatLng,
+      );
+    } else {
+      context.read<RouteCubit>().loadRoute(
+        isPickup: true,
+        userLatLng: null,
+      );
+    }
   }
 
   @override
-  Widget build(BuildContext c) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Map')),
       body: BlocConsumer<RouteCubit, RouteState>(
-        listener: (c, s) {
-          if (s is RouteLoaded) {
+        listener: (context, state) {
+          if (state is RouteLoaded) {
             _mapController.animateCamera(
-              CameraUpdate.newLatLngBounds(s.bounds, 50),
+              CameraUpdate.newLatLngBounds(state.bounds, 50),
             );
           }
         },
-        builder: (c, s) => GoogleMap(
-          initialCameraPosition: _initPos,
-          onMapCreated: (m) => _mapController = m,
-          markers: s is RouteLoaded ? s.markers : {},
-          polylines: s is RouteLoaded ? s.polyLines : {},
-        ),
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Positioned(
+                top: 50,
+                left: 0,
+                right: 0,
+                height: MediaQuery.of(context).size.height * 0.6,
+                child: GoogleMap(
+                  initialCameraPosition: _initPos,
+                  onMapCreated: (c) => _mapController = c,
+                  markers: state is RouteLoaded ? state.markers : {},
+                  polylines: state is RouteLoaded ? state.polyLines : {},
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: true,
+                ),
+              ),
+              Positioned(
+                bottom: 280,
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: Container(
+                    width: 120,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: BottomInfoCard(
+                  order: widget.order,
+                  reverse: widget.selectedAddress == 'user',
+                ),
+              ),
+              Positioned(
+                top: 48,
+                left: 16,
+                child: CircleAvatar(
+                  backgroundColor: AppColors.primaryColor,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: responsiveWidth(4)),
+                    child: IconButton(
+                      icon: Icon(AppIcons.back, color: AppColors.whiteColor),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
 }
 
+
+///
 // import 'dart:developer';
 //
 // import 'package:flutter/material.dart';

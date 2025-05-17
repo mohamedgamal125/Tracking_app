@@ -75,13 +75,13 @@ class MainAppContent extends StatelessWidget {
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       // initialRoute: PagesRoutes.forgetPassword,
-      initialRoute: PagesRoutes.routeView,
-      // (SharedPreferenceServices.getData(AppConstants.token) != null &&
-      //         (SharedPreferenceServices.getData(AppConstants.rememberMe)
-      //                 as bool? ??
-      //             false))
-      //     ? PagesRoutes.layoutView
-      //     : PagesRoutes.onBoarding,
+      initialRoute:
+      (SharedPreferenceServices.getData(AppConstants.token) != null &&
+              (SharedPreferenceServices.getData(AppConstants.rememberMe)
+                      as bool? ??
+                  false))
+          ? PagesRoutes.layoutView
+          : PagesRoutes.onBoarding,
     );
   }
 
