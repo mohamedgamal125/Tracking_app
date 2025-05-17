@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/feature/order_details/data/models/location_info.dart';
 import 'package:tracking_app/feature/order_details/data/models/route_modifiers.dart';
 import 'package:tracking_app/feature/order_details/data/models/routes_model/routes_model.dart';
 
+@lazySingleton
 class RoutesApi {
   final String baseUrl =
       'https://routes.googleapis.com/directions/v2:computeRoutes';
