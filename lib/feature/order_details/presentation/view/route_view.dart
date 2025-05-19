@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/core/services/firestore_service.dart';
+import 'package:tracking_app/core/services/location_service.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/app_icons.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/bottom_info_card.dart';
 
 import '../../../home/domain/entites/pending_orders_response_entity.dart';
+import '../../data/models/driver_location_model.dart';
 import '../../data/models/location_info.dart';
 import '../cubits/routes_cubit/routes_cubit.dart';
 import '../cubits/routes_cubit/routes_state.dart';
-
+import 'dart:async';
 
 class RouteView extends StatefulWidget {
   final OrderEntity order;
   final String selectedAddress;
-  const RouteView({Key? key, required this.order,required this.selectedAddress}) : super(key: key);
+  const RouteView(
+      {Key? key, required this.order, required this.selectedAddress})
+      : super(key: key);
 
   @override
   State<RouteView> createState() => _RouteViewState();
@@ -24,13 +30,39 @@ class RouteView extends StatefulWidget {
 class _RouteViewState extends State<RouteView> {
   late GoogleMapController _mapController;
   final _initPos = const CameraPosition(target: LatLng(26.8, 30.8), zoom: 5);
-
+  Timer? _locationUpdateTimer;
   @override
   void initState() {
     super.initState();
+    _startPeriodicLocationUpdates(); // Start location updates every 10s
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadCorrectRoute();
     });
+  }
+
+  void _startPeriodicLocationUpdates() {
+    print('start');
+    _locationUpdateTimer = Timer.periodic(Duration(seconds: 20), (_) async {
+      print('timer');
+      LocationData newLocation = await LocationService().getUserLocation();
+
+      FireStoreService.updateDriverLocation(
+          driverId: "6819fabd1433a666c8d9d735",
+          location: newLocation); // Update local marker on map
+      print('finshd');
+
+      List<Driver> drivers = await FireStoreService.getDriversOnce();
+
+      for (var driver in drivers) {
+        print('Driver: ${driver.location.lng}');
+        print('Driver: ${driver.location.lat}');
+        print('Driver: ${driver.creaditAt}');
+      }
+    });
+    print('finshd');
+    // FireStoreService.getDriversOnce();
+    print('finshed 2');
   }
 
   Future<void> _loadCorrectRoute() async {
@@ -50,14 +82,14 @@ class _RouteViewState extends State<RouteView> {
       final userLatLng = LatLngModel(latitude: lat, longitude: lng);
 
       context.read<RouteCubit>().loadRoute(
-        isPickup: false,
-        userLatLng: userLatLng,
-      );
+            isPickup: false,
+            userLatLng: userLatLng,
+          );
     } else {
       context.read<RouteCubit>().loadRoute(
-        isPickup: true,
-        userLatLng: null,
-      );
+            isPickup: true,
+            userLatLng: null,
+          );
     }
   }
 
@@ -134,7 +166,6 @@ class _RouteViewState extends State<RouteView> {
     );
   }
 }
-
 
 ///
 // import 'dart:developer';

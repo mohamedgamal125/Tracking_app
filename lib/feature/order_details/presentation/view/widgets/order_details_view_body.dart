@@ -64,8 +64,9 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, PagesRoutes.routeView,
-                          // arguments: widget.order
+                      Navigator.pushNamed(
+                        context, PagesRoutes.routeView,
+                        // arguments: widget.order
                         arguments: {
                           'order': widget.order,
                           'selectedAddress': 'pick',
@@ -83,8 +84,8 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                   InkWell(
                     onTap: () {
                       Navigator.pushNamed(
-                          context,
-                          PagesRoutes.routeView,
+                        context,
+                        PagesRoutes.routeView,
                         arguments: {
                           'order': widget.order,
                           'selectedAddress': 'user',
@@ -92,7 +93,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                       );
                     },
                     child: AddressSection(
-                      image:'assets/images/profile-user.png' ,
+                      image: 'assets/images/profile-user.png',
                       sectionTitle: 'User address',
                       name:
                           '${widget.order.user?.firstName ?? ''} ${widget.order.user?.lastName ?? ''}',
@@ -119,18 +120,21 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                         shrinkWrap: true,
                         itemCount: widget.order.orderItems?.length ?? 0,
                         itemBuilder: (context, index) {
-                          return OrderDetailsSection(
-                              image: widget
-                                  .order.orderItems?[index].product?.imgCover ,
-                              name: widget.order.orderItems?[index].product
-                                      ?.title ??
-                                  '',
-                              price: widget.order.orderItems?[index].price
-                                      .toString() ??
-                                  '',
-                              quantity: widget.order.orderItems?[index].quantity
-                                      .toString() ??
-                                  '');
+                          return widget.order.orderItems?[index].product != null
+                              ? OrderDetailsSection(
+                                  image: widget.order.orderItems?[index].product
+                                      ?.imgCover,
+                                  name: widget.order.orderItems?[index].product
+                                          ?.title ??
+                                      '',
+                                  price: widget.order.orderItems?[index].price
+                                          .toString() ??
+                                      '',
+                                  quantity: widget
+                                          .order.orderItems?[index].quantity
+                                          .toString() ??
+                                      '')
+                              : Container();
                         }),
                   ),
                   SizedBox(height: responsiveHeight(16)),
