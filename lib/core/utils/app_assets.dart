@@ -8,4 +8,6 @@ abstract class SvgImags {
   static const String locationIcon = '$svgPath/location.svg';
   static const String whatsappIcon = '$svgPath/whats_app.svg';
   static const String callIcon = '$svgPath/call.svg';
+  static const String errorIcon = '$svgPath/error.svg';
+  static const String DoneIcon = '$svgPath/Done.svg';
 }

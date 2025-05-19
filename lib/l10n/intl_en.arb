@@ -50,4 +50,7 @@
   "pickupAddress": "Pickup address",
   "egp": "EGP"
 
+  "thankYou":"Thank You"
+  "done":"The order delivered\n      successfully"
+
 }

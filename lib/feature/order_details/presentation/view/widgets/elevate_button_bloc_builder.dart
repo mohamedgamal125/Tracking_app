@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/utils/constant_manager.dart';
 import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/states_cubit.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/update_order_state_cubit/update_order_state_cubit.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/custom_elevated_button.dart';
+// import 'package:tracking_app/feature/order_details/presentation/view/widgets/success_view.dart';
 
 class ElevatedButtonBlocBuilder extends StatelessWidget {
   const ElevatedButtonBlocBuilder({
@@ -50,6 +52,8 @@ class ElevatedButtonBlocBuilder extends StatelessWidget {
           AppConstants.orderStatus: 'completed',
         },
       );
+
+     // Navigator.pushNamed(context, PagesRoutes.SuccessView);
     }
   }
 }
