@@ -13,6 +13,8 @@ import '../../../domain/use_case/get_routes_use_case.dart';
 class RouteCubit extends Cubit<RouteState> {
   final LoadRouteUseCase _loadRoute;
   final LocationService _locationService;
+   LatLngBounds? bounds;
+
 
   RouteCubit(this._loadRoute, this._locationService) : super(RouteInitial());
 
@@ -103,6 +105,7 @@ class RouteCubit extends Cubit<RouteState> {
         width: 2,
       );
 
+      bounds= entity.bounds;
       emit(RouteLoaded(
         markers: markers,
         polyLines: {polyline},

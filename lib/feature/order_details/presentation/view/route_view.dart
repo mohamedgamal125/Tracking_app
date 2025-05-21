@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/core/di/injectable_initializer.dart';
 import 'package:tracking_app/core/services/firestore_service.dart';
 import 'package:tracking_app/core/services/location_service.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
@@ -31,14 +32,25 @@ class _RouteViewState extends State<RouteView> {
   late GoogleMapController _mapController;
   final _initPos = const CameraPosition(target: LatLng(26.8, 30.8), zoom: 5);
   Timer? _locationUpdateTimer;
+  bool _isMapControllerReady = false;
+  bool _hasAnimatedCamera = false;
+
   @override
   void initState() {
     super.initState();
     _startPeriodicLocationUpdates(); // Start location updates every 10s
-
+    // _mapController.animateCamera(
+    //   CameraUpdate.newLatLngBounds(context.read<RouteCubit>().bounds!, 50),
+    // );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadCorrectRoute();
     });
+  }
+
+  @override
+  void dispose() {
+    _locationUpdateTimer?.cancel();
+    super.dispose();
   }
 
   void _startPeriodicLocationUpdates() {
@@ -59,6 +71,7 @@ class _RouteViewState extends State<RouteView> {
         print('Driver: ${driver.location.lat}');
         print('Driver: ${driver.creaditAt}');
       }
+      _loadCorrectRoute();
     });
     print('finshd');
     // FireStoreService.getDriversOnce();
@@ -93,15 +106,25 @@ class _RouteViewState extends State<RouteView> {
     }
   }
 
+  void _tryAnimateToRouteBounds() {
+    if (!_isMapControllerReady || _hasAnimatedCamera) return;
+
+    final bounds = context.read<RouteCubit>().bounds;
+    if (bounds != null) {
+      _mapController.animateCamera(
+        CameraUpdate.newLatLngBounds(bounds, 50),
+      );
+      _hasAnimatedCamera = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<RouteCubit, RouteState>(
         listener: (context, state) {
           if (state is RouteLoaded) {
-            _mapController.animateCamera(
-              CameraUpdate.newLatLngBounds(state.bounds, 50),
-            );
+            _tryAnimateToRouteBounds();
           }
         },
         builder: (context, state) {
@@ -112,14 +135,40 @@ class _RouteViewState extends State<RouteView> {
                 left: 0,
                 right: 0,
                 height: MediaQuery.of(context).size.height * 0.6,
-                child: GoogleMap(
-                  initialCameraPosition: _initPos,
-                  onMapCreated: (c) => _mapController = c,
-                  markers: state is RouteLoaded ? state.markers : {},
-                  polylines: state is RouteLoaded ? state.polyLines : {},
-                  myLocationEnabled: true,
-                  myLocationButtonEnabled: true,
-                ),
+                child: StreamBuilder<Driver>(
+                    stream: FireStoreService.driverCollectionStream(
+                        "6819fabd1433a666c8d9d735"),
+                    builder: (context, snapshot) {
+                      if (snapshot.data != null) {
+                        final data = snapshot.data!;
+                        final double lat = data.location.lat;
+                        final double lng = data.location.lng;
+                        final LatLng driverLatLng = LatLng(lat, lng);
+                        final driverMarker = Marker(
+                          markerId: MarkerId('origin'),
+                          position: driverLatLng,
+                        );
+
+                        if (state is RouteLoaded) {
+                          state.markers
+                              .removeWhere((m) => m.markerId.value == 'origin');
+                          state.markers.add(driverMarker);
+                        }
+                      }
+
+                      return GoogleMap(
+                        initialCameraPosition: _initPos,
+                        onMapCreated: (controller) {
+                          _mapController = controller;
+                          _isMapControllerReady = true;
+                          _tryAnimateToRouteBounds();
+                        },
+                        markers: state is RouteLoaded ? state.markers : {},
+                        polylines: state is RouteLoaded ? state.polyLines : {},
+                        myLocationEnabled: true,
+                        myLocationButtonEnabled: true,
+                      );
+                    }),
               ),
               Positioned(
                 bottom: 280,

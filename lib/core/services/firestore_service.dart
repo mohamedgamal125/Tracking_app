@@ -20,9 +20,10 @@ class FireStoreService {
     }
   }
 
-  static Stream<List<Driver>> driverCollectionStream() {
-    return _firestore.collection('drivers').snapshots().map((snapshot) =>
-        snapshot.docs.map((doc) => Driver.fromJson(doc.data())).toList());
+
+  static Stream<Driver> driverCollectionStream(String driverId) {
+    return _firestore.collection('drivers').doc(driverId).snapshots().map(
+            (snapshot) => Driver.fromJson(snapshot.data() as Map<String, dynamic>));
   }
 
   static Future<List<Driver>> getDriversOnce() async {

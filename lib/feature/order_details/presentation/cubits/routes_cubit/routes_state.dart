@@ -12,6 +12,7 @@ class RouteLoaded extends RouteState {
   final LatLngBounds bounds;
 
   RouteLoaded({required this.markers, required this.polyLines, required this.bounds});
+  // RouteLoaded({required this.markers, required this.polyLines});
 }
 
 class RouteError extends RouteState {
