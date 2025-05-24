@@ -5,6 +5,7 @@ import '../../../../../core/common/get_responsive_height_and_width.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
 import '../../../../../core/widgets/custom_validate.dart';
+import '../../../../../generated/l10n.dart';
 import '../../cubit/change_password_cubit/change_password_view-model.dart';
 
 class ChangePasswordForm extends StatelessWidget {
@@ -24,6 +25,7 @@ class ChangePasswordForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<ChangePasswordViewModel>();
+    var tr = S.of(context);
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
@@ -34,24 +36,24 @@ class ChangePasswordForm extends StatelessWidget {
             SizedBox(height: responsiveHeight(32)),
             _buildPasswordField(
               controller: viewModel.currentPasswordController,
-              hint: "Current password",
-              label: "Current password",
+              hint: tr.currentPassword,
+              label: tr.currentPassword,
               touched: currentTouched,
               validator: AppValidate.validatePassword,
             ),
             SizedBox(height: responsiveHeight(24)),
             _buildPasswordField(
               controller: viewModel.newPasswordController,
-              hint: "New password",
-              label: "New password",
+              hint: tr.newPassword,
+              label: tr.newPassword,
               touched: newTouched,
               validator: AppValidate.validatePassword,
             ),
             SizedBox(height: responsiveHeight(24)),
             _buildPasswordField(
               controller: viewModel.confirmPasswordController,
-              hint: "Confirm password",
-              label: "Confirm password",
+              hint: tr.confirmPassword,
+              label: tr.confirmPassword,
               touched: confirmTouched,
               validator: viewModel.confirmPasswordValidator,
             ),
@@ -67,7 +69,7 @@ class ChangePasswordForm extends StatelessWidget {
                 }
               },
               child: Text(
-                "update",
+                tr.update,
                 style: AppTextStyles.roboto500_16.copyWith(
                   color: AppColors.whiteColor,
                 ),

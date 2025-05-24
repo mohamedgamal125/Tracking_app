@@ -3,40 +3,43 @@ import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/core/utils/constants.dart';
 
+import '../../../../../../generated/l10n.dart';
+
 class EditProfileGenderSelector extends StatelessWidget {
   final String selectedGender;
   final ValueChanged<String> onGenderChanged;
 
   const EditProfileGenderSelector({
-    Key? key,
+    super.key,
     required this.selectedGender,
     required this.onGenderChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    var tr = S.of(context);
     return Row(
       children: [
-        Text("Gender", style: AppTextStyles.inter500_18),
+        Text(tr.gender, style: AppTextStyles.inter500_18),
         SizedBox(width: kHorizontalPadding),
         Radio<String>(
-          value: 'female',
+          value: tr.female,
           activeColor: AppColors.primaryColor,
           groupValue: selectedGender,
           onChanged: (value) {
             if (value != null) onGenderChanged(value);
           },
         ),
-        Text("Female", style: AppTextStyles.inter400_14),
+        Text(tr.female, style: AppTextStyles.inter400_14),
         Radio<String>(
-          value: 'male',
+          value: tr.male,
           activeColor: AppColors.primaryColor,
           groupValue: selectedGender,
           onChanged: (value) {
             if (value != null) onGenderChanged(value);
           },
         ),
-        Text("Male", style: AppTextStyles.inter400_14),
+        Text(tr.male, style: AppTextStyles.inter400_14),
       ],
     );
   }

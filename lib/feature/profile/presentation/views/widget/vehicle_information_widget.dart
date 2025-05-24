@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/text_styles.dart';
-import '../../../../../core/router/pages_routes.dart';
+import 'package:tracking_app/core/utils/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../domain/entity/profile_response_entity.dart';
 
 class VehicleInformationWidget extends StatelessWidget {
@@ -29,7 +28,7 @@ class VehicleInformationWidget extends StatelessWidget {
                   top: responsiveHeight(8),
                   bottom: responsiveHeight(8)),
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
@@ -42,7 +41,7 @@ class VehicleInformationWidget extends StatelessWidget {
               child:ListTile(
                 title: Column(
                   children: [
-                    Text('Vehicle info'),
+                    Text(S.of(context).vehicle_info),
                     Text(userData.vehicleType ?? ''),
                     Text(userData.vehicleNumber ?? ''),
                   ],

@@ -59,6 +59,7 @@ dev_dependencies:
 
 
 flutter:
+  generate: true
 
 
   uses-material-design: true
@@ -85,3 +86,5 @@ flutter:
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
   
+flutter_intl:
+  enabled: true

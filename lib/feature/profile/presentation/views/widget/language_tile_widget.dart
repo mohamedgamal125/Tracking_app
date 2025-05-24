@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
-import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/text_styles.dart';
 import '../../../../../core/services/localization_service.dart';
@@ -23,7 +22,7 @@ class LanguageTileWidget extends StatelessWidget {
       child: Container(
         height: responsiveHeight(56),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
           boxShadow: const [
             BoxShadow(
@@ -41,7 +40,7 @@ class LanguageTileWidget extends StatelessWidget {
           },
           title: Text(
             title,
-            style: AppTextStyles.outfitMedium_16.copyWith(color: Colors.black),
+            style: AppTextStyles.outfitMedium_16.copyWith(color: AppColors.blackColor),
           ),
           activeColor: AppColors.primaryColor,
           contentPadding: EdgeInsets.symmetric(horizontal: responsiveWidth(16)),

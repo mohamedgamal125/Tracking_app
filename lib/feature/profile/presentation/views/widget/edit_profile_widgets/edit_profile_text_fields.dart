@@ -4,6 +4,7 @@ import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/extensions.dart';
 import 'package:tracking_app/core/widgets/custom_validate.dart';
 import '../../../../../../core/common/get_responsive_height_and_width.dart';
+import '../../../../../../generated/l10n.dart';
 
 class EditProfileTextFields extends StatelessWidget {
   final TextEditingController firstNameController;
@@ -15,7 +16,7 @@ class EditProfileTextFields extends StatelessWidget {
   final VoidCallback onChanged;
 
   const EditProfileTextFields({
-    Key? key,
+    super.key,
     required this.firstNameController,
     required this.lastNameController,
     required this.emailController,
@@ -23,10 +24,11 @@ class EditProfileTextFields extends StatelessWidget {
     required this.passwordController,
     required this.validateMode,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    var tr = S.of(context);
     return Column(
       children: [
         Row(
@@ -35,7 +37,7 @@ class EditProfileTextFields extends StatelessWidget {
               child: TextFormField(
                 autovalidateMode: validateMode,
                 controller: firstNameController,
-                decoration: InputDecoration(labelText: 'First Name'),
+                decoration: InputDecoration(labelText: tr.firstName),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "First name can't be empty";
@@ -50,7 +52,7 @@ class EditProfileTextFields extends StatelessWidget {
               child: TextFormField(
                 autovalidateMode: validateMode,
                 controller: lastNameController,
-                decoration: InputDecoration(labelText: 'Last Name'),
+                decoration: InputDecoration(labelText:tr.lastName),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Last name can't be empty";
@@ -66,13 +68,13 @@ class EditProfileTextFields extends StatelessWidget {
         TextFormField(
           autovalidateMode: validateMode,
           controller: emailController,
-          decoration: InputDecoration(labelText: 'Email'),
+          decoration: InputDecoration(labelText: tr.email),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "Email can't be empty";
+              return tr.emailRequired;
             }
             if (!value.isValidEmail) {
-              return "Enter a valid email";
+              return tr.emailInvalid;
             }
             return null;
           },
@@ -82,7 +84,7 @@ class EditProfileTextFields extends StatelessWidget {
         TextFormField(
           autovalidateMode: validateMode,
           controller: phoneController,
-          decoration: InputDecoration(labelText: 'Phone Number'),
+          decoration: InputDecoration(labelText: tr.phoneNumber),
           validator: AppValidate.validateMobile,
           onChanged: (_) => onChanged(),
         ),
@@ -93,14 +95,14 @@ class EditProfileTextFields extends StatelessWidget {
           obscureText: true,
           obscuringCharacter: '★',
           decoration: InputDecoration(
-            labelText: 'Password',
+            labelText: tr.password,
             suffixIcon:
             TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, PagesRoutes.changePassword);
               },
               child: Text(
-                'change',
+                tr.change,
                 style: TextStyle(
                   decoration: TextDecoration.none,
                     color: AppColors.blackColor),

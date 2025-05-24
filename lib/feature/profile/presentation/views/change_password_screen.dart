@@ -9,6 +9,7 @@ import '../../../../core/services/shared_preference_services.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constant_manager.dart';
 import '../../../../core/utils/text_styles.dart';
+import '../../../../generated/l10n.dart';
 import '../cubit/change_password_cubit/change_password_state.dart';
 import '../cubit/change_password_cubit/change_password_view-model.dart';
 
@@ -89,7 +90,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 onTap: () => Navigator.pop(context),
                 child: Icon(AppIcons.back),
               ),
-              Text("Reset password", style: AppTextStyles.inter700_20),
+              Text(S.of(context).reset_password, style: AppTextStyles.inter700_20),
             ],
           ),
         ),
@@ -100,7 +101,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               EasyLoading.showError(state.errorMessage);
             } else if (state is ChangePasswordSuccessState) {
               EasyLoading.dismiss();
-              EasyLoading.showSuccess("Password changed successfully");
+              EasyLoading.showSuccess(S.of(context).password_changed_successfully);
               SharedPreferenceServices.deleteData(AppConstants.token);
               Navigator.pushNamedAndRemoveUntil(
                 context,

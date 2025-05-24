@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
-import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../../core/utils/text_styles.dart';
-import '../../../../../core/router/pages_routes.dart';
+import 'package:tracking_app/core/utils/app_colors.dart';
 import '../../../domain/entity/profile_response_entity.dart';
 
 class UserInformationWidget extends StatelessWidget {
@@ -29,7 +27,7 @@ class UserInformationWidget extends StatelessWidget {
                   top: responsiveHeight(8),
                   bottom: responsiveHeight(8)),
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
@@ -52,46 +50,6 @@ class UserInformationWidget extends StatelessWidget {
                 ),
               ),
 
-              // Column(
-              //   children: [
-              //     Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Text(
-              //           userData.firstName ?? '',
-              //           style: AppTextStyles.inter500_18,
-              //         ),
-              //         SizedBox(width: responsiveWidth(8)),
-              //         SizedBox(
-              //           width: responsiveWidth(24),
-              //           height: responsiveHeight(24),
-              //           child: InkWell(
-              //             onTap: () {
-              //               Navigator.pushReplacementNamed(
-              //                 context,
-              //                 PagesRoutes.editProfile,
-              //                 arguments: userData,
-              //               );
-              //             },
-              //             child:Icon(Icons.edit),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //     Text(
-              //       userData.email ?? '',
-              //       style: AppTextStyles.inter500_18.copyWith(
-              //         color: AppColors.greyDarkColor,
-              //       ),
-              //     ),
-              //     Text(
-              //       userData.email ?? '',
-              //       style: AppTextStyles.inter500_18.copyWith(
-              //         color: AppColors.greyDarkColor,
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ),
           ),
         ],

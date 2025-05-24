@@ -5,6 +5,9 @@ import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../generated/l10n.dart';
+
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
 
@@ -30,7 +33,7 @@ class OnBoardingScreen extends StatelessWidget {
                       child: Transform.scale(
                         scale: 1.7,
                         child: Lottie.asset(
-                          'assets/animations/onboarding_animation.json',
+                          AnimationAssets.onboardingAssets,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -41,7 +44,7 @@ class OnBoardingScreen extends StatelessWidget {
 
               SizedBox(height: 24),
               Text(
-                "Welcome to\nFlowery rider app",
+                "${S.of(context).welcomeTo}\n${S.of(context).floweryRider}",
                 style: AppTextStyles.inter500_20,
               ),
               SizedBox(
@@ -52,7 +55,7 @@ class OnBoardingScreen extends StatelessWidget {
                     Navigator.pushNamed(context, PagesRoutes.signIn);
                   },
                   child: Text(
-                    "Login",
+                    S.of(context).login,
                     style: AppTextStyles.inter500_16
                         .copyWith(color: AppColors.whiteColor),
                   )),
@@ -66,7 +69,7 @@ class OnBoardingScreen extends StatelessWidget {
                     Navigator.pushNamed(context, PagesRoutes.applyView);
                   },
                   child: Text(
-                    "Apply now",
+                    S.of(context).apply_now,
                     style: AppTextStyles.inter500_16
                         .copyWith(color: AppColors.greyDarkColor),
                   )),

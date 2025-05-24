@@ -6,6 +6,7 @@ import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/layout/presentation/views/layout_screen.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../cubit/edit_profile_cubit/edit_profile_state.dart';
 import '../../../cubit/edit_profile_cubit/edit_profile_view_model.dart';
 
@@ -38,9 +39,7 @@ class EditProfileSubmitButton extends StatelessWidget {
       listener: (context, state) async {
         switch (state) {
           case EditProfileLoadingState():
-            log('loading');
           case EditProfileSuccessState():
-            log('success');
             EasyLoading.showSuccess("Profile Edit successfully");
             Navigator.pushReplacement(
               context,
@@ -49,7 +48,6 @@ class EditProfileSubmitButton extends StatelessWidget {
               ),
             );
           case EditProfileErrorState():
-            log('error');
             EasyLoading.showError(state.message);
           default:
         }
@@ -86,7 +84,7 @@ class EditProfileSubmitButton extends StatelessWidget {
               }
             },
             child: Text(
-              'update',
+              S.of(context).update,
               style: AppTextStyles.roboto500_16.copyWith(
                 color: AppColors.whiteColor,
               ),
