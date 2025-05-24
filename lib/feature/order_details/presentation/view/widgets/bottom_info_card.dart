@@ -4,6 +4,7 @@ import 'package:tracking_app/core/utils/text_styles.dart';
 import '../../../../../core/common/get_responsive_height_and_width.dart';
 import '../../../../home/domain/entites/pending_orders_response_entity.dart';
 import 'address_details_section.dart';
+import '../../../../../core/utils/app_assets.dart';
 
 class BottomInfoCard extends StatelessWidget {
   final OrderEntity? order;
@@ -21,7 +22,7 @@ class BottomInfoCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: responsiveWidth(24)),
           child: Text('Pickup address', style: AppTextStyles.inter400_12),
         ),
         Padding(
@@ -30,6 +31,7 @@ class BottomInfoCard extends StatelessWidget {
             name: order?.store?.name ?? '',
             address: order?.store?.address ?? '',
             phone: order?.store?.phoneNumber ?? '',
+            image: SvgImags.flowerlyLogo,
           ),
         ),
         SizedBox(height: responsiveHeight(16)),
@@ -49,7 +51,7 @@ class BottomInfoCard extends StatelessWidget {
             name: '${order?.user?.firstName ?? ''} ${order?.user?.lastName ?? ''}',
             address: order?.shippingAddress?.street ?? '',
             phone: order?.shippingAddress?.phone ?? '',
-            image: "https://i.pravatar.cc/300",
+            image: order?.user?.photo,
           ),
         ),
         SizedBox(height: responsiveHeight(16)),
@@ -62,3 +64,4 @@ class BottomInfoCard extends StatelessWidget {
     );
   }
 }
+

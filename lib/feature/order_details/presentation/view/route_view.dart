@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/app_icons.dart';
+import 'package:tracking_app/core/utils/constant_manager.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/bottom_info_card.dart';
 
 import '../../../home/domain/entites/pending_orders_response_entity.dart';
@@ -11,11 +12,10 @@ import '../../data/models/location_info.dart';
 import '../cubits/routes_cubit/routes_cubit.dart';
 import '../cubits/routes_cubit/routes_state.dart';
 
-
 class RouteView extends StatefulWidget {
   final OrderEntity order;
   final String selectedAddress;
-  const RouteView({Key? key, required this.order,required this.selectedAddress}) : super(key: key);
+  const RouteView({super.key, required this.order, required this.selectedAddress});
 
   @override
   State<RouteView> createState() => _RouteViewState();
@@ -34,7 +34,7 @@ class _RouteViewState extends State<RouteView> {
   }
 
   Future<void> _loadCorrectRoute() async {
-    print('📍 selectedAddress: ${widget.selectedAddress}');
+    debugPrint('📍 selectedAddress: ${widget.selectedAddress}');
 
     if (widget.selectedAddress == 'user') {
       final user = widget.order.shippingAddress;
@@ -43,7 +43,7 @@ class _RouteViewState extends State<RouteView> {
       final lng = double.tryParse(user?.long ?? '');
 
       if (lat == null || lng == null) {
-        print('⚠ CAN NOT USER LOCATION');
+        debugPrint('⚠ CAN NOT USER LOCATION');
         return;
       }
 
@@ -61,6 +61,12 @@ class _RouteViewState extends State<RouteView> {
     }
   }
 
+  Future<void> _onMapCreated(GoogleMapController controller) async {
+    _mapController = controller;
+    final style = await DefaultAssetBundle.of(context).loadString(AppConstants.mapStyle);
+    _mapController.setMapStyle(style);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,27 +82,28 @@ class _RouteViewState extends State<RouteView> {
           return Stack(
             children: [
               Positioned(
-                top: 50,
+                top: responsiveHeight(40),
                 left: 0,
                 right: 0,
                 height: MediaQuery.of(context).size.height * 0.6,
                 child: GoogleMap(
                   initialCameraPosition: _initPos,
-                  onMapCreated: (c) => _mapController = c,
+                  onMapCreated: _onMapCreated,
                   markers: state is RouteLoaded ? state.markers : {},
                   polylines: state is RouteLoaded ? state.polyLines : {},
                   myLocationEnabled: true,
                   myLocationButtonEnabled: true,
                 ),
               ),
+              // line color
               Positioned(
-                bottom: 280,
+                bottom: responsiveHeight(270),
                 left: 0,
                 right: 0,
                 child: Center(
                   child: Container(
-                    width: 120,
-                    height: 4,
+                    width: responsiveWidth(120),
+                    height: responsiveHeight(4),
                     decoration: BoxDecoration(
                       color: AppColors.primaryColor,
                       borderRadius: BorderRadius.circular(8),
@@ -104,6 +111,7 @@ class _RouteViewState extends State<RouteView> {
                   ),
                 ),
               ),
+              // card info
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -113,9 +121,10 @@ class _RouteViewState extends State<RouteView> {
                   reverse: widget.selectedAddress == 'user',
                 ),
               ),
+              // back icon
               Positioned(
-                top: 48,
-                left: 16,
+                top: responsiveHeight(48),
+                left: responsiveWidth(16),
                 child: CircleAvatar(
                   backgroundColor: AppColors.primaryColor,
                   child: Padding(
@@ -134,6 +143,7 @@ class _RouteViewState extends State<RouteView> {
     );
   }
 }
+
 
 
 ///

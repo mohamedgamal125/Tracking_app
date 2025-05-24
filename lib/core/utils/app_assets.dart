@@ -1,4 +1,10 @@
 const String svgPath = 'assets/svg';
+const String imagePath = "assets/images";
+
+abstract class ImageAssets {
+  static const String profileImage = "$imagePath/profile_example.jpg";
+  static const String profileUser = "$imagePath//profile-user.png";
+}
 
 abstract class SvgImags {
   static const String successApply = '$svgPath/success_apply.svg';
