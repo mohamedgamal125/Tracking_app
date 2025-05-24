@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/services/shared_preference_services.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
+import 'package:tracking_app/feature/orders/presentation/views/order_details.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/address_widget.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/flower_order_widget.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/status_widget.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/total_status.dart';
 
+import '../../../../core/router/pages_routes.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 
 class OrdersTab extends StatelessWidget {
@@ -48,13 +50,21 @@ class OrdersTab extends StatelessWidget {
             //     address: "20th st, Sheikh Zayed, Giza ",
             //     label: "user address",
             // )
-            FlowerOrderWidget(addressWidget:  AddressWidget(
+            FlowerOrderWidget(
+                onPress: () {
+                  Navigator.pushNamed(context, PagesRoutes.orderTabDetails);
+                },
+                addressWidget:  AddressWidget(
               imgUrl: "",
               name: "flowery",
               address: "20th st, Sheikh Zayed, Giza ",
               label: "pickup address",
             ), statusWidget: StatusWidget(txt: "Completed", flag: true,color: AppColors.greenColor,))
-           , FlowerOrderWidget(addressWidget:  AddressWidget(
+           , FlowerOrderWidget(
+                onPress: () {
+                  Navigator.pushNamed(context, PagesRoutes.orderTabDetails);
+                },
+                addressWidget:  AddressWidget(
               imgUrl: "",
               name: "Mohamed",
               address: "20th st, Sheikh Zayed, Giza ",

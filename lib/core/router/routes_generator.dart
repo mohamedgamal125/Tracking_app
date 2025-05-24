@@ -11,7 +11,7 @@ import 'package:tracking_app/main_view.dart';
 
 import '../../feature/auth/presentation/views/on_boarding/on_boarding_view.dart';
 import '../../feature/auth/presentation/views/forget_password/reset_password_screen.dart';
-
+import '../../feature/orders/presentation/views/order_details.dart';
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -55,9 +55,12 @@ class RoutesGenerator {
             builder: (context) => EmailVerificationScreen(),
             settings: settings);
 
-        return MaterialPageRoute(builder: (context) => EmailVerificationScreen(), settings: settings);
+        return MaterialPageRoute(
+            builder: (context) => EmailVerificationScreen(),
+            settings: settings);
       case PagesRoutes.orderDetails:
-        return MaterialPageRoute(builder: (context) => OrderDetailsView(), settings: settings);
+        return MaterialPageRoute(
+            builder: (context) => OrderDetailsView(), settings: settings);
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(
@@ -69,6 +72,10 @@ class RoutesGenerator {
           builder: (context) => LayoutScreen(),
           settings: settings,
         );
+      case PagesRoutes.orderTabDetails:
+        return MaterialPageRoute(
+            builder: (context) => OrderTabDetails(), settings: settings);
+
       default:
         return unDefinedRoute();
     }

@@ -9,4 +9,5 @@ abstract class PagesRoutes {
   static const String applyView = 'applyView';
   static const String orderDetails = 'orderDetails';
   static const String layoutView = 'layoutView';
+  static const String orderTabDetails = "order_tab_details";
 }
