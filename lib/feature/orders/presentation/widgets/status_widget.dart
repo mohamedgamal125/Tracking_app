@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+import 'package:tracking_app/feature/orders/domain/entity/order_entity.dart';
 
 import '../../../../core/common/get_responsive_height_and_width.dart';
 import '../../../../core/utils/app_assets.dart';
 
 class StatusWidget extends StatelessWidget {
   const StatusWidget(
-      {super.key, required this.txt, required this.flag,  this.color=Colors.black});
+      {super.key, required this.statusEntity});
 
-  final String txt;
-  final bool flag;
-  final Color color ;
+  final StatusEntity statusEntity;
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       child: Row(
         children: [
-          flag
+          statusEntity.flag
               ? SvgPicture.asset(
                   SvgImags.DoneIcon,
                   height: responsiveHeight(20),
@@ -31,8 +31,8 @@ class StatusWidget extends StatelessWidget {
                 ),
           SizedBox(width: responsiveWidth(4)),
           Text(
-            txt,
-            style: AppTextStyles.inter500_16.copyWith(color: color),
+            statusEntity.txt,
+            style: AppTextStyles.inter500_16.copyWith(color: statusEntity.color),
           )
         ],
       ),

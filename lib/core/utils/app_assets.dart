@@ -10,4 +10,5 @@ abstract class SvgImags {
   static const String callIcon = '$svgPath/call.svg';
   static const String errorIcon = '$svgPath/error.svg';
   static const String DoneIcon = '$svgPath/Done.svg';
+  static const String flowerImg = '$svgPath/flowerImg.svg';
 }

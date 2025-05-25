@@ -4,21 +4,25 @@ import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/address_widget.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/status_widget.dart';
 
-class FlowerOrderWidget extends StatelessWidget {
-  const FlowerOrderWidget({super.key, required this.addressWidget, required this.statusWidget, required this.onPress});
+import '../../domain/entity/order_entity.dart';
 
-  final AddressWidget addressWidget;
-  final StatusWidget statusWidget;
+class FlowerOrderWidget extends StatelessWidget {
+  const FlowerOrderWidget(
+      {super.key,
+
+      required this.onPress, required this.order,
+      });
+
   final VoidCallback onPress;
+
+  final OrderEntity2 order;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-     onTap: ()=>onPress(),
-
+      onTap: () => onPress(),
       child: Container(
-
-        margin: EdgeInsets.symmetric(vertical: 16,horizontal: 16),
+        margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
@@ -26,37 +30,52 @@ class FlowerOrderWidget extends StatelessWidget {
             BoxShadow(
               color: Colors.black.withOpacity(0.1), // Shadow color
               spreadRadius: 1, // How wide the shadow spreads
-              blurRadius: 6,   // How blurry the shadow is
+              blurRadius: 6, // How blurry the shadow is
               offset: Offset(0, 3), // x and y offset
             ),
           ],
         ),
-
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text("Flower order",style: AppTextStyles.inter500_14,),
+                child: Text(
+                  order.orderType!,
+                  style: AppTextStyles.inter500_14,
+                ),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  statusWidget,
-                  Text("# 123456",style: AppTextStyles.inter600_16,)
+                  StatusWidget(statusEntity: order.statusEntity!),
+                  Text(
+                    order.id!,
+                    style: AppTextStyles.inter600_16,
+                  )
                 ],
               ),
+              AddressWidget(
+                  address: AddressEntity(
+                      name: order.store!.name,
+                      address: order.store!.address,
+                      imgUrl: order.store!.imgUrl,
+                    label: order.store!.label
+                  ),
+                  ),
+              AddressWidget(
+                  address: AddressEntity(
+                    label: order.user!.label,
+                      name: order.user!.name,
+                      address: order.user!.address,
+                      imgUrl: order.user!.imgUrl),
+                 ),
 
-              addressWidget,
-              addressWidget
             ],
           ),
         ),
-
       ),
     );
   }

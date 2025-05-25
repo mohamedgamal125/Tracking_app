@@ -4,18 +4,16 @@ import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/app_assets.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
+import 'package:tracking_app/feature/orders/domain/entity/order_entity.dart';
 
 class AddressWidget extends StatelessWidget {
   AddressWidget(
       {super.key,
-      required this.imgUrl,
-      required this.name,
-      required this.address, required this.label});
+      required this.address,});
 
-  final String? imgUrl;
-  final String name;
-  final String address;
-  final String label;
+
+ final AddressEntity address;
+
 
 
   @override
@@ -25,7 +23,7 @@ class AddressWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label,style: AppTextStyles.roboto400_12.copyWith(color: AppColors.greyColor),),
+          Text(address.label!,style: AppTextStyles.roboto400_12.copyWith(color: AppColors.greyColor),),
           Container(
             margin: EdgeInsets.symmetric(vertical: 8),
             width:responsiveWidth(320) ,
@@ -38,7 +36,7 @@ class AddressWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
                     child: CircleAvatar(
-                      child: imgUrl==null||imgUrl!.isEmpty?SvgPicture.asset(SvgImags.flowerlyLogo):Image.network(imgUrl!),
+                      child: address.imgUrl==null||address.imgUrl!.isEmpty?SvgPicture.asset(SvgImags.flowerlyLogo):Image.network(address.imgUrl!),
                     ),
                   ),
 
@@ -47,7 +45,7 @@ class AddressWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          name,
+                          address.name!,
                           style: AppTextStyles.inter400_13
                               .copyWith(color: AppColors.greyColor),
                         ),
@@ -59,7 +57,7 @@ class AddressWidget extends StatelessWidget {
                               width: responsiveWidth(12),
                             ),
                             Text(
-                              address,
+                              address.address!,
                               style: AppTextStyles.inter400_13,
                             )
                           ],

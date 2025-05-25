@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/services/shared_preference_services.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
+import 'package:tracking_app/feature/orders/domain/entity/order_entity.dart';
 import 'package:tracking_app/feature/orders/presentation/views/order_details.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/address_widget.dart';
 import 'package:tracking_app/feature/orders/presentation/widgets/flower_order_widget.dart';
@@ -11,10 +12,58 @@ import '../../../../core/router/pages_routes.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 
 class OrdersTab extends StatelessWidget {
-  const OrdersTab({super.key});
+   OrdersTab({super.key});
+
+  final List<String> userNames = [
+    "Mohamed", "Sara", "Omar", "Layla", "Ahmed",
+    "Mona", "Khaled", "Nada", "Youssef", "Fatma"
+  ];
+
+  final List<String> storeNames = [
+    "Rose Garden", "Tulip Hub", "Daisy Bloom", "Lily Lane", "Petal Place",
+    "Blossom Point", "Orchid Oasis", "Sunflower Studio", "Floral Haven", "Lavender Loft"
+  ];
+
+  final List<String> cities = [
+    "Cairo", "Giza", "Alexandria", "Luxor", "Aswan",
+    "Zagazig", "Mansoura", "Tanta", "Fayoum", "Ismailia"
+  ];
+
+   final List<String> statusTexts = List.generate(10, (index) => index % 2 == 0 ? "Completed" : "Cancelled");
+
 
   @override
   Widget build(BuildContext context) {
+    final List<OrderEntity2> orders = List.generate(10, (index) {
+      final isCompleted = index % 2 == 0;
+      return OrderEntity2(
+        orderType: "Flowery Order #${index + 1}",
+        id: "#@11112$index",
+        status: isCompleted,
+        store: AddressEntity(
+          label: "Pickup Address",
+          name: storeNames[index],
+          address: "${cities[index]} - Egypt",
+          imgUrl: "",
+        ),
+        user: AddressEntity(
+          label: "User Address",
+          name: userNames[index],
+          address: "${cities[(index + 3) % 10]} - Egypt",
+          imgUrl: "",
+        ),
+        statusEntity: StatusEntity(
+          txt: isCompleted ? "Completed" : "Cancelled",
+          flag: isCompleted,
+        ),
+      );
+    });
+
+    // Count status totals
+    final int completedCount =
+        orders.where((order) => order.statusEntity!.txt == "Completed").length;
+    final int cancelledCount = orders.length - completedCount;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("My orders"),
@@ -31,45 +80,33 @@ class OrdersTab extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TotalStatus(
-                    total: 4,
-                    statusWidget: StatusWidget(txt: "Cancelled", flag: false)),
+                  total: cancelledCount,
+                  statusWidget: StatusWidget(
+                    statusEntity:
+                    StatusEntity(txt: "Cancelled", flag: false),
+                  ),
+                ),
                 TotalStatus(
-                    total: 100,
-                    statusWidget: StatusWidget(txt: "Completed", flag: true)),
-              ],
+                  total: completedCount,
+                  statusWidget: StatusWidget(
+                    statusEntity:
+                    StatusEntity(txt: "Completed", flag: true),
+                  ),
+                )],
             ),
-            // AddressWidget(
-            //     imgUrl: "",
-            //     name: "Flowery store",
-            //     address: "20th st, Sheikh Zayed, Giza ",
-            //     label: "Pick up address",
-            // ) ,
-            // AddressWidget(
-            //     imgUrl: "",
-            //     name: "Mohamed",
-            //     address: "20th st, Sheikh Zayed, Giza ",
-            //     label: "user address",
-            // )
-            FlowerOrderWidget(
-                onPress: () {
-                  Navigator.pushNamed(context, PagesRoutes.orderTabDetails);
-                },
-                addressWidget:  AddressWidget(
-              imgUrl: "",
-              name: "flowery",
-              address: "20th st, Sheikh Zayed, Giza ",
-              label: "pickup address",
-            ), statusWidget: StatusWidget(txt: "Completed", flag: true,color: AppColors.greenColor,))
-           , FlowerOrderWidget(
-                onPress: () {
-                  Navigator.pushNamed(context, PagesRoutes.orderTabDetails);
-                },
-                addressWidget:  AddressWidget(
-              imgUrl: "",
-              name: "Mohamed",
-              address: "20th st, Sheikh Zayed, Giza ",
-              label: "user address",
-            ), statusWidget: StatusWidget(txt: "Cancelled", flag: false,color: AppColors.errorColor,))
+            ListView.builder(
+              itemCount: orders.length,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return FlowerOrderWidget(
+                  onPress: () {
+                    Navigator.pushNamed(context, PagesRoutes.orderTabDetails,arguments: orders[index]);
+                  },
+                  order: orders[index],
+                );
+              },
+            ),
           ],
         ),
       ),
