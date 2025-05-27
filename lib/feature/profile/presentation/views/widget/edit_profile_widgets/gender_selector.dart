@@ -23,7 +23,7 @@ class EditProfileGenderSelector extends StatelessWidget {
         Text(tr.gender, style: AppTextStyles.inter500_18),
         SizedBox(width: kHorizontalPadding),
         Radio<String>(
-          value: tr.female,
+          value: 'female',
           activeColor: AppColors.primaryColor,
           groupValue: selectedGender,
           onChanged: (value) {
@@ -32,7 +32,7 @@ class EditProfileGenderSelector extends StatelessWidget {
         ),
         Text(tr.female, style: AppTextStyles.inter400_14),
         Radio<String>(
-          value: tr.male,
+          value: 'male',
           activeColor: AppColors.primaryColor,
           groupValue: selectedGender,
           onChanged: (value) {

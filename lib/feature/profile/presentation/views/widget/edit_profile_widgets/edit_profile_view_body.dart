@@ -41,8 +41,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
 
   @override
   void initState() {
-    selectedGender = widget.userData.gender!;
+    // selectedGender = widget.userData.gender!;
     super.initState();
+    if (widget.userData.gender == 'male' || widget.userData.gender == 'female') {
+      selectedGender = widget.userData.gender;
+    } else {
+      selectedGender = 'male';
+    }
   }
 
   @override
@@ -83,7 +88,8 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               ),
               SizedBox(height: responsiveHeight(24)),
               EditProfileGenderSelector(
-                selectedGender: selectedGender!,
+                // selectedGender: selectedGender!,
+                selectedGender: selectedGender ?? 'male',
                 onGenderChanged: (value) => setState(() => selectedGender = value),
               ),
               SizedBox(height: responsiveHeight(32)),

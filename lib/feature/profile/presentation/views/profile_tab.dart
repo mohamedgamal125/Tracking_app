@@ -59,8 +59,13 @@ class ProfileTab extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: responsiveHeight(32)),
-                      UserInformationWidget(
-                        userData: state.user!,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, PagesRoutes.editProfile,arguments: state.user!);
+                        },
+                        child: UserInformationWidget(
+                          userData: state.user!,
+                        ),
                       ),
                       VehicleInformationWidget(
                         userData: state.user!,
