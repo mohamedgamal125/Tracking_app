@@ -5,12 +5,13 @@ import 'package:injectable/injectable.dart';
 import 'package:tracking_app/feature/order_details/data/models/location_info.dart';
 import 'package:tracking_app/feature/order_details/data/models/route_modifiers.dart';
 import 'package:tracking_app/feature/order_details/data/models/routes_model/routes_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 @lazySingleton
 class RoutesApi {
   final String baseUrl =
       'https://routes.googleapis.com/directions/v2:computeRoutes';
-  final String _apiKey = 'AIzaSyA58V9xiOqj_f8bCkjNxnUl4G5Jf86kRtc';
+  final String _apiKey = dotenv.env['GOOGLE_MAPS_API_KEY'] ?? '';
   Future<RoutesModel> fetchRoutes({
     required LocationInfo origin,
     required LocationInfo destination,

@@ -44,6 +44,7 @@ dependencies:
   retrofit: ^4.4.2
   shared_preferences: ^2.5.3
   url_launcher: ^6.3.1
+  flutter_dotenv:
 
 dev_dependencies:
   build_runner: ^2.4.15
@@ -66,6 +67,7 @@ flutter:
     - assets/images/
     - assets/files/
     - assets/map_styles/
+    - .env
 
   fonts:
     - family: IM FELL English

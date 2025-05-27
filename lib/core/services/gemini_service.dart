@@ -2,12 +2,14 @@ import 'dart:io';
 
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:injectable/injectable.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 @injectable
 class GeminiService {
   final model = GenerativeModel(
     model: 'gemini-1.5-flash',
-    apiKey: 'AIzaSyBqKEyhCRToeJVF6Da4AWkWCJcqKEzAWo8',
+    apiKey: dotenv.env['GEMINI_API'] ?? '',
+
   );
   // Future<List> validateNationalIdCard(
   //     File image, String selectedCountry) async {
