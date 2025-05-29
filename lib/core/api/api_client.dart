@@ -94,6 +94,8 @@ abstract class ApiClient {
   @PUT(ApiEndPoints.editProfile)
   Future<ProfileResponseDTO> editProfile(
     @Body() Map<String, dynamic> data,
+      // @Part(name: 'image', contentType: "image/jpeg")
+      // File license,
   );
 
   @PUT(ApiEndPoints.uploadProfilePhoto)
@@ -104,4 +106,13 @@ abstract class ApiClient {
 
   @GET(ApiEndPoints.logout)
   Future<HttpResponse<void>> logout();
+
+
+  @PUT(ApiEndPoints.editProfile)
+  @MultiPart()
+  Future<ProfileResponseDTO> editVehicle(
+      @Body() Map<String, dynamic> data,
+      @Part(name: 'name') String name,
+      @Part(name: 'image', contentType: "image/jpeg") File image,
+      );
 }

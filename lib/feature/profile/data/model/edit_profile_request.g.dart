@@ -13,6 +13,7 @@ EditProfileRequest _$EditProfileRequestFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       gender: json['gender'] as String,
       phone: json['phone'] as String,
+
     );
 
 Map<String, dynamic> _$EditProfileRequestToJson(EditProfileRequest instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$EditProfileRequestToJson(EditProfileRequest instance) =>
       'email': instance.email,
       'gender': instance.gender,
       'phone': instance.phone,
+
     };

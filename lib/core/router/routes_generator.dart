@@ -9,6 +9,7 @@ import 'package:tracking_app/feature/auth/presentation/views/sign_in/sign_in_scr
 import 'package:tracking_app/feature/order_details/presentation/view/order_details_view.dart';
 import 'package:tracking_app/feature/profile/presentation/views/change_password_screen.dart';
 import 'package:tracking_app/feature/profile/presentation/views/edit_profile_view.dart';
+import 'package:tracking_app/feature/profile/presentation/views/edit_vehicle_view.dart';
 import 'package:tracking_app/layout/presentation/views/layout_screen.dart';
 import 'package:tracking_app/main_view.dart';
 
@@ -20,7 +21,6 @@ import '../di/injectable_initializer.dart';
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-
       case PagesRoutes.signIn:
         return MaterialPageRoute(
           builder: (context) => SignInScreen(),
@@ -63,7 +63,8 @@ class RoutesGenerator {
             settings: settings);
 
       case PagesRoutes.orderDetails:
-        return MaterialPageRoute(builder: (context) => OrderDetailsView(), settings: settings);
+        return MaterialPageRoute(
+            builder: (context) => OrderDetailsView(), settings: settings);
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(
@@ -89,6 +90,9 @@ class RoutesGenerator {
       case PagesRoutes.editProfile:
         return MaterialPageRoute(
             builder: (context) => EditProfileView(), settings: settings);
+      case PagesRoutes.editVehicle:
+        return MaterialPageRoute(
+            builder: (context) => EditVehicleView(), settings: settings);
 
       default:
         return unDefinedRoute();

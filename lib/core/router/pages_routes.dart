@@ -11,4 +11,6 @@ abstract class PagesRoutes {
   static const String layoutView = 'layoutView';
   static const String changePassword = 'changePassword';
   static const String editProfile = 'editProfile';
+  static const String editVehicle = 'editVehicle';
+
 }

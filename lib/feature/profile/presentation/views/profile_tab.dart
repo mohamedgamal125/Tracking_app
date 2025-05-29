@@ -12,16 +12,14 @@ import '../cubit/profile_view_model.dart';
 import 'widget/user_information_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-
-
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ProfileViewModel(getIt(), getIt())..doIntent(ProfileClickedIntent()),
+      create: (_) =>
+          ProfileViewModel(getIt(), getIt())..doIntent(ProfileClickedIntent()),
       child: SafeArea(
         child: BlocListener<ProfileViewModel, ProfileState>(
           listener: (context, state) {
@@ -29,7 +27,7 @@ class ProfileTab extends StatelessWidget {
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 PagesRoutes.signIn,
-                    (route) => false,
+                (route) => false,
               );
             } else if (state is ErrorProfileState) {
               ScaffoldMessenger.of(
@@ -59,15 +57,28 @@ class ProfileTab extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: responsiveHeight(32)),
-                      UserInformationWidget(
-                        userData: state.user!,
+                      InkWell(
+                        onTap: () {
+                          Navigator.popAndPushNamed(
+                              context, PagesRoutes.editProfile,
+                              arguments: state.user!);
+                        },
+                        child: UserInformationWidget(
+                          userData: state.user!,
+                        ),
                       ),
-                      VehicleInformationWidget(
-                        userData: state.user!,
+                      InkWell(
+                        onTap: () {
+                          Navigator.popAndPushNamed(
+                              context, PagesRoutes.editVehicle,
+                              arguments: state.user!);
+                        },
+                        child: VehicleInformationWidget(
+                          userData: state.user!,
+                        ),
                       ),
                       const LanguageWidget(),
                       const LogoutWidget(),
-
                     ],
                   ),
                 );
@@ -81,5 +92,3 @@ class ProfileTab extends StatelessWidget {
     );
   }
 }
-
-

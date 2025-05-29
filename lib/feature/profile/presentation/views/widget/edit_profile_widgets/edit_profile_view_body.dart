@@ -86,7 +86,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 selectedGender: selectedGender!,
                 onGenderChanged: (value) => setState(() => selectedGender = value),
               ),
+              SizedBox(height: responsiveHeight(24)),
+              EditProfileGenderSelector(
+                selectedGender: selectedGender!,
+                onGenderChanged: (value) => setState(() => selectedGender = value),
+              ),
               SizedBox(height: responsiveHeight(32)),
+
               EditProfileSubmitButton(
                 validateMode: validateMode,
                 formKey: formKey,
@@ -97,6 +103,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 email: _emailController.text,
                 phone: _phoneController.text,
               ),
+
             ],
           ),
         ),
