@@ -19,7 +19,7 @@ class EditVehicleViewModel extends Cubit<EditVehicleState> {
     switch (result) {
       case Success():
         emit(EditVehicleSuccessState(data: result.data!));
-      //  getIt.get<ProfileViewModel>().doIntent(ProfileClickedIntent());
+        getIt.get<ProfileViewModel>().doIntent(ProfileClickedIntent());
 
       case Error():
         emit(EditVehicleErrorState(result.exception!));
