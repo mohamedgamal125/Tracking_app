@@ -104,4 +104,12 @@ abstract class ApiClient {
 
   @GET(ApiEndPoints.logout)
   Future<HttpResponse<void>> logout();
+
+  @PUT(ApiEndPoints.editProfile)
+  @MultiPart()
+  Future<ProfileResponseDTO> editVehicle(
+      @Body() Map<String, dynamic> data,
+      @Part(name: 'name') String name,
+      @Part(name: 'image', contentType: "image/jpeg") File image,
+      );
 }
