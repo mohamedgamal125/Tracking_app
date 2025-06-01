@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
-import 'package:tracking_app/core/di/injectable_initializer.dart';
 import 'package:tracking_app/core/services/firestore_service.dart';
 import 'package:tracking_app/core/services/location_service.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
@@ -21,10 +20,8 @@ import 'dart:async';
 class RouteView extends StatefulWidget {
   final OrderEntity order;
   final String selectedAddress;
-  const RouteView({super.key, required this.order, required this.selectedAddress});
   const RouteView(
-      {Key? key, required this.order, required this.selectedAddress})
-      : super(key: key);
+      {super.key, required this.order, required this.selectedAddress});
 
   @override
   State<RouteView> createState() => _RouteViewState();
@@ -110,8 +107,11 @@ class _RouteViewState extends State<RouteView> {
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
     _mapController = controller;
-    final style = await DefaultAssetBundle.of(context).loadString(AppConstants.mapStyle);
+    final style =
+        await DefaultAssetBundle.of(context).loadString(AppConstants.mapStyle);
     _mapController.setMapStyle(style);
+    _isMapControllerReady = true;
+    _tryAnimateToRouteBounds();
   }
 
   void _tryAnimateToRouteBounds() {
@@ -166,11 +166,13 @@ class _RouteViewState extends State<RouteView> {
 
                       return GoogleMap(
                         initialCameraPosition: _initPos,
-                        onMapCreated: (controller) {
-                          _mapController = controller;
-                          _isMapControllerReady = true;
-                          _tryAnimateToRouteBounds();
-                        },
+                        onMapCreated: _onMapCreated,
+
+                        // onMapCreated: (controller) {
+                        //   _mapController = controller;
+                        //   _isMapControllerReady = true;
+                        //   _tryAnimateToRouteBounds();
+                        // },
                         markers: state is RouteLoaded ? state.markers : {},
                         polylines: state is RouteLoaded ? state.polyLines : {},
                         myLocationEnabled: true,
@@ -225,7 +227,6 @@ class _RouteViewState extends State<RouteView> {
     );
   }
 }
-
 
 ///
 // import 'dart:developer';
