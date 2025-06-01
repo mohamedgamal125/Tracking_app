@@ -103,8 +103,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
-    gh.lazySingleton<_i693.RoutesApi>(() => _i693.RoutesApi());
     gh.lazySingleton<_i669.LocationService>(() => _i669.LocationService());
+    gh.lazySingleton<_i693.RoutesApi>(() => _i693.RoutesApi());
     gh.factory<_i101.CheckImageWithGeminiViewModel>(
         () => _i101.CheckImageWithGeminiViewModel(gh<_i846.GeminiService>()));
     gh.factory<_i178.ApplyOfflineDataSource>(

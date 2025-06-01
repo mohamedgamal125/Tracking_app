@@ -16,5 +16,8 @@ class AppConstants {
   static const String orderCollection = "order";
   static const String orderStatus = "state";
 
- 
+  static const String imagePath = "https://flower.elevateegy.com/uploads/";
+
+  static const String mapStyle = "assets/map_styles/map_style.json";
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
+import 'package:tracking_app/core/utils/constant_manager.dart';
 
 import '../../../../../core/common/get_responsive_height_and_width.dart';
 import '../../../../../core/utils/app_assets.dart';
@@ -8,68 +9,62 @@ import '../../../../../core/utils/text_styles.dart';
 import 'communication_widget.dart';
 
 class AddressDetailsSection extends StatelessWidget {
-  const AddressDetailsSection(
-      {super.key,
-        required this.name,
-        required this.address,
-        required this.phone,
-        this.image});
+  const AddressDetailsSection({
+    super.key,
+    required this.name,
+    required this.address,
+    required this.phone,
+    this.image,
+  });
+
   final String name;
   final String address;
   final String? image;
   final String phone;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          // height: responsiveHeight(40),
+          height: responsiveHeight(80),
           padding: EdgeInsets.only(
-              left: responsiveWidth(4),
-              top: responsiveHeight(8),
-              bottom: responsiveHeight(8)),
+            left: responsiveWidth(4),
+            bottom: responsiveHeight(8),
+          ),
           decoration: BoxDecoration(
-              color: AppColors.whiteColor,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x40535353), // 0x40 = 25% opacity in hex
-                  offset: Offset(0, 0),
-                  blurRadius: 4,
-                  spreadRadius: 0,
-                )
-              ]),
+            color: AppColors.whiteColor,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.greyDarkColor,
+                offset: Offset(0, 0),
+                blurRadius: 4,
+                spreadRadius: 0,
+              )
+            ],
+          ),
           child: ListTile(
-            leading: image != null
-                ? SizedBox(
-                height: responsiveHeight(44),
-                width: responsiveWidth(44),
-                child: Image.network(
-                  image!,
-                  fit: BoxFit.cover,
-                ))
-                : SizedBox(
-                width: responsiveWidth(44),
-                height: responsiveHeight(44),
-                child: SvgPicture.asset(
-                  SvgImags.flowerlyLogo,
-                  fit: BoxFit.contain,
-                )),
+            leading: SizedBox(
+              width: responsiveWidth(50),
+              height: responsiveHeight(50),
+              child: _buildImage(image),
+            ),
             title: Text(
               name,
-              style:
-              AppTextStyles.roboto500_13.copyWith(color: AppColors.greyDarkColor),
+              style: AppTextStyles.roboto500_13.copyWith(color: AppColors.greyDarkColor),
             ),
             subtitle: Row(
               children: [
                 SvgPicture.asset(SvgImags.locationIcon),
+                SizedBox(width: responsiveWidth(2)),
                 Expanded(
                   child: Text(
-                      overflow: TextOverflow.ellipsis,
-                      address,
-                      style: AppTextStyles.inter400_13
-                          .copyWith(color: AppColors.blackColor)),
+                    overflow: TextOverflow.ellipsis,
+                    address,
+                    style: AppTextStyles.inter400_13.copyWith(color: AppColors.blackColor),
+                  ),
                 ),
               ],
             ),
@@ -80,6 +75,32 @@ class AddressDetailsSection extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  Widget _buildImage(String? image) {
+    //default fallback image
+    const defaultImage = ImageAssets.profileUser;
+
+    if (image == null || image.isEmpty || image.contains('file://')) {
+      return Image.asset(defaultImage, fit: BoxFit.cover);
+    }
+
+    if (image.endsWith('.svg')) {
+      return SvgPicture.asset(image, fit: BoxFit.contain);
+    }
+
+    final fullImageUrl = (image.startsWith('http') || image.startsWith('https'))
+        ? image
+        : AppConstants.imagePath+image;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(30),
+      child: Image.network(
+        fullImageUrl,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => Image.asset(defaultImage),
+      ),
     );
   }
 }

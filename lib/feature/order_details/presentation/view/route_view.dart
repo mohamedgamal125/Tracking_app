@@ -8,6 +8,7 @@ import 'package:tracking_app/core/services/firestore_service.dart';
 import 'package:tracking_app/core/services/location_service.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/app_icons.dart';
+import 'package:tracking_app/core/utils/constant_manager.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/widgets/bottom_info_card.dart';
 
 import '../../../home/domain/entites/pending_orders_response_entity.dart';
@@ -20,6 +21,7 @@ import 'dart:async';
 class RouteView extends StatefulWidget {
   final OrderEntity order;
   final String selectedAddress;
+  const RouteView({super.key, required this.order, required this.selectedAddress});
   const RouteView(
       {Key? key, required this.order, required this.selectedAddress})
       : super(key: key);
@@ -79,7 +81,7 @@ class _RouteViewState extends State<RouteView> {
   }
 
   Future<void> _loadCorrectRoute() async {
-    print('📍 selectedAddress: ${widget.selectedAddress}');
+    debugPrint('📍 selectedAddress: ${widget.selectedAddress}');
 
     if (widget.selectedAddress == 'user') {
       final user = widget.order.shippingAddress;
@@ -88,7 +90,7 @@ class _RouteViewState extends State<RouteView> {
       final lng = double.tryParse(user?.long ?? '');
 
       if (lat == null || lng == null) {
-        print('⚠ CAN NOT USER LOCATION');
+        debugPrint('⚠ CAN NOT USER LOCATION');
         return;
       }
 
@@ -104,6 +106,12 @@ class _RouteViewState extends State<RouteView> {
             userLatLng: null,
           );
     }
+  }
+
+  Future<void> _onMapCreated(GoogleMapController controller) async {
+    _mapController = controller;
+    final style = await DefaultAssetBundle.of(context).loadString(AppConstants.mapStyle);
+    _mapController.setMapStyle(style);
   }
 
   void _tryAnimateToRouteBounds() {
@@ -131,7 +139,7 @@ class _RouteViewState extends State<RouteView> {
           return Stack(
             children: [
               Positioned(
-                top: 50,
+                top: responsiveHeight(40),
                 left: 0,
                 right: 0,
                 height: MediaQuery.of(context).size.height * 0.6,
@@ -171,13 +179,13 @@ class _RouteViewState extends State<RouteView> {
                     }),
               ),
               Positioned(
-                bottom: 280,
+                bottom: responsiveHeight(270),
                 left: 0,
                 right: 0,
                 child: Center(
                   child: Container(
-                    width: 120,
-                    height: 4,
+                    width: responsiveWidth(120),
+                    height: responsiveHeight(4),
                     decoration: BoxDecoration(
                       color: AppColors.primaryColor,
                       borderRadius: BorderRadius.circular(8),
@@ -185,6 +193,7 @@ class _RouteViewState extends State<RouteView> {
                   ),
                 ),
               ),
+              // card info
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -194,9 +203,10 @@ class _RouteViewState extends State<RouteView> {
                   reverse: widget.selectedAddress == 'user',
                 ),
               ),
+              // back icon
               Positioned(
-                top: 48,
-                left: 16,
+                top: responsiveHeight(48),
+                left: responsiveWidth(16),
                 child: CircleAvatar(
                   backgroundColor: AppColors.primaryColor,
                   child: Padding(
@@ -215,6 +225,7 @@ class _RouteViewState extends State<RouteView> {
     );
   }
 }
+
 
 ///
 // import 'dart:developer';
