@@ -5,6 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:flutter/material.dart';
+import 'package:tracking_app/feature/profile/presentation/views/widget/edit_profile_widgets/edit_vehicle_button.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/text_styles.dart';
 import '../../../../../apply/presentation/cubits/apply_view_model/apply_states.dart';
@@ -148,7 +149,7 @@ class _EditVehicleBodyState extends State<EditVehicleBody> {
                   child: TextFormField(
                     enabled: false,
                     autovalidateMode: validateMode,
-                    //  controller: _licenseImageNameController,
+                    controller: _licenseImageNameController,
                     decoration: InputDecoration(
                         labelText: 'Vehicle license',
                         hintText: 'Upload license photo',
@@ -158,50 +159,60 @@ class _EditVehicleBodyState extends State<EditVehicleBody> {
                 ),
               ),
               SizedBox(height: responsiveHeight(36)),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primaryColor
-                      // validateMode == AutovalidateMode.disabled
-                      //     ? AppColors.primaryColor
-                      //     : AppColors.greyColor,
-                      ),
-                  onPressed: () {
-                    if (vehicleType == null) {
-                      EasyLoading.showError('Please select vehicle type');
-                      return;
-                    }
-
-                    if (image1 == null) {
-                      EasyLoading.showError('Please upload license image');
-                      return;
-                    }
-
-                    if (_formKey.currentState!.validate()) {
-                      setState(() {
-                        validateMode = AutovalidateMode.disabled;
-                      });
-
-                      Map<String, dynamic> data = {
-                        'name': vehicleType,
-                        'image': image1,
-                      };
-
-                      widget.editVehicleViewModel.editVehicle(data);
-                      log(data['name']);
-                      setState(() {
-                        validateMode = AutovalidateMode.always;
-                      });
-                    } else {
-                      setState(() {
-                        validateMode = AutovalidateMode.always;
-                      });
-                    }
-                  },
-                  child: Text(
-                    'Continue',
-                    style: AppTextStyles.inter500_16
-                        .copyWith(color: AppColors.whiteColor),
-                  )),
+              EditVehicleButton(
+                validateMode: validateMode,
+                formKey: _formKey,
+                onValidateModeChanged: (mode) =>
+                    setState(() => validateMode = mode),
+                editVehicleViewModel: widget.editVehicleViewModel,
+                name: vehicleType,
+                image: image1,
+              ),
+              // ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //         backgroundColor: AppColors.primaryColor
+              //         // validateMode == AutovalidateMode.disabled
+              //         //     ? AppColors.primaryColor
+              //         //     : AppColors.greyColor,
+              //         ),
+              //     onPressed: () {
+              //       if (vehicleType == null) {
+              //         EasyLoading.showError('Please select vehicle type');
+              //         return;
+              //       }
+              //
+              //       if (image1 == null) {
+              //         EasyLoading.showError('Please upload license image');
+              //         return;
+              //       }
+              //
+              //       if (_formKey.currentState!.validate()) {
+              //         setState(() {
+              //           validateMode = AutovalidateMode.disabled;
+              //         });
+              //
+              //         Map<String, dynamic> data = {
+              //           'name': vehicleType,
+              //           'image': image1,
+              //         };
+              //
+              //         widget.editVehicleViewModel.editVehicle(data);
+              //         log("name name");
+              //         log(data['name']);
+              //         setState(() {
+              //           validateMode = AutovalidateMode.always;
+              //         });
+              //       } else {
+              //         setState(() {
+              //           validateMode = AutovalidateMode.always;
+              //         });
+              //       }
+              //     },
+              //     child: Text(
+              //       'Continue',
+              //       style: AppTextStyles.inter500_16
+              //           .copyWith(color: AppColors.whiteColor),
+              //     )),
             ],
           ),
         ),
@@ -210,15 +221,9 @@ class _EditVehicleBodyState extends State<EditVehicleBody> {
   }
 
   void checkValidateForTextField(value) {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        validateMode = AutovalidateMode.disabled;
-      });
-    } else {
-      setState(() {
-        validateMode = AutovalidateMode.always;
-      });
-    }
+    validateMode = _formKey.currentState!.validate()
+        ? AutovalidateMode.disabled
+        : AutovalidateMode.always;
   }
 
   Future<File> getImage() async {
