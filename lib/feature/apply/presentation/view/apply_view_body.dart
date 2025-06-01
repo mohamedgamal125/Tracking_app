@@ -212,7 +212,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                         _licenseImageNameController.text = image1!.path;
                       } else {
                         image1 = null;
-                        _licenseImageNameController.text ='';
+                        _licenseImageNameController.text = '';
                         return;
                       }
                     } else if (state is CheckImageLicenseErrorState) {
@@ -346,6 +346,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                     ),
                   ),
                 ),
+                /////////
                 SizedBox(
                   height: responsiveHeight(16),
                 ),

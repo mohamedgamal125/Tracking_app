@@ -3,14 +3,15 @@ import 'package:tracking_app/core/utils/app_colors.dart';
 
 class VehicleTypeDropdown extends StatelessWidget {
   final String? vehicleType;
+  final String? hint;
   final Function(String?) onVehicleTypeSelected;
   final List<dynamic>? vehicleData;
-
   const VehicleTypeDropdown({
     Key? key,
     required this.vehicleType,
     required this.onVehicleTypeSelected,
     this.vehicleData,
+    this.hint,
   }) : super(key: key);
 
   @override
@@ -25,7 +26,8 @@ class VehicleTypeDropdown extends StatelessWidget {
         child: DropdownButton<String>(
           isExpanded: true,
           value: vehicleType,
-          hint: Text('Select a Vehicle Type'),
+          hint: Text(hint ?? 'Select a Vehicle Type'),
+          //Text('Select a Vehicle Type'),
           icon: const Icon(
             Icons.keyboard_arrow_down,
             color: AppColors.blackColor,

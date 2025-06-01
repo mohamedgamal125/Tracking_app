@@ -13,7 +13,7 @@ class EditVehicleViewModel extends Cubit<EditVehicleState> {
   EditVehicleViewModel(this._editVehicleUseCase)
       : super(EditVehicleInitialState());
 
-  void editProfile(Map<String, dynamic> data) async {
+  void editVehicle(Map<String, dynamic> data) async {
     emit(EditVehicleLoadingState());
     final result = await _editVehicleUseCase.execute(data);
     switch (result) {

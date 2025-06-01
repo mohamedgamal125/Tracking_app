@@ -7,6 +7,7 @@ class AppConstants {
       "Please check your internet connection and try again later";
 
   static const String editProfile = "Edit Profile";
+  static const String editVehicle = "Edit vehicle";
   static const String locale = "locale";
 
   static const String addressKey = "address";
@@ -15,6 +16,4 @@ class AppConstants {
   static const String locationKey = "location";
   static const String orderCollection = "order";
   static const String orderStatus = "status";
-
- 
 }
