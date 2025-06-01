@@ -31,6 +31,7 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+.env
 /build/
 
 # Symbolication related
@@ -293,3 +294,4 @@ app.*.map.json
 /android/app/.cxx/RelWithDebInfo/1ng492i1/armeabi-v7a/CMakeFiles/TargetDirectories.txt
 /android/app/.cxx/RelWithDebInfo/1ng492i1/x86/CMakeFiles/TargetDirectories.txt
 /android/app/.cxx/RelWithDebInfo/1ng492i1/x86_64/CMakeFiles/TargetDirectories.txt
+/android/app/.cxx/Debug/47256x30/armeabi-v7a/additional_project_files.txt
