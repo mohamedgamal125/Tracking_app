@@ -78,7 +78,7 @@ class _EditVehicleBodyState extends State<EditVehicleBody> {
                     return VehicleTypeDropdown(
                       vehicleType: vehicleType,
                       vehicleData: state.data,
-                      //  hint: widget.userData.,
+                      // hint: widget.userData,
                       onVehicleTypeSelected: (String? newValue) {
                         setState(() {
                           vehicleType = newValue;
@@ -92,21 +92,7 @@ class _EditVehicleBodyState extends State<EditVehicleBody> {
                 },
               ),
               SizedBox(height: responsiveHeight(12)),
-              // TextFormField(
-              //   autovalidateMode: validateMode,
-              //   controller: _vehicleNumberController,
-              //   decoration: InputDecoration(
-              //       labelText: 'Vehicle Number',
-              //       hintText: widget.userData.vehicleNumber),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty == true) {
-              //       return "empty Vehicle Number are not allowed";
-              //     }
-              //     return null;
-              //   },
-              //   // onChanged: checkValidateForTextField,
-              // ),
-              // SizedBox(height: responsiveHeight(12)),
+
               BlocListener<CheckImageWithGeminiViewModel,
                   CheckImageWithGeminiStates>(
                 bloc: widget.checkImageViewModel,
@@ -118,11 +104,11 @@ class _EditVehicleBodyState extends State<EditVehicleBody> {
                     EasyLoading.showInfo(state.licenseValidate ?? '');
                     if (state.licenseValidate!.contains('true')) {
                       _licenseImageNameController.text = image1!.path;
+                      log('image image');
                       log(_licenseImageNameController.text);
                     } else {
                       image1 = null;
-
-                      // _licenseImageNameController.text = '';
+                      _licenseImageNameController.text = '';
 
                       return;
                     }
@@ -152,7 +138,7 @@ class _EditVehicleBodyState extends State<EditVehicleBody> {
                     controller: _licenseImageNameController,
                     decoration: InputDecoration(
                         labelText: 'Vehicle license',
-                        hintText: 'Upload license photo',
+                        hintText: 'Vehicle license',
                         suffixIcon: Icon(Icons.upload_outlined)),
                     onChanged: checkValidateForTextField,
                   ),

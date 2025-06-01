@@ -59,25 +59,17 @@ class EditVehicleButton extends StatelessWidget {
           );
         } else {
           return ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: validateMode == AutovalidateMode.disabled
-                  ? AppColors.primaryColor
-                  : AppColors.greyColor,
-            ),
+            style:
+                ElevatedButton.styleFrom(backgroundColor: AppColors.primaryColor
+                    // validateMode == AutovalidateMode.disabled
+                    //     ? AppColors.primaryColor
+                    //     : AppColors.greyColor,
+                    ),
             onPressed: () {
-              if (validateMode == AutovalidateMode.always) return;
-              if (formKey.currentState!.validate()) {
-                onValidateModeChanged(AutovalidateMode.disabled);
-
-                editVehicleViewModel.editVehicle({
-                  'name': name,
-                  'image': image,
-                });
-
-                onValidateModeChanged(AutovalidateMode.always);
-              } else {
-                onValidateModeChanged(AutovalidateMode.always);
-              }
+              editVehicleViewModel.editVehicle({
+                'name': name,
+                'image': image,
+              });
             },
             child: Text(
               S.of(context).update,
