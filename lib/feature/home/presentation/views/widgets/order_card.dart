@@ -180,36 +180,40 @@ class OrderCard extends StatelessWidget {
                 'EGP ${order.totalPrice}',
                 style: AppTextStyles.inter600_14,
               ),
-              SizedBox(width: responsiveWidth(16)),
-              SizedBox(
-                height: responsiveHeight(36),
-                width: responsiveWidth(112),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.whiteColor,
-                    side: BorderSide(
-                      color: AppColors.primaryColor,
+              SizedBox(width: responsiveWidth(8)),
+              Expanded(
+                child: SizedBox(
+                  height: responsiveHeight(36),
+                  width: responsiveWidth(112),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.whiteColor,
+                      side: BorderSide(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
-                  ),
-                  onPressed: onReject,
-                  child: Text(
-                    'Reject',
-                    style: AppTextStyles.inter500_14.copyWith(
-                      color: AppColors.primaryColor,
+                    onPressed: onReject,
+                    child: Text(
+                      'Reject',
+                      style: AppTextStyles.inter500_14.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                   ),
                 ),
               ),
               SizedBox(width: responsiveWidth(8)),
-              SizedBox(
-                height: responsiveHeight(36),
-                width: responsiveWidth(112),
-                child: ElevatedButton(
-                  onPressed: onAccept,
-                  child: Text(
-                    'Accept',
-                    style: AppTextStyles.inter500_14.copyWith(
-                      color: AppColors.whiteColor,
+              Expanded(
+                child: SizedBox(
+                  height: responsiveHeight(36),
+                  width: responsiveWidth(112),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Accept',
+                      style: AppTextStyles.inter500_14.copyWith(
+                        color: AppColors.whiteColor,
+                      ),
                     ),
                   ),
                 ),

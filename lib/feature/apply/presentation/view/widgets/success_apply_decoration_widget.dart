@@ -13,7 +13,7 @@ class SuccessApplyDecorationWidget extends StatelessWidget {
       child: Stack(
         children: [
           SvgPicture.asset(
-            SvgImags.decoration1,
+            SvgImages.decoration1,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.fitWidth,
           ),
@@ -23,7 +23,7 @@ class SuccessApplyDecorationWidget extends StatelessWidget {
             child: SizedBox(
               width: responsiveWidth(300.81),
               child: SvgPicture.asset(
-                SvgImags.decoration2,
+                SvgImages.decoration2,
                 fit: BoxFit.contain,
                 // width: resposiveWidth(320.81),
                 height: responsiveHeight(122.89),

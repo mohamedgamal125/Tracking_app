@@ -8,24 +8,8 @@ class AppIcons {
   static const IconData error = Icons.error_outline;
   static const IconData passwordVisibility = Icons.visibility;
   static const IconData passwordVisibilityOff = Icons.visibility_off;
-
-  // static Future<BitmapDescriptor?> getIconOfMap(int num) async {
-  //   switch (num) {
-  //     case 1:
-  //       return await BitmapDescriptor.fromAssetImage(
-  //         const ImageConfiguration(size: Size(60, 60)),
-  //         'assets/images/driver_location.png',
-  //       );
-  //     case 2:
-  //       return await BitmapDescriptor.fromAssetImage(
-  //         const ImageConfiguration(size: Size(48, 48)),
-  //         'assets/images/Flowery_location.png',
-  //       );
-  //     case 3:
-  //       return await BitmapDescriptor.fromAssetImage(
-  //         const ImageConfiguration(size: Size(48, 48)),
-  //         'assets/images/user_location.png',
-  //       );
-  //   }
-  // }
+  static const IconData homeIcon = Icons.home_outlined;
+  static const IconData orderIcon = Icons.fact_check_outlined;
+  static const IconData profileIcon = Icons.person_outline_rounded;
+  static const IconData cameraIcon = Icons.camera_alt;
 }

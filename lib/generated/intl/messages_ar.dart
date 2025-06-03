@@ -25,13 +25,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "بإنشاء حساب، فإنك توافق على",
     ),
+    "apply_now": MessageLookupByLibrary.simpleMessage("قدّم الآن"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "change": MessageLookupByLibrary.simpleMessage("تغيير"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
     "cont": MessageLookupByLibrary.simpleMessage("متابعة"),
     "continueAsGuest": MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
+    "currentPassword": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور الحالية",
+    ),
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage("لم يصلك الرمز؟"),
     "egp": MessageLookupByLibrary.simpleMessage("ج.م"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -44,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerification": MessageLookupByLibrary.simpleMessage(
       "التحقق من البريد الإلكتروني",
     ),
+    "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال الرمز المرسل إلى بريدك الإلكتروني",
     ),
@@ -56,8 +63,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور",
     ),
+    "error": MessageLookupByLibrary.simpleMessage("خطأ"),
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+    "firstNameEmpty": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن أن يكون الاسم الأول فارغًا",
+    ),
+    "floweryRider": MessageLookupByLibrary.simpleMessage("تطبيق فلاوري"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
       "هل نسيت كلمة المرور؟",
     ),
@@ -67,14 +79,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
     "guestUser": MessageLookupByLibrary.simpleMessage("زائر"),
     "haveAccount": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+    "invalid_code": MessageLookupByLibrary.simpleMessage("رمز غير صالح"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginLink": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "ok": MessageLookupByLibrary.simpleMessage("حسنًا"),
+    "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
@@ -86,11 +104,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordTooShort": MessageLookupByLibrary.simpleMessage(
       "يجب ألا تقل كلمة المرور عن 8 أحرف",
     ),
+    "password_changed_successfully": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير كلمة المرور بنجاح",
+    ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "phoneCode": MessageLookupByLibrary.simpleMessage("رمز الهاتف"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "pickupAddress": MessageLookupByLibrary.simpleMessage("عنوان الاستلام"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "resend": MessageLookupByLibrary.simpleMessage("إعادة إرسال"),
     "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
+    "reset_password": MessageLookupByLibrary.simpleMessage(
+      "إعادة تعيين كلمة المرور",
+    ),
     "savedAddress": MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
@@ -100,5 +126,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "userAddress": MessageLookupByLibrary.simpleMessage("عنوان المستخدم"),
+    "update": MessageLookupByLibrary.simpleMessage("تحديث"),
+    "userAddress": MessageLookupByLibrary.simpleMessage("عنوان المستخدم"),
+    "vehicle_info": MessageLookupByLibrary.simpleMessage("معلومات المركبة"),
+    "welcomeTo": MessageLookupByLibrary.simpleMessage("مرحبا بك في"),
   };
 }

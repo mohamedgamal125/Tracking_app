@@ -25,13 +25,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
     ),
+    "apply_now": MessageLookupByLibrary.simpleMessage("Apply now"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "change": MessageLookupByLibrary.simpleMessage("change"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "confirmLogout": MessageLookupByLibrary.simpleMessage("Confirm logout"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "cont": MessageLookupByLibrary.simpleMessage("Continue"),
     "continueAsGuest": MessageLookupByLibrary.simpleMessage(
       "Continue as guest",
     ),
+    "currentPassword": MessageLookupByLibrary.simpleMessage("Current password"),
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage(
       "Didn\'t receive code?",
     ),
@@ -46,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerification": MessageLookupByLibrary.simpleMessage(
       "Email verification",
     ),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter the code sent to your email address",
     ),
@@ -58,8 +64,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
       "Enter your Password",
     ),
+    "error": MessageLookupByLibrary.simpleMessage("Error"),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "firstName": MessageLookupByLibrary.simpleMessage("First name"),
+    "firstNameEmpty": MessageLookupByLibrary.simpleMessage(
+      "First name can\'t be empty",
+    ),
+    "floweryRider": MessageLookupByLibrary.simpleMessage("Flowery rider app"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget password?"),
     "forgetPasswordDescription": MessageLookupByLibrary.simpleMessage(
       "Please enter your email associated to your account",
@@ -69,16 +80,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "invalid_code": MessageLookupByLibrary.simpleMessage("Invalid code"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginLink": MessageLookupByLibrary.simpleMessage("Login"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "myOrders": MessageLookupByLibrary.simpleMessage("My orders"),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
     "noAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+    "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
@@ -90,11 +107,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordTooShort": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 8 characters long",
     ),
+    "password_changed_successfully": MessageLookupByLibrary.simpleMessage(
+      "Password changed successfully",
+    ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment method"),
+    "phoneCode": MessageLookupByLibrary.simpleMessage("Phone code"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
     "pickupAddress": MessageLookupByLibrary.simpleMessage("Pickup address"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
+    "reset_password": MessageLookupByLibrary.simpleMessage("Reset password"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
@@ -103,6 +126,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Terms & Conditions",
     ),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "update": MessageLookupByLibrary.simpleMessage("update"),
+    "userAddress": MessageLookupByLibrary.simpleMessage("User address"),
+    "vehicle_info": MessageLookupByLibrary.simpleMessage("Vehicle info"),
+    "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
     "userAddress": MessageLookupByLibrary.simpleMessage("User address"),
   };
 }

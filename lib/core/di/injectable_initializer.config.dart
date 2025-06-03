@@ -13,6 +13,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../feature/apply/data/data_source/offline_data_source/apply_offline_data_source.dart'
     as _i178;
@@ -64,27 +65,17 @@ import '../../feature/order_details/data/data_source/update_order_state_remote_d
     as _i377;
 import '../../feature/order_details/data/data_source/update_order_state_remote_data_source_imp.dart'
     as _i197;
-import '../../feature/order_details/data/repository_imp/routes_repository_imp.dart'
-    as _i601;
 import '../../feature/order_details/data/repository_imp/update_order_state_repo_imp.dart'
     as _i528;
-import '../../feature/order_details/domain/repository/routes_repository.dart'
-    as _i285;
 import '../../feature/order_details/domain/repository/update_order_state_repo.dart'
     as _i476;
-import '../../feature/order_details/domain/use_case/get_routes_use_case.dart'
-    as _i19;
-import '../../feature/order_details/presentation/cubits/routes_cubit/routes_cubit.dart'
-    as _i1049;
 import '../../feature/order_details/presentation/cubits/states_cubit.dart'
     as _i146;
 import '../../feature/order_details/presentation/cubits/update_order_state_cubit/update_order_state_cubit.dart'
     as _i718;
 import '../api/api_client.dart' as _i277;
 import '../api/network_factory.dart' as _i1013;
-import '../api/routes_api.dart' as _i693;
 import '../services/gemini_service.dart' as _i846;
-import '../services/location_service.dart' as _i669;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -103,8 +94,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
-    gh.lazySingleton<_i693.RoutesApi>(() => _i693.RoutesApi());
-    gh.lazySingleton<_i669.LocationService>(() => _i669.LocationService());
     gh.factory<_i101.CheckImageWithGeminiViewModel>(
         () => _i101.CheckImageWithGeminiViewModel(gh<_i846.GeminiService>()));
     gh.factory<_i178.ApplyOfflineDataSource>(
@@ -112,10 +101,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i804.AuthLocalDataSource>(
         () => _i804.AuthLocalDataSourceImpl());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));
-    gh.factory<_i285.RouteRepository>(() => _i601.RouteRepositoryImpl(
-          gh<_i669.LocationService>(),
-          gh<_i693.RoutesApi>(),
-        ));
     gh.factory<_i825.HomeRemoteDataSource>(
         () => _i421.HomeRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i140.AuthRemoteDataSource>(
@@ -126,8 +111,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i197.UpdateOrderStateRemoteDataSourceImp(gh<_i277.ApiClient>()));
     gh.factory<_i476.UpdateOrderStateRepo>(() => _i528.UpdateOrderStateRepoImp(
         gh<_i377.UpdateOrderStateRemoteDataSource>()));
-    gh.factory<_i19.LoadRouteUseCase>(
-        () => _i19.LoadRouteUseCase(gh<_i285.RouteRepository>()));
     gh.factory<_i718.UpdateOrderStateCubit>(
         () => _i718.UpdateOrderStateCubit(gh<_i476.UpdateOrderStateRepo>()));
     gh.factory<_i884.AuthRepository>(() => _i384.AuthRepositoryImpl(
@@ -140,10 +123,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i220.PendingOrdersRepo>(
         () => _i551.PendingOrdersRepoImpl(gh<_i825.HomeRemoteDataSource>()));
-    gh.factory<_i1049.RouteCubit>(() => _i1049.RouteCubit(
-          gh<_i19.LoadRouteUseCase>(),
-          gh<_i669.LocationService>(),
-        ));
     gh.factory<_i137.AuthUseCase>(
         () => _i137.AuthUseCase(gh<_i884.AuthRepository>()));
     gh.factory<_i189.SignInUseCase>(

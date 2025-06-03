@@ -12,7 +12,7 @@ class GeminiService {
 
   );
   // Future<List> validateNationalIdCard(
-  //     File image, String selectedCountry) async {
+  //   File image, String selectedCountry) async {
   //   final imageBytes = await image.readAsBytes();
   //   List responseList = [];
   //   try {

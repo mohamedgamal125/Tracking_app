@@ -5,6 +5,9 @@ import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../generated/l10n.dart';
+
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
 
@@ -15,31 +18,33 @@ class OnBoardingScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: responsiveWidth(16),vertical: responsiveHeight(8)),
           child: Column(
-             mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            // SizedBox(height: responsiveHeight(48),),
+              // SizedBox(height: responsiveHeight(48),),
               Spacer(),
-            Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 8.0),
-              child: SizedBox(
-              width: double.infinity,
-              height: responsiveHeight(300),
-              child: Center(
-                child: Transform.scale(
-                  scale: 1.7,
-                  child: Lottie.asset(
-                    'assets/animations/onboarding_animation.json',
-                    fit: BoxFit.cover,
+              Expanded(
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 8.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: responsiveHeight(300),
+                    child: Center(
+                      child: Transform.scale(
+                        scale: 1.7,
+                        child: Lottie.asset(
+                          AnimationAssets.onboardingAssets,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-                        ),
-            ),
-            
-              SizedBox(height: 8),
+
+              SizedBox(height: 24),
               Text(
-                "Welcome to\nFlowery rider app",
+                "${S.of(context).welcomeTo}\n${S.of(context).floweryRider}",
                 style: AppTextStyles.inter500_20,
               ),
               SizedBox(
@@ -50,10 +55,11 @@ class OnBoardingScreen extends StatelessWidget {
                     Navigator.pushNamed(context, PagesRoutes.signIn);
                   },
                   child: Text(
-                    "Login",
+                    S.of(context).login,
                     style: AppTextStyles.inter500_16
                         .copyWith(color: AppColors.whiteColor),
                   )),
+              SizedBox(height: responsiveHeight(24),),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.whiteColor,
@@ -63,7 +69,7 @@ class OnBoardingScreen extends StatelessWidget {
                     Navigator.pushNamed(context, PagesRoutes.applyView);
                   },
                   child: Text(
-                    "Apply now",
+                    S.of(context).apply_now,
                     style: AppTextStyles.inter500_16
                         .copyWith(color: AppColors.greyDarkColor),
                   )),
