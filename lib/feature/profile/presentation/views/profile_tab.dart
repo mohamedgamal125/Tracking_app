@@ -12,16 +12,14 @@ import '../cubit/profile_view_model.dart';
 import 'widget/user_information_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-
-
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ProfileViewModel(getIt(), getIt())..doIntent(ProfileClickedIntent()),
+      create: (_) =>
+          ProfileViewModel(getIt(), getIt())..doIntent(ProfileClickedIntent()),
       child: SafeArea(
         child: BlocListener<ProfileViewModel, ProfileState>(
           listener: (context, state) {
@@ -29,7 +27,7 @@ class ProfileTab extends StatelessWidget {
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 PagesRoutes.signIn,
-                    (route) => false,
+                (route) => false,
               );
             } else if (state is ErrorProfileState) {
               ScaffoldMessenger.of(
@@ -58,21 +56,35 @@ class ProfileTab extends StatelessWidget {
                 return SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: responsiveHeight(32)),
+                      Padding(
+                        padding:  EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Profile", style: AppTextStyles.inter700_20),
+                            IconButton(onPressed: () {
+
+                            }, icon: Icon(Icons.notifications_none_outlined))
+                          ],
+                        ),
+                      ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, PagesRoutes.editProfile,arguments: state.user!);
+                          Navigator.pushNamed(context, PagesRoutes.editProfile,
+                              arguments: state.user!);
                         },
                         child: UserInformationWidget(
                           userData: state.user!,
                         ),
+                      ),
+                      SizedBox(
+                        height: responsiveHeight(8),
                       ),
                       VehicleInformationWidget(
                         userData: state.user!,
                       ),
                       const LanguageWidget(),
                       const LogoutWidget(),
-
                     ],
                   ),
                 );
@@ -86,5 +98,3 @@ class ProfileTab extends StatelessWidget {
     );
   }
 }
-
-

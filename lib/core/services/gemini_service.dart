@@ -10,7 +10,7 @@ class GeminiService {
     apiKey: 'AIzaSyBqKEyhCRToeJVF6Da4AWkWCJcqKEzAWo8',
   );
   // Future<List> validateNationalIdCard(
-  //     File image, String selectedCountry) async {
+  //   File image, String selectedCountry) async {
   //   final imageBytes = await image.readAsBytes();
   //   List responseList = [];
   //   try {
