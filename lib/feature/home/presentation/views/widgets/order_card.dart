@@ -131,7 +131,8 @@ class OrderCard extends StatelessWidget {
               children: [
                 user?.photo != null && user!.photo!.isNotEmpty
                     ? CircleAvatar(
-                        backgroundImage: NetworkImage(user.photo!),
+                        backgroundImage:
+                            AssetImage('assets/images/profile-user.png'),
                       )
                     : CircleAvatar(
                         backgroundColor: AppColors.greyColor,
@@ -147,25 +148,25 @@ class OrderCard extends StatelessWidget {
                           color: AppColors.greyDarkColor,
                         ),
                       ),
-                      if (order.shippingAddress != null)
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Icon(
-                              Icons.location_on_outlined,
-                              size: 16,
+                      // if (order.shippingAddress != null)
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(
+                            Icons.location_on_outlined,
+                            size: 16,
+                          ),
+                          SizedBox(width: responsiveWidth(4)),
+                          Expanded(
+                            child: Text(
+                              order.shippingAddress?.street ?? '',
+                              style: AppTextStyles.roboto400_14,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
                             ),
-                            SizedBox(width: responsiveWidth(4)),
-                            Expanded(
-                              child: Text(
-                                order.shippingAddress?.street ?? '',
-                                style: AppTextStyles.roboto400_14,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),

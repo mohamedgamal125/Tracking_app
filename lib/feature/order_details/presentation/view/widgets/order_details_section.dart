@@ -26,8 +26,7 @@ class OrderDetailsSection extends StatelessWidget {
           left: responsiveWidth(8),
           right: responsiveWidth(8),
           top: responsiveHeight(16),
-          bottom: responsiveHeight(16)
-          ),
+          bottom: responsiveHeight(16)),
       margin: EdgeInsets.only(bottom: responsiveHeight(8)),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -54,7 +53,7 @@ class OrderDetailsSection extends StatelessWidget {
                     fit: BoxFit.cover,
                   )
                 : SvgPicture.asset(
-                    SvgImages.flowerlyLogo,
+                    SvgImags.flowerlyLogo,
                     fit: BoxFit.contain,
                   ),
           ),
