@@ -9,64 +9,69 @@ environment:
   sdk: ^3.6.2
 
 dependencies:
-  flutter:
-    sdk: flutter
-
+  bloc: ^9.0.0
   cupertino_icons: ^1.0.8
   dio: ^5.8.0+1
-  bloc: ^9.0.0
+  equatable: ^2.0.7
+  firebase_core: ^3.13.0
+  flutter:
+    sdk: flutter
   flutter_bloc: ^9.1.0
-  shared_preferences: ^2.5.3
-  location: ^8.0.0
   flutter_easyloading: ^3.0.5
-  injectable: ^2.5.0
-  pretty_dio_logger: ^1.4.0
-  internet_connection_checker: ^3.0.1
-  retrofit: ^4.4.2
+  flutter_localization: ^0.3.2
+  flutter_polyline_points: ^2.1.0
   flutter_svg: ^2.1.0
   get_it: ^8.0.3
-  json_annotation: ^4.9.0
-  animated_text_kit: ^4.2.3
-  lottie:
-  mime: ^2.0.0
-  mockito: ^5.4.5
-  flutter_localization: ^0.3.2
-  intl:
-  equatable: ^2.0.7
-  provider: ^6.1.5
+  google_generative_ai: ^0.4.7
+  google_maps_flutter: ^2.12.2
+  http: ^1.4.0
   http_parser: ^4.1.2
   image_picker: ^1.1.2
-  google_generative_ai: ^0.4.7
-  firebase_core: ^3.13.0
+  injectable: ^2.5.0
+  internet_connection_checker: ^3.0.1
+  intl: null
+  json_annotation: ^4.9.0
+  animated_text_kit: any
+  location: ^8.0.0
+  lottie: null
+  mime: ^2.0.0
+  mockito: ^5.4.5
+  pretty_dio_logger: ^1.4.0
+  provider: ^6.1.5
+  retrofit: ^4.4.2
+  shared_preferences: ^2.5.3
   url_launcher: ^6.3.1
-  flutter_phone_direct_caller: ^2.2.1
+  flutter_dotenv:
+  flutter_phone_direct_caller: any
   cloud_firestore: ^5.6.7
   bloc_test: ^10.0.0
 
 
 
 dev_dependencies:
+  build_runner: ^2.4.15
+  coverage: ^1.13.0
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 
-  injectable_generator:
-  flutter_lints: ^5.0.0
-  coverage: ^1.13.0
-  build_runner: ^2.4.15
-  retrofit_generator: ^9.1.9
+  injectable_generator: null
   json_serializable: ^6.9.5
   mockito: ^5.4.5
-
+  retrofit_generator: ^9.1.9
 
 flutter:
+  generate: true
 
 
   uses-material-design: true
   assets:
     - assets/svg/
     - assets/animations/onboarding_animation.json
-
+    - assets/images/
     - assets/files/
+    - assets/map_styles/
+    - .env
 
   fonts:
     - family: IM FELL English
@@ -85,3 +90,5 @@ flutter:
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
   
+flutter_intl:
+  enabled: true

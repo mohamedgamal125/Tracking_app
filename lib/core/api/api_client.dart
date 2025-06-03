@@ -16,6 +16,10 @@ import '../../feature/auth/domain/entity/sign_in_request.dart';
 import 'package:tracking_app/feature/apply/data/model/apply_response_dto.dart';
 import 'package:tracking_app/feature/apply/data/model/get_vehicles_response_dto.dart';
 
+import '../../feature/profile/data/model/change_password_dto.dart';
+import '../../feature/profile/data/model/change_password_request_model.dart';
+import '../../feature/profile/data/model/profile_response_dto.dart';
+
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com/api/v1")
@@ -63,14 +67,49 @@ abstract class ApiClient {
   Future<ResetPasswordResponseDTO> resetPassword(
     @Body() Map<String, dynamic> data,
   );
+  ///////////////////++++++++++++++++/////////////////
+///////////////////    Order api    /////////////////
+///////////////////++++++++++++++++/////////////////
   @GET(ApiEndPoints.allVehicleEndPoint)
   Future<HttpResponse<GetVehiclesResponseDTO>> getAllVehicles();
 
   @PUT("${ApiEndPoints.updateOrderStateEndPoint}/{orderId}")
   Future<void> updateOrderState(
-    @Path("orderId") String orderId,
-    @Body() Map<String, dynamic> data);
+      @Path("orderId") String orderId, @Body() Map<String, dynamic> data);
 
   @GET(ApiEndPoints.pendingOrdersEndPoint)
   Future<HttpResponse<PendingOrdersResponseDTO>> getPendingOrders();
+
+///////////////////++++++++++++++++/////////////////
+///////////////////    Profile api    /////////////////
+///////////////////++++++++++++++++/////////////////
+  @GET(ApiEndPoints.getProfileData)
+  Future<ProfileResponseDTO> getProfileData();
+
+  @PATCH(ApiEndPoints.changePassword)
+  Future<ChangePasswordDTO> changePassword(
+    @Body() ChangePasswordRequestModel data,
+  );
+
+  @PUT(ApiEndPoints.editProfile)
+  Future<ProfileResponseDTO> editProfile(
+    @Body() Map<String, dynamic> data,
+  );
+
+  @PUT(ApiEndPoints.uploadProfilePhoto)
+  @MultiPart()
+  Future<String?> uploadPhoto(
+    @Body() FormData formData,
+  );
+
+  @GET(ApiEndPoints.logout)
+  Future<HttpResponse<void>> logout();
+
+  @PUT(ApiEndPoints.editProfile)
+  @MultiPart()
+  Future<ProfileResponseDTO> editVehicle(
+      @Body() Map<String, dynamic> data,
+      @Part(name: 'name') String name,
+      @Part(name: 'image', contentType: "image/jpeg") File image,
+      );
 }

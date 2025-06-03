@@ -58,7 +58,7 @@ class AddressSection extends StatelessWidget {
                     width: responsiveWidth(44),
                     height: responsiveHeight(44),
                     child: SvgPicture.asset(
-                      SvgImags.flowerlyLogo,
+                      SvgImages.flowerlyLogo,
                       fit: BoxFit.contain,
                     )),
             title: Text(
@@ -68,7 +68,7 @@ class AddressSection extends StatelessWidget {
             ),
             subtitle: Row(
               children: [
-                SvgPicture.asset(SvgImags.locationIcon),
+                SvgPicture.asset(SvgImages.locationIcon),
                 Expanded(
                   child: Text(
                       overflow: TextOverflow.ellipsis,

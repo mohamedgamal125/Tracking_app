@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
+import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/feature/home/domain/entites/pending_orders_response_entity.dart';
 import 'package:tracking_app/feature/order_details/presentation/cubits/states_cubit.dart';
@@ -61,19 +62,44 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AddressSection(
-                    sectionTitle: 'Pickup address',
-                    name: widget.order.store?.name ?? '',
-                    address: widget.order.store?.address ?? '',
-                    phone: widget.order.store!.phoneNumber ?? '',
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context, PagesRoutes.routeView,
+                        // arguments: widget.order
+                        arguments: {
+                          'order': widget.order,
+                          'selectedAddress': 'pick',
+                        },
+                      );
+                    },
+                    child: AddressSection(
+                      sectionTitle: 'Pickup address',
+                      name: widget.order.store?.name ?? '',
+                      address: widget.order.store?.address ?? '',
+                      phone: widget.order.store!.phoneNumber ?? '',
+                    ),
                   ),
                   SizedBox(height: responsiveHeight(24)),
-                  AddressSection(
-                    sectionTitle: 'User address',
-                    name:
-                        '${widget.order.user?.firstName ?? ''} ${widget.order.user?.lastName ?? ''}',
-                    address: widget.order.shippingAddress?.street ?? '',
-                    phone: widget.order.shippingAddress?.phone ?? '',
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        PagesRoutes.routeView,
+                        arguments: {
+                          'order': widget.order,
+                          'selectedAddress': 'user',
+                        },
+                      );
+                    },
+                    child: AddressSection(
+                      image: 'assets/images/profile-user.png',
+                      sectionTitle: 'User address',
+                      name:
+                          '${widget.order.user?.firstName ?? ''} ${widget.order.user?.lastName ?? ''}',
+                      address: widget.order.shippingAddress?.street ?? '',
+                      phone: widget.order.shippingAddress?.phone ?? '',
+                    ),
                   ),
                   SizedBox(height: responsiveHeight(24)),
                   Text('Order details', style: AppTextStyles.inter500_18),
@@ -94,18 +120,21 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
                         shrinkWrap: true,
                         itemCount: widget.order.orderItems?.length ?? 0,
                         itemBuilder: (context, index) {
-                          return OrderDetailsSection(
-                              image: widget
-                                  .order.orderItems?[index].product?.imgCover ,
-                              name: widget.order.orderItems?[index].product
-                                      ?.title ??
-                                  '',
-                              price: widget.order.orderItems?[index].price
-                                      .toString() ??
-                                  '',
-                              quantity: widget.order.orderItems?[index].quantity
-                                      .toString() ??
-                                  '');
+                          return widget.order.orderItems?[index].product != null
+                              ? OrderDetailsSection(
+                                  image: widget.order.orderItems?[index].product
+                                      ?.imgCover,
+                                  name: widget.order.orderItems?[index].product
+                                          ?.title ??
+                                      '',
+                                  price: widget.order.orderItems?[index].price
+                                          .toString() ??
+                                      '',
+                                  quantity: widget
+                                          .order.orderItems?[index].quantity
+                                          .toString() ??
+                                      '')
+                              : Container();
                         }),
                   ),
                   SizedBox(height: responsiveHeight(16)),

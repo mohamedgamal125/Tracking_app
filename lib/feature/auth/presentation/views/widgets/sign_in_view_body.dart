@@ -160,7 +160,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     }
                   },
                   child: Text(
-                    S.of(context).confirm,
+                    S.of(context).cont,
                     style: AppTextStyles.inter500_16.copyWith(
                       color: AppColors.whiteColor,
                     ),

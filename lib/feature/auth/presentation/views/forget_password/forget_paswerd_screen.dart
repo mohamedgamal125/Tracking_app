@@ -34,10 +34,11 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var tr= S.of(context);
     return BlocProvider.value(
       value: viewModel,
       child: Scaffold(
-        appBar: AppBar(title: const Text("Password")),
+        appBar: AppBar(title: Text(tr.password)),
         body: BlocListener<ForgetPasswordViewModel, ForgetPasswordState>(
           listener: (context, state) {
             if (state is LoadingForgetPasswordState) {
@@ -48,8 +49,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 DialogUtils.showMessage(
                   context: context,
                   message: state.errorMessage.toString(),
-                  title: "Error",
-                  postActionName: "Ok",
+                  title: tr.error,
+                  postActionName: tr.ok,
                 );
               } else if (state is SuccessForgetPasswordState) {
                 Navigator.pushNamed(
@@ -67,10 +68,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               child: Column(
                 children: [
                   SizedBox(height: responsiveHeight(32)),
-                  Text("Forget password", style: AppTextStyles.inter500_18),
+                  Text(tr.forgetPassword, style: AppTextStyles.inter500_18),
                   SizedBox(height: responsiveHeight(16)),
                   Text(
-                    "Please enter your email associated to\nyour account",
+                    tr.forgetPasswordDescription,
                     textAlign: TextAlign.center,
                     style: AppTextStyles.inter400_14.copyWith(
                       color: AppColors.greyDarkColor,

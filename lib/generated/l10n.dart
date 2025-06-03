@@ -28,10 +28,9 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -385,304 +384,24 @@ class S {
     return Intl.message('Language', name: 'language', desc: '', args: []);
   }
 
+  /// `Continue`
+  String get cont {
+    return Intl.message('Continue', name: 'cont', desc: '', args: []);
+  }
+
   /// `Arabic`
   String get arabic {
     return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
   }
 
-  /// `About us`
-  String get aboutUs {
-    return Intl.message('About us', name: 'aboutUs', desc: '', args: []);
-  }
-
-  /// `Logout`
-  String get logout {
-    return Intl.message('Logout', name: 'logout', desc: '', args: []);
-  }
-
-  /// `Change Language`
-  String get changeLanguage {
+  /// `Order Details`
+  String get orderDetails {
     return Intl.message(
-      'Change Language',
-      name: 'changeLanguage',
+      'Order Details',
+      name: 'orderDetails',
       desc: '',
       args: [],
     );
-  }
-
-  /// `English`
-  String get english {
-    return Intl.message('English', name: 'english', desc: '', args: []);
-  }
-
-  /// `Search`
-  String get search {
-    return Intl.message('Search', name: 'search', desc: '', args: []);
-  }
-
-  /// `Occasions`
-  String get occasions {
-    return Intl.message('Occasions', name: 'occasions', desc: '', args: []);
-  }
-
-  /// `Best Sellers`
-  String get BestSellers {
-    return Intl.message(
-      'Best Sellers',
-      name: 'BestSellers',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Categories`
-  String get categories {
-    return Intl.message('Categories', name: 'categories', desc: '', args: []);
-  }
-
-  /// `View all`
-  String get viewAll {
-    return Intl.message('View all', name: 'viewAll', desc: '', args: []);
-  }
-
-  /// `confirm logout`
-  String get confirmLogout {
-    return Intl.message(
-      'confirm logout',
-      name: 'confirmLogout',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `cancel`
-  String get cancel {
-    return Intl.message('cancel', name: 'cancel', desc: '', args: []);
-  }
-
-  /// `Saved Addresses`
-  String get saved_addresses {
-    return Intl.message(
-      'Saved Addresses',
-      name: 'saved_addresses',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add New Address`
-  String get add_new_addresses {
-    return Intl.message(
-      'Add New Address',
-      name: 'add_new_addresses',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `No address found.`
-  String get no_address_found {
-    return Intl.message(
-      'No address found.',
-      name: 'no_address_found',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Address Details`
-  String get address_details {
-    return Intl.message(
-      'Address Details',
-      name: 'address_details',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Street`
-  String get street {
-    return Intl.message('Street', name: 'street', desc: '', args: []);
-  }
-
-  /// `Bloom with our exquisite best sellers`
-  String get bloomwithourexquisitebestsellers {
-    return Intl.message(
-      'Bloom with our exquisite best sellers',
-      name: 'bloomwithourexquisitebestsellers',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Address`
-  String get address {
-    return Intl.message('Address', name: 'address', desc: '', args: []);
-  }
-
-  /// `Enter your address`
-  String get enterAddress {
-    return Intl.message(
-      'Enter your address',
-      name: 'enterAddress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Recipient name`
-  String get recipientName {
-    return Intl.message(
-      'Recipient name',
-      name: 'recipientName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Enter the recipient name`
-  String get enterRecipientName {
-    return Intl.message(
-      'Enter the recipient name',
-      name: 'enterRecipientName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `City`
-  String get city {
-    return Intl.message('City', name: 'city', desc: '', args: []);
-  }
-
-  /// `Cairo`
-  String get cairo {
-    return Intl.message('Cairo', name: 'cairo', desc: '', args: []);
-  }
-
-  /// `Area`
-  String get area {
-    return Intl.message('Area', name: 'area', desc: '', args: []);
-  }
-
-  /// `October`
-  String get october {
-    return Intl.message('October', name: 'october', desc: '', args: []);
-  }
-
-  /// `Save address`
-  String get saveAddress {
-    return Intl.message(
-      'Save address',
-      name: 'saveAddress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter an address`
-  String get addressRequired {
-    return Intl.message(
-      'Please enter an address',
-      name: 'addressRequired',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter a phone number`
-  String get phoneNumberRequired {
-    return Intl.message(
-      'Please enter a phone number',
-      name: 'phoneNumberRequired',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter a recipient name`
-  String get recipientNameRequired {
-    return Intl.message(
-      'Please enter a recipient name',
-      name: 'recipientNameRequired',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter a city`
-  String get cityRequired {
-    return Intl.message(
-      'Please enter a city',
-      name: 'cityRequired',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter an area`
-  String get areaRequired {
-    return Intl.message(
-      'Please enter an area',
-      name: 'areaRequired',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Address saved successfully`
-  String get addressSavedSuccessfully {
-    return Intl.message(
-      'Address saved successfully',
-      name: 'addressSavedSuccessfully',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Checkout`
-  String get checkout {
-    return Intl.message('Checkout', name: 'checkout', desc: '', args: []);
-  }
-
-  /// `Delivery time`
-  String get deliveryTime {
-    return Intl.message(
-      'Delivery time',
-      name: 'deliveryTime',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Schedule`
-  String get schedule {
-    return Intl.message('Schedule', name: 'schedule', desc: '', args: []);
-  }
-
-  /// `Instant`
-  String get instant {
-    return Intl.message('Instant', name: 'instant', desc: '', args: []);
-  }
-
-  /// `Arrive by`
-  String get arriveBy {
-    return Intl.message('Arrive by', name: 'arriveBy', desc: '', args: []);
-  }
-
-  /// `Delivery Address`
-  String get deliveryAddress {
-    return Intl.message(
-      'Delivery Address',
-      name: 'deliveryAddress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add new`
-  String get addNew {
-    return Intl.message('Add new', name: 'addNew', desc: '', args: []);
   }
 
   /// `Payment method`
@@ -695,24 +414,174 @@ class S {
     );
   }
 
-  /// `Cash on delivery`
-  String get cashOnDelivery {
+  /// `Total`
+  String get total {
+    return Intl.message('Total', name: 'total', desc: '', args: []);
+  }
+
+  /// `User address`
+  String get userAddress {
     return Intl.message(
-      'Cash on delivery',
-      name: 'cashOnDelivery',
+      'User address',
+      name: 'userAddress',
       desc: '',
       args: [],
     );
   }
 
-  /// `Credit card`
-  String get creditCard {
-    return Intl.message('Credit card', name: 'creditCard', desc: '', args: []);
+  /// `Pickup address`
+  String get pickupAddress {
+    return Intl.message(
+      'Pickup address',
+      name: 'pickupAddress',
+      desc: '',
+      args: [],
+    );
   }
 
-  /// `It is a gift`
-  String get itIsAGift {
-    return Intl.message('It is a gift', name: 'itIsAGift', desc: '', args: []);
+  /// `Welcome to`
+  String get welcomeTo {
+    return Intl.message('Welcome to', name: 'welcomeTo', desc: '', args: []);
+  }
+
+  /// `Flowery rider app`
+  String get floweryRider {
+    return Intl.message(
+      'Flowery rider app',
+      name: 'floweryRider',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply now`
+  String get apply_now {
+    return Intl.message('Apply now', name: 'apply_now', desc: '', args: []);
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message('Error', name: 'error', desc: '', args: []);
+  }
+
+  /// `Invalid code`
+  String get invalid_code {
+    return Intl.message(
+      'Invalid code',
+      name: 'invalid_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message('Ok', name: 'ok', desc: '', args: []);
+  }
+
+  /// `Reset password`
+  String get reset_password {
+    return Intl.message(
+      'Reset password',
+      name: 'reset_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password changed successfully`
+  String get password_changed_successfully {
+    return Intl.message(
+      'Password changed successfully',
+      name: 'password_changed_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message('Resend', name: 'resend', desc: '', args: []);
+  }
+
+  /// `Phone code`
+  String get phoneCode {
+    return Intl.message('Phone code', name: 'phoneCode', desc: '', args: []);
+  }
+
+  /// `Vehicle info`
+  String get vehicle_info {
+    return Intl.message(
+      'Vehicle info',
+      name: 'vehicle_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current password`
+  String get currentPassword {
+    return Intl.message(
+      'Current password',
+      name: 'currentPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `update`
+  String get update {
+    return Intl.message('update', name: 'update', desc: '', args: []);
+  }
+
+  /// `First name can't be empty`
+  String get firstNameEmpty {
+    return Intl.message(
+      'First name can\'t be empty',
+      name: 'firstNameEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `change`
+  String get change {
+    return Intl.message('change', name: 'change', desc: '', args: []);
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Confirm logout`
+  String get confirmLogout {
+    return Intl.message(
+      'Confirm logout',
+      name: 'confirmLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message('English', name: 'english', desc: '', args: []);
   }
 
   /// `Name`
@@ -720,159 +589,9 @@ class S {
     return Intl.message('Name', name: 'name', desc: '', args: []);
   }
 
-  /// `Enter your name`
-  String get enterYourName {
-    return Intl.message(
-      'Enter your name',
-      name: 'enterYourName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sub Total`
-  String get subTotal {
-    return Intl.message('Sub Total', name: 'subTotal', desc: '', args: []);
-  }
-
-  /// `Delivery Fee`
-  String get deliveryFee {
-    return Intl.message(
-      'Delivery Fee',
-      name: 'deliveryFee',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total`
-  String get total {
-    return Intl.message('Total', name: 'total', desc: '', args: []);
-  }
-
-  /// `Filter`
-  String get filter {
-    return Intl.message('Filter', name: 'filter', desc: '', args: []);
-  }
-
-  /// `Place order`
-  String get placeOrder {
-    return Intl.message('Place order', name: 'placeOrder', desc: '', args: []);
-  }
-
-  /// `Discount`
-  String get discount {
-    return Intl.message('Discount', name: 'discount', desc: '', args: []);
-  }
-
-  /// `Old`
-  String get old {
-    return Intl.message('Old', name: 'old', desc: '', args: []);
-  }
-
-  /// `New`
-  String get newDate {
-    return Intl.message('New', name: 'newDate', desc: '', args: []);
-  }
-
-  /// `Highest Prise`
-  String get highest_Price {
-    return Intl.message(
-      'Highest Prise',
-      name: 'highest_Price',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sort By`
-  String get sort_py {
-    return Intl.message('Sort By', name: 'sort_py', desc: '', args: []);
-  }
-
-  /// `Lower Price`
-  String get lowes_Price {
-    return Intl.message('Lower Price', name: 'lowes_Price', desc: '', args: []);
-  }
-
-  /// `My Orders`
-  String get myOrder {
-    return Intl.message('My Orders', name: 'myOrder', desc: '', args: []);
-  }
-
-  /// `Active`
-  String get active {
-    return Intl.message('Active', name: 'active', desc: '', args: []);
-  }
-
-  /// `Completed`
-  String get completed {
-    return Intl.message('Completed', name: 'completed', desc: '', args: []);
-  }
-
-  /// `Not Found Active Orders`
-  String get notfoundActiveOrders {
-    return Intl.message(
-      'Not Found Active Orders',
-      name: 'notfoundActiveOrders',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Not Found Completed Orders`
-  String get notfoundCompletedOrders {
-    return Intl.message(
-      'Not Found Completed Orders',
-      name: 'notfoundCompletedOrders',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `EGP`
-  String get EGP {
-    return Intl.message('EGP', name: 'EGP', desc: '', args: []);
-  }
-
-  /// `Delivered on`
-  String get Deliveredon {
-    return Intl.message(
-      'Delivered on',
-      name: 'Deliveredon',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reorder`
-  String get Reorder {
-    return Intl.message('Reorder', name: 'Reorder', desc: '', args: []);
-  }
-
-  /// `Order Number`
-  String get OrderNumber {
-    return Intl.message(
-      'Order Number',
-      name: 'OrderNumber',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `update Address`
-  String get updateAddress {
-    return Intl.message(
-      'update Address',
-      name: 'updateAddress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Track Order`
-  String get TrackOrder {
-    return Intl.message('Track Order', name: 'TrackOrder', desc: '', args: []);
+  String get egp {
+    return Intl.message('EGP', name: 'egp', desc: '', args: []);
   }
 }
 

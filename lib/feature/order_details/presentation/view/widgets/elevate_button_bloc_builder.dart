@@ -49,7 +49,7 @@ class ElevatedButtonBlocBuilder extends StatelessWidget {
       context.read<UpdateOrderStateCubit>().updateOrderState(
         '${order.id}',
         {
-          AppConstants.orderStatus: 'completed',
+          AppConstants.orderStatus: "completed",
         },
       );
 

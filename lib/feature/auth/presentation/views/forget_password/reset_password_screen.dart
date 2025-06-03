@@ -8,6 +8,7 @@ import '../../../../../../../core/utils/app_colors.dart';
 import '../../../../../../../core/utils/text_styles.dart';
 import '../../../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/common/get_responsive_height_and_width.dart';
+import '../../../../../generated/l10n.dart';
 import '../../cubit/reset_password_cubit/reset_password_state.dart';
 import '../../cubit/reset_password_cubit/reset_password_view_model.dart';
 
@@ -31,6 +32,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     widget.email = ModalRoute.of(context)!.settings.arguments as String;
+    var tr = S.of(context);
 
     debugPrint("the email is ${widget.email}");
     return BlocProvider(
@@ -56,7 +58,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           appBar: buildCustomAppBar(
             isVisible: false,
             context: context,
-            title: "Password",
+            title: tr.password,
           ),
 
           body: Padding(
@@ -75,7 +77,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Reset password',
+                        tr.reset_password,
                         maxLines: 1,
                         style: AppTextStyles.inter500_18.copyWith(
                           color: AppColors.blackColor,

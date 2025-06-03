@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
 import 'package:tracking_app/feature/apply/presentation/view/apply_view.dart';
 import 'package:tracking_app/feature/apply/presentation/view/success_apply_view.dart';
@@ -6,16 +8,26 @@ import 'package:tracking_app/feature/auth/presentation/views/forget_password/ema
 import 'package:tracking_app/feature/auth/presentation/views/forget_password/forget_paswerd_screen.dart';
 import 'package:tracking_app/feature/auth/presentation/views/sign_in/sign_in_screen.dart';
 import 'package:tracking_app/feature/order_details/presentation/view/order_details_view.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/route_view.dart';
+import 'package:tracking_app/feature/order_details/presentation/view/route_view.dart';
+import 'package:tracking_app/feature/profile/presentation/views/change_password_screen.dart';
+import 'package:tracking_app/feature/profile/presentation/views/edit_profile_view.dart';
 import 'package:tracking_app/layout/presentation/views/layout_screen.dart';
 import 'package:tracking_app/main_view.dart';
 
 import '../../feature/auth/presentation/views/on_boarding/on_boarding_view.dart';
 import '../../feature/auth/presentation/views/forget_password/reset_password_screen.dart';
 import '../../feature/orders/presentation/views/order_details.dart';
+import '../../feature/profile/presentation/cubit/change_password_cubit/change_password_view-model.dart';
+import '../di/injectable_initializer.dart';
+import '../../feature/home/domain/entites/pending_orders_response_entity.dart';
+import '../../feature/order_details/presentation/cubits/routes_cubit/routes_cubit.dart';
+import '../di/injectable_initializer.dart';
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+
       case PagesRoutes.signIn:
         return MaterialPageRoute(
           builder: (context) => SignInScreen(),
@@ -33,11 +45,13 @@ class RoutesGenerator {
           builder: (context) => const SuccessApplyView(),
           settings: settings,
         );
+
       case PagesRoutes.applyView:
         return MaterialPageRoute(
           builder: (context) => ApplyView(),
           settings: settings,
         );
+
       case PagesRoutes.onBoarding:
         return MaterialPageRoute(
           builder: (context) => OnBoardingScreen(),
@@ -55,9 +69,9 @@ class RoutesGenerator {
             builder: (context) => EmailVerificationScreen(),
             settings: settings);
 
-        return MaterialPageRoute(
-            builder: (context) => EmailVerificationScreen(),
-            settings: settings);
+        // return MaterialPageRoute(
+        //     builder: (context) => EmailVerificationScreen(),
+        //     settings: settings);
       case PagesRoutes.orderDetails:
         return MaterialPageRoute(
             builder: (context) => OrderDetailsView(), settings: settings);
@@ -67,11 +81,40 @@ class RoutesGenerator {
           builder: (context) => ResetPasswordScreen(),
           settings: settings,
         );
+
       case PagesRoutes.layoutView:
         return MaterialPageRoute(
           builder: (context) => LayoutScreen(),
           settings: settings,
         );
+      case PagesRoutes.routeView:
+        final args = settings.arguments as Map<String, dynamic>;
+        final OrderEntity order = args['order'];
+        final String selectedAddress = args['selectedAddress'];
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider<RouteCubit>(
+            create: (_) => getIt<RouteCubit>()..loadRoute(),
+            child: RouteView(
+              order: order,
+              selectedAddress: selectedAddress,
+            ),
+          ),
+          settings: settings,
+        );
+
+      case PagesRoutes.changePassword:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt.get<ChangePasswordViewModel>(),
+            child: ChangePasswordScreen(),
+          ),
+          settings: settings,
+        );
+
+      case PagesRoutes.editProfile:
+        return MaterialPageRoute(
+            builder: (context) => EditProfileView(), settings: settings);
+
       case PagesRoutes.orderTabDetails:
         return MaterialPageRoute(
             builder: (context) => OrderTabDetails(), settings: settings);
