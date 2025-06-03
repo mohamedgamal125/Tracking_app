@@ -48,6 +48,10 @@
   "total": "الإجمالي",
   "userAddress": "عنوان المستخدم",
   "pickupAddress": "عنوان الاستلام",
+   "egp": "ج.م",
+
+    "thankYou":"شكرا لك",
+    "done":"تم توصيل الاوردر       \nبنجاح"
   "welcomeTo": "مرحبا بك في",
   "floweryRider": "تطبيق فلاوري",
   "apply_now": "قدّم الآن",

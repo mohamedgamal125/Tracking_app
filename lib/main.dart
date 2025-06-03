@@ -76,7 +76,7 @@ class MainAppContent extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      // initialRoute: PagesRoutes.forgetPassword,
+      // initialRoute: PagesRoutes.forgetPasswordو
       initialRoute:
       (SharedPreferenceServices.getData(AppConstants.token) != null &&
               (SharedPreferenceServices.getData(AppConstants.rememberMe)
@@ -85,9 +85,5 @@ class MainAppContent extends StatelessWidget {
           ? PagesRoutes.layoutView
           : PagesRoutes.onBoarding,
     );
-  }
-
-  int sum(int a, int b) {
-    return a + b;
   }
 }

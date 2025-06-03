@@ -12,7 +12,7 @@ class LayoutViewModel extends Cubit<LayoutStates> {
   int currentIndex = 0;
   final List<Widget> tabs = [
     HomeTab(),
-    const OrdersTab(),
+    OrdersTab(),
     ProfileTab(),
   ];
 
