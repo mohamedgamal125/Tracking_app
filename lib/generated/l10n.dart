@@ -577,49 +577,6 @@ class S {
   /// `Cancel`
   String get cancel {
     return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
-  /// `Order Details`
-  String get orderDetails {
-    return Intl.message(
-      'Order Details',
-      name: 'orderDetails',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Payment method`
-  String get paymentMethod {
-    return Intl.message(
-      'Payment method',
-      name: 'paymentMethod',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Total`
-  String get total {
-    return Intl.message('Total', name: 'total', desc: '', args: []);
-  }
-
-  /// `User address`
-  String get userAddress {
-    return Intl.message(
-      'User address',
-      name: 'userAddress',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Pickup address`
-  String get pickupAddress {
-    return Intl.message(
-      'Pickup address',
-      name: 'pickupAddress',
-      desc: '',
-      args: [],
-    );
   }
 
   /// `English`

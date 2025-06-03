@@ -57,7 +57,7 @@ class AddressDetailsSection extends StatelessWidget {
             ),
             subtitle: Row(
               children: [
-                SvgPicture.asset(SvgImags.locationIcon),
+                SvgPicture.asset(SvgImages.locationIcon),
                 SizedBox(width: responsiveWidth(2)),
                 Expanded(
                   child: Text(
@@ -80,7 +80,7 @@ class AddressDetailsSection extends StatelessWidget {
 
   Widget _buildImage(String? image) {
     //default fallback image
-    const defaultImage = ImageAssets.profileUser;
+    const defaultImage = ImageAssets.profileImage;
 
     if (image == null || image.isEmpty || image.contains('file://')) {
       return Image.asset(defaultImage, fit: BoxFit.cover);

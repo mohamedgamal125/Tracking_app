@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "change": MessageLookupByLibrary.simpleMessage("تغيير"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+    "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -93,7 +94,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "ok": MessageLookupByLibrary.simpleMessage("حسنًا"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
-    "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "يجب أن تحتوي كلمة المرور على حرف كبير ورقم على الأقل",
@@ -125,7 +125,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "الشروط والأحكام",
     ),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
-    "userAddress": MessageLookupByLibrary.simpleMessage("عنوان المستخدم"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "userAddress": MessageLookupByLibrary.simpleMessage("عنوان المستخدم"),
     "vehicle_info": MessageLookupByLibrary.simpleMessage("معلومات المركبة"),

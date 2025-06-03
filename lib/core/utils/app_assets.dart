@@ -1,5 +1,3 @@
-const String svgPath = 'assets/svg';
-const String imagePath = "assets/images";
 
 abstract class ImageAssets {
   static const String profileImage = "$imagePath/profile_example.jpg";
@@ -8,10 +6,8 @@ abstract class ImageAssets {
 const String imagePath = "assets/images";
 const String iconPath = "assets/icons";
 const String animationPath = "assets/animations";
+const String svgPath = "assets/svg";
 
-abstract class ImageAssets {
-  static const String profileImage = "$imagePath/profile_example.jpg";
-}
 
 abstract class AnimationAssets {
   static const String onboardingAssets = "$animationPath/onboarding_animation.json";

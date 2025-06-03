@@ -31,7 +31,7 @@ class BottomInfoCard extends StatelessWidget {
             name: order?.store?.name ?? '',
             address: order?.store?.address ?? '',
             phone: order?.store?.phoneNumber ?? '',
-            image: SvgImags.flowerlyLogo,
+            image: SvgImages.flowerlyLogo,
           ),
         ),
         SizedBox(height: responsiveHeight(16)),

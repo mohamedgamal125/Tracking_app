@@ -96,7 +96,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "ok": MessageLookupByLibrary.simpleMessage("Ok"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
-    "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "Password must contain at least one uppercase letter and one number",
@@ -130,6 +129,5 @@ class MessageLookup extends MessageLookupByLibrary {
     "userAddress": MessageLookupByLibrary.simpleMessage("User address"),
     "vehicle_info": MessageLookupByLibrary.simpleMessage("Vehicle info"),
     "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
-    "userAddress": MessageLookupByLibrary.simpleMessage("User address"),
   };
 }
