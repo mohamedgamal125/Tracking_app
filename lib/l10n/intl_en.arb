@@ -48,9 +48,9 @@
   "total": "Total",
   "userAddress": "User address",
   "pickupAddress": "Pickup address",
-  "egp": "EGP"
+  "egp": "EGP",
 
-  "thankYou":"Thank You"
+  "thankYou":"Thank You",
   "done":"The order delivered\n      successfully"
 
 }
