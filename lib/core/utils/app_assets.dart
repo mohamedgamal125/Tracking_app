@@ -19,4 +19,5 @@ abstract class SvgImages {
   static const String locationIcon = '$svgPath/location.svg';
   static const String whatsappIcon = '$svgPath/whats_app.svg';
   static const String callIcon = '$svgPath/call.svg';
+  static const String flowerpocket = '$svgPath/flower_pocket.svg';
 }

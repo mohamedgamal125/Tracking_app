@@ -48,8 +48,8 @@ class OrderDetailsSection extends StatelessWidget {
           SizedBox(
             width: responsiveWidth(44),
             height: responsiveHeight(44),
-            child: image != null
-                ? Image.asset(
+            child: image!.contains('http')
+                ? Image.network(
                     image!,
                     fit: BoxFit.cover,
                   )
