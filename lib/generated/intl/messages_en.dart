@@ -40,6 +40,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage(
       "Didn\'t receive code?",
     ),
+    "done": MessageLookupByLibrary.simpleMessage(
+      "The order delivered\n      successfully",
+    ),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
@@ -124,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
     ),
+    "thankYou": MessageLookupByLibrary.simpleMessage("Thank You"),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
     "update": MessageLookupByLibrary.simpleMessage("update"),
     "userAddress": MessageLookupByLibrary.simpleMessage("User address"),

@@ -93,6 +93,8 @@ import '../../feature/profile/domain/use_case/change_password_use_case.dart'
     as _i1053;
 import '../../feature/profile/domain/use_case/edit_profile_use_case.dart'
     as _i36;
+import '../../feature/profile/domain/use_case/edit_vehicle_use_case.dart'
+    as _i261;
 import '../../feature/profile/domain/use_case/profile_screen_use_case.dart'
     as _i705;
 import '../../feature/profile/domain/use_case/upload_photo_use_case.dart'
@@ -101,6 +103,8 @@ import '../../feature/profile/presentation/cubit/change_password_cubit/change_pa
     as _i557;
 import '../../feature/profile/presentation/cubit/edit_profile_cubit/edit_profile_view_model.dart'
     as _i917;
+import '../../feature/profile/presentation/cubit/edite_vehicle_cubit/edit_vehicle_view_model.dart'
+    as _i663;
 import '../../feature/profile/presentation/cubit/profile_view_model.dart'
     as _i8;
 import '../../feature/profile/presentation/cubit/upload_photo_cubit/upload_photo_view_model.dart'
@@ -191,6 +195,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1053.ChangePasswordUseCase(gh<_i176.ProfileRepository>()));
     gh.factory<_i36.EditProfileUseCase>(
         () => _i36.EditProfileUseCase(gh<_i176.ProfileRepository>()));
+    gh.factory<_i261.EditVehicleUseCase>(
+        () => _i261.EditVehicleUseCase(gh<_i176.ProfileRepository>()));
     gh.factory<_i705.ProfileUseCase>(
         () => _i705.ProfileUseCase(gh<_i176.ProfileRepository>()));
     gh.factory<_i625.UploadPhotoUseCase>(
@@ -213,6 +219,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i798.VerifyEmailViewModel(gh<_i137.AuthUseCase>()));
     gh.factory<_i804.UploadPhotoViewModel>(
         () => _i804.UploadPhotoViewModel(gh<_i625.UploadPhotoUseCase>()));
+    gh.factory<_i663.EditVehicleViewModel>(
+        () => _i663.EditVehicleViewModel(gh<_i261.EditVehicleUseCase>()));
     gh.factory<_i734.ApplyViewModel>(() => _i734.ApplyViewModel(
           gh<_i628.ApplyUseCase>(),
           gh<_i275.GetVehiclesUseCase>(),

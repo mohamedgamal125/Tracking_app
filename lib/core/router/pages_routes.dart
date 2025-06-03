@@ -12,5 +12,7 @@ abstract class PagesRoutes {
   static const String orderTabDetails = "order_tab_details";
   static const String changePassword = 'changePassword';
   static const String editProfile = 'editProfile';
+  static const String editVehicle = 'editVehicle';
+
   static const String routeView = 'routeView';
 }

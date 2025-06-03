@@ -25,4 +25,5 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
         emit(EditProfileErrorState(result.exception!));
     }
   }
+
 }

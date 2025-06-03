@@ -15,8 +15,10 @@ import '../model/profile_response_dto.dart';
 abstract class ProfileRemoteDataSource {
   Future<ProfileResponseDTO> getProfileData();
   Future<ProfileResponseDTO> editProfile(Map<String, dynamic> data);
+  Future<ProfileResponseDTO> editVehicle(File image, String name);
   Future<Result<String?>> uploadPhoto(File photo);
-  Future<Result<ChangePasswordEntity>> changePassword(ChangePasswordRequestModel data);
+  Future<Result<ChangePasswordEntity>> changePassword(
+      ChangePasswordRequestModel data);
   Future<void> logout();
 }
 
@@ -37,6 +39,13 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     return response;
   }
 
+  @override
+  Future<ProfileResponseDTO> editVehicle(File image, String name) async {
+    Map<String, dynamic> map = {'name': name, 'image': image};
+    ProfileResponseDTO response =
+        await _apiClient.editVehicle(map, name, image);
+    return response;
+  }
 
   @override
   Future<Result<String?>> uploadPhoto(File photo) async {
@@ -45,7 +54,8 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       var formData = FormData.fromMap({
         'photo': await MultipartFile.fromFile(
           photo.path,
-          filename: 'upload_${DateTime.now().millisecondsSinceEpoch}.${photo.path.split('.').last}',
+          filename:
+              'upload_${DateTime.now().millisecondsSinceEpoch}.${photo.path.split('.').last}',
           contentType: MediaType.parse(mimeType!),
         ),
       });
@@ -56,14 +66,17 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<Result<ChangePasswordEntity>> changePassword(
-      ChangePasswordRequestModel data,
-      ) async {
+    ChangePasswordRequestModel data,
+  ) async {
     return executeApi(() async {
-      var response = await _apiClient.changePassword(data,);
+      var response = await _apiClient.changePassword(
+        data,
+      );
       log("response ${response.message}");
       return response;
     });
   }
+
   @override
   Future<void> logout() async {
     await _apiClient.logout();

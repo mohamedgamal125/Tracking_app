@@ -10,7 +10,6 @@ import 'edit_profile_submit_button.dart';
 import 'edit_profile_text_fields.dart';
 import 'gender_selector.dart';
 
-
 class EditProfileViewBody extends StatefulWidget {
   const EditProfileViewBody({
     super.key,
@@ -28,11 +27,16 @@ class EditProfileViewBody extends StatefulWidget {
 }
 
 class _EditProfileViewBodyState extends State<EditProfileViewBody> {
-  late final TextEditingController _firstNameController =  TextEditingController(text: widget.userData.firstName);
-  late final TextEditingController _lastNameController =  TextEditingController(text: widget.userData.lastName);
-  late final TextEditingController _emailController =  TextEditingController(text: widget.userData.email);
-  late final TextEditingController _phoneController =  TextEditingController(text: widget.userData.phone);
-  final TextEditingController _passwordController = TextEditingController(text: '123456');
+  late final TextEditingController _firstNameController =
+      TextEditingController(text: widget.userData.firstName);
+  late final TextEditingController _lastNameController =
+      TextEditingController(text: widget.userData.lastName);
+  late final TextEditingController _emailController =
+      TextEditingController(text: widget.userData.email);
+  late final TextEditingController _phoneController =
+      TextEditingController(text: widget.userData.phone);
+  final TextEditingController _passwordController =
+      TextEditingController(text: '123456');
 
   AutovalidateMode validateMode = AutovalidateMode.always;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -92,11 +96,12 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 selectedGender: selectedGender ?? 'male',
                 onGenderChanged: (value) => setState(() => selectedGender = value),
               ),
-              SizedBox(height: responsiveHeight(32)),
+              SizedBox(height: responsiveHeight(24)),
               EditProfileSubmitButton(
                 validateMode: validateMode,
                 formKey: formKey,
-                onValidateModeChanged: (mode) => setState(() => validateMode = mode),
+                onValidateModeChanged: (mode) =>
+                    setState(() => validateMode = mode),
                 editProfileViewModel: widget.editProfileViewModel,
                 firstName: _firstNameController.text,
                 lastName: _lastNameController.text,
@@ -118,4 +123,3 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     });
   }
 }
-

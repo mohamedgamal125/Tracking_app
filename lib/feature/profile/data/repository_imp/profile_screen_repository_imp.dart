@@ -35,16 +35,19 @@ class ProfileRepositoryImpl implements ProfileRepository {
     Map<String, dynamic> data,
   ) async {
     return await executeApi(() async {
-      ProfileResponseDTO response = await _profileRemoteDataSource
-          .editProfile(data);
+      ProfileResponseDTO response =
+          await _profileRemoteDataSource.editProfile(data);
       return response.toEntity();
     });
   }
 
   @override
-  Future<Result<ChangePasswordEntity>> changePassword(ChangePasswordRequestModel data,) async {
+  Future<Result<ChangePasswordEntity>> changePassword(
+    ChangePasswordRequestModel data,
+  ) async {
     return await _profileRemoteDataSource.changePassword(data);
   }
+
   @override
   Future<Result<void>> logout() async {
     return executeApi<void>(() async {
@@ -68,4 +71,13 @@ class ProfileRepositoryImpl implements ProfileRepository {
     return _profileRemoteDataSource.uploadPhoto(photo);
   }
 
+  @override
+  Future<Result<ProfileResponseEntity>> editVehicle(
+      String name, File image) async {
+    return await executeApi(() async {
+      ProfileResponseDTO response =
+          await _profileRemoteDataSource.editVehicle(image, name);
+      return response.toEntity();
+    });
+  }
 }

@@ -12,6 +12,7 @@ import 'package:tracking_app/feature/order_details/presentation/view/route_view.
 import 'package:tracking_app/feature/order_details/presentation/view/route_view.dart';
 import 'package:tracking_app/feature/profile/presentation/views/change_password_screen.dart';
 import 'package:tracking_app/feature/profile/presentation/views/edit_profile_view.dart';
+import 'package:tracking_app/feature/profile/presentation/views/edit_vehicle_view.dart';
 import 'package:tracking_app/layout/presentation/views/layout_screen.dart';
 import 'package:tracking_app/main_view.dart';
 
@@ -27,7 +28,6 @@ import '../di/injectable_initializer.dart';
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-
       case PagesRoutes.signIn:
         return MaterialPageRoute(
           builder: (context) => SignInScreen(),
@@ -114,6 +114,9 @@ class RoutesGenerator {
       case PagesRoutes.editProfile:
         return MaterialPageRoute(
             builder: (context) => EditProfileView(), settings: settings);
+      case PagesRoutes.editVehicle:
+        return MaterialPageRoute(
+            builder: (context) => EditVehicleView(), settings: settings);
 
       case PagesRoutes.orderTabDetails:
         return MaterialPageRoute(
