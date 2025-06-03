@@ -6,10 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
-import 'package:tracking_app/core/common/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/di/injectable_initializer.dart';
 import 'package:tracking_app/core/router/pages_routes.dart';
-import 'package:tracking_app/core/services/gemini_service.dart';
 import 'package:tracking_app/core/utils/app_colors.dart';
 import 'package:tracking_app/core/utils/text_styles.dart';
 import 'package:tracking_app/core/widgets/custom_validate.dart';
@@ -23,6 +21,9 @@ import 'package:tracking_app/feature/apply/presentation/view/widgets/country_dro
 import 'package:tracking_app/feature/apply/presentation/view/widgets/gender_selection_widget.dart';
 import 'package:tracking_app/feature/apply/presentation/view/widgets/vehicle_type_drop_down_widget.dart';
 import 'package:tracking_app/feature/apply/presentation/view/widgets/welcome_message_widget.dart';
+import 'package:tracking_app/generated/l10n.dart';
+
+// import '../../../../generated/l10n.dart';
 
 class ApplyViewBody extends StatefulWidget {
   ApplyViewBody(
@@ -113,7 +114,7 @@ class _ApplyViewBodyState extends State<ApplyViewBody> {
                       if (dropDownValue != null) {
                         _phoneNumberController.text =
                             dropDownValue!['phoneCode'];
-                        log("Name: ${dropDownValue!['name']}, Phone Code: ${dropDownValue!['phoneCode']}");
+                        log("${S.of(context).name}: ${dropDownValue!['name']}, ${S.of(context).phoneCode}: ${dropDownValue!['phoneCode']}");
                       }
                     });
                   },

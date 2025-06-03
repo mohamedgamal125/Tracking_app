@@ -8,6 +8,7 @@ import '../../../../../core/router/pages_routes.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/custom_dialog.dart';
 import '../../../../../core/di/injectable_initializer.dart';
+import '../../../../../generated/l10n.dart';
 import '../../cubit/verify_email_cubit/verify_email_state.dart';
 import '../../cubit/verify_email_cubit/verify_email_vew_model.dart';
 import '../widgets/custom_verify_text_field.dart';
@@ -70,11 +71,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     email = ModalRoute.of(context)!.settings.arguments as String;
+    var tr = S.of(context);
 
     return BlocProvider.value(
       value: viewModel,
       child: Scaffold(
-        appBar: AppBar(title: const Text("Password")),
+        appBar: AppBar(title: Text(tr.password)),
         body: BlocListener<VerifyEmailViewModel, VerifyEmailState>(
           listener: (context, state) {
             EasyLoading.dismiss();
@@ -88,16 +90,16 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
               });
               DialogUtils.showMessage(
                 context: context,
-                title: "Error",
-                message: "Invalid code",
-                postActionName: "OK",
+                title: tr.error,
+                message: tr.invalid_code,
+                postActionName: tr.ok,
               );
             } else if (state is ErrorResendEmailState) {
               DialogUtils.showMessage(
                 context: context,
-                title: "Error",
+                title: tr.error,
                 message: state.toString(),
-                postActionName: "OK",
+                postActionName: tr.ok,
               );
             }
           },
@@ -111,9 +113,9 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
               child: Column(
                 children: [
                   SizedBox(height: responsiveHeight(20)),
-                  const Text("Email verification", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 8),
-                  const Text("Please enter your code that send to your email address"),
+                  Text(tr.emailVerification, style: AppTextStyles.inter500_18),
+                  SizedBox(height: responsiveHeight(8)),
+                  Text(tr.enterCodeSentToEmail),
                   SizedBox(height: responsiveHeight(16)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -133,7 +135,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                       children:  [
                         Icon(AppIcons.error, color: AppColors.errorColor, size: 16),
                         SizedBox(width: responsiveWidth(4)),
-                        Text("Invalid code", style:AppTextStyles.inter500_13.copyWith(color: AppColors.errorColor)),
+                        Text( tr.invalid_code, style:AppTextStyles.inter500_13.copyWith(color: AppColors.errorColor)),
                       ],
                     ),
                   ],
@@ -141,7 +143,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Didn't receive code? "),
+                      Text(tr.didNotReceiveCode),
                       ResendOTPButton(
                         onResend: () => viewModel.resendCode(),
                       ),

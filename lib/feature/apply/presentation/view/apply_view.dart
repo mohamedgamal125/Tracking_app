@@ -6,6 +6,8 @@ import 'package:tracking_app/feature/apply/presentation/cubits/apply_view_model/
 import 'package:tracking_app/feature/apply/presentation/cubits/check_image_with_gemini_view_model/check_image_with_gemini_view_model.dart';
 import 'package:tracking_app/feature/apply/presentation/view/apply_view_body.dart';
 
+import '../../../../generated/l10n.dart';
+
 class ApplyView extends StatelessWidget {
   ApplyView({super.key});
 
@@ -27,7 +29,7 @@ class ApplyView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Apply',
+            S.of(context).apply_now,
             style: AppTextStyles.inter500_20,
           ),
         ),

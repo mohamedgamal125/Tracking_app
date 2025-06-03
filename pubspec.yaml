@@ -26,7 +26,7 @@ dependencies:
   flutter_svg: ^2.1.0
   get_it: ^8.0.3
   json_annotation: ^4.9.0
-  animated_text_kit: ^4.2.3
+  animated_text_kit: any
   lottie:
   mime: ^2.0.0
   mockito: ^5.4.5
@@ -39,7 +39,7 @@ dependencies:
   google_generative_ai: ^0.4.7
   firebase_core: ^3.13.0
   url_launcher: ^6.3.1
-  flutter_phone_direct_caller: ^2.2.1
+  flutter_phone_direct_caller: any
   cloud_firestore: ^5.6.7
   bloc_test: ^10.0.0
 
@@ -59,13 +59,14 @@ dev_dependencies:
 
 
 flutter:
+  generate: true
 
 
   uses-material-design: true
   assets:
     - assets/svg/
     - assets/animations/onboarding_animation.json
-    - assets/images/    
+    - assets/images/
     - assets/files/
 
   fonts:
@@ -85,3 +86,5 @@ flutter:
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
   
+flutter_intl:
+  enabled: true

@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class ResendOTPButton extends StatefulWidget {
   final Function onResend;
 
@@ -58,7 +60,7 @@ class _ResendOTPButtonState extends State<ResendOTPButton> {
     return TextButton(
       onPressed:
           _canResend ? handleResend : null,
-      child: Text(_canResend ? "Resend" : "Resend in $_timerSeconds "),
+      child: Text(_canResend ? S.of(context).resend : "${S.of(context).resendIn} $_timerSeconds "),
     );
   }
 }

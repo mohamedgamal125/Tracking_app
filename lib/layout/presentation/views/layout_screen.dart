@@ -3,18 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/layout/presentation/cubit/layout_states.dart';
 import 'package:tracking_app/layout/presentation/cubit/layout_view_model.dart';
 
-class LayoutScreen extends StatelessWidget {
-  LayoutScreen({super.key});
+import '../../../core/utils/app_icons.dart';
 
-  LayoutViewModel viewModel = LayoutViewModel();
+class LayoutScreen extends StatelessWidget {
+  LayoutScreen({super.key, this.initialIndex = 0});
+  final int initialIndex;
+
+  // LayoutViewModel viewModel = LayoutViewModel(initialIndex);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => viewModel,
+      create: (context) => LayoutViewModel(initialIndex),
       child: BlocBuilder<LayoutViewModel, LayoutStates>(
-        bloc: viewModel,
+        // bloc: viewModel,
         builder: (context, state) {
+          final viewModel = context.read<LayoutViewModel>();
           return Scaffold(
             resizeToAvoidBottomInset: true,
             body: viewModel.tabs[viewModel.currentIndex],
@@ -25,15 +29,15 @@ class LayoutScreen extends StatelessWidget {
               },
               items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined),
+                  icon: Icon(AppIcons.homeIcon),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.fact_check_outlined),
+                  icon: Icon(AppIcons.orderIcon),
                   label: 'Orders',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outline_rounded),
+                  icon: Icon(AppIcons.profileIcon),
                   label: 'Profile',
                 ),
               ],
