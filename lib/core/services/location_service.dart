@@ -1,9 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:location/location.dart';
-
+@lazySingleton
 class LocationService {
   Location location = Location();
 
-  Future<bool> checkAndRequsetLocationService() async {
+  Future<bool> checkAndRequestLocationService() async {
     bool locationServiceEnabled = await location.serviceEnabled();
     if (!locationServiceEnabled) {
       locationServiceEnabled = await location.requestService();
@@ -14,7 +15,7 @@ class LocationService {
     return true;
   }
 
-  Future<bool> checkAndRequsetLocationPermesion() async {
+  Future<bool> checkAndRequestLocationPermission() async {
     PermissionStatus permissionStatus = await location.hasPermission();
     if (permissionStatus == PermissionStatus.denied) {
       PermissionStatus permissionStatus = await location.requestPermission();
@@ -30,8 +31,8 @@ class LocationService {
   }
 
   Future<LocationData> getUserLocation() async {
-    await checkAndRequsetLocationService();
-    await checkAndRequsetLocationPermesion();
+    await checkAndRequestLocationService();
+    await checkAndRequestLocationPermission();
     return await location.getLocation();
   }
 }
