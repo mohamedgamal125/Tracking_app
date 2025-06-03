@@ -40,6 +40,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمة المرور الحالية",
     ),
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage("لم يصلك الرمز؟"),
+    "done": MessageLookupByLibrary.simpleMessage(
+      "تم توصيل الاوردر       \nبنجاح",
+    ),
     "egp": MessageLookupByLibrary.simpleMessage("ج.م"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
@@ -124,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام",
     ),
+    "thankYou": MessageLookupByLibrary.simpleMessage("شكرا لك"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
     "userAddress": MessageLookupByLibrary.simpleMessage("عنوان المستخدم"),

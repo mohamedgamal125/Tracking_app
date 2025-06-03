@@ -16,7 +16,7 @@ class AppConstants {
   static const String locationKey = "location";
   static const String orderCollection = "order";
   static const String orderStatus = "status";
-  static const String orderStatus = "state";
+  // static const String orderStatus = "state";
 
   static const String imagePath = "https://flower.elevateegy.com/uploads/";
 

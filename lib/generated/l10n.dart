@@ -593,6 +593,21 @@ class S {
   String get egp {
     return Intl.message('EGP', name: 'egp', desc: '', args: []);
   }
+
+  /// `Thank You`
+  String get thankYou {
+    return Intl.message('Thank You', name: 'thankYou', desc: '', args: []);
+  }
+
+  /// `The order delivered\n      successfully`
+  String get done {
+    return Intl.message(
+      'The order delivered\n      successfully',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -55,16 +55,17 @@ class ProfileTab extends StatelessWidget {
               } else if (state is SuccessProfileState) {
                 return SingleChildScrollView(
                   child: Column(
-                    children: [
+                    children: <Widget>[
                       Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: responsiveWidth(16)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("Profile", style: AppTextStyles.inter700_20),
-                            IconButton(onPressed: () {
-
-                            }, icon: Icon(Icons.notifications_none_outlined))
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.notifications_none_outlined))
                           ],
                         ),
                       ),
@@ -76,7 +77,10 @@ class ProfileTab extends StatelessWidget {
                         child: UserInformationWidget(
                           userData: state.user!,
                         ),
-                      SizedBox(height: responsiveHeight(32)),
+                      ),
+                      SizedBox(
+                        height: responsiveHeight(8),
+                      ),
                       InkWell(
                         onTap: () {
                           Navigator.popAndPushNamed(
@@ -96,6 +100,7 @@ class ProfileTab extends StatelessWidget {
                         child: VehicleInformationWidget(
                           userData: state.user!,
                         ),
+                      ),
                       SizedBox(
                         height: responsiveHeight(8),
                       ),
@@ -104,6 +109,9 @@ class ProfileTab extends StatelessWidget {
                       ),
                       const LanguageWidget(),
                       const LogoutWidget(),
+                      SizedBox(
+                        height: responsiveHeight(16),
+                      ),
                     ],
                   ),
                 );
