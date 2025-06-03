@@ -56,6 +56,26 @@ class ProfileTab extends StatelessWidget {
                 return SingleChildScrollView(
                   child: Column(
                     children: [
+                      Padding(
+                        padding:  EdgeInsets.symmetric(horizontal: responsiveWidth(16)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Profile", style: AppTextStyles.inter700_20),
+                            IconButton(onPressed: () {
+
+                            }, icon: Icon(Icons.notifications_none_outlined))
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, PagesRoutes.editProfile,
+                              arguments: state.user!);
+                        },
+                        child: UserInformationWidget(
+                          userData: state.user!,
+                        ),
                       SizedBox(height: responsiveHeight(32)),
                       InkWell(
                         onTap: () {
@@ -76,6 +96,11 @@ class ProfileTab extends StatelessWidget {
                         child: VehicleInformationWidget(
                           userData: state.user!,
                         ),
+                      SizedBox(
+                        height: responsiveHeight(8),
+                      ),
+                      VehicleInformationWidget(
+                        userData: state.user!,
                       ),
                       const LanguageWidget(),
                       const LogoutWidget(),

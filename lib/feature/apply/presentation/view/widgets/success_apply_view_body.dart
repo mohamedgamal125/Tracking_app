@@ -16,7 +16,7 @@ class SuccessApplyViewBody extends StatefulWidget {
 }
 
 class _SuccessApplyViewBodyState extends State<SuccessApplyViewBody> {
-  final AnimatedTextController controller = AnimatedTextController();
+  // final AnimatedTextController controller = AnimatedTextController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _SuccessApplyViewBodyState extends State<SuccessApplyViewBody> {
                       speed: const Duration(milliseconds: 150),
                     ),
                   ],
-                  controller: controller,
+                  // controller: controller,
                   totalRepeatCount: 1,
                   repeatForever: false,
                 ),

@@ -15,15 +15,16 @@ import 'core/services/easy_loading_service.dart';
 import 'core/services/localization_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'generated/l10n.dart';
 
 void main() async {
- 
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp(
+  await dotenv.load();
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   configureDependencies();
   Bloc.observer = MyBlocObserver();
   ConfigLoading().showLoading();
@@ -36,7 +37,6 @@ void main() async {
     ),
   );
 }
-
 
 class InitApp extends StatelessWidget {
   const InitApp({super.key});
@@ -76,18 +76,14 @@ class MainAppContent extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      // initialRoute: PagesRoutes.forgetPassword,
+      // initialRoute: PagesRoutes.forgetPasswordو
       initialRoute:
-          (SharedPreferenceServices.getData(AppConstants.token) != null &&
-                  (SharedPreferenceServices.getData(AppConstants.rememberMe)
-                          as bool? ??
-                      false))
-              ? PagesRoutes.layoutView
-              : PagesRoutes.onBoarding,
+      (SharedPreferenceServices.getData(AppConstants.token) != null &&
+              (SharedPreferenceServices.getData(AppConstants.rememberMe)
+                      as bool? ??
+                  false))
+          ? PagesRoutes.layoutView
+          : PagesRoutes.onBoarding,
     );
-  }
-
-  int sum(int a, int b) {
-    return a + b;
   }
 }

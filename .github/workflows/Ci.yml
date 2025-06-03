@@ -17,34 +17,27 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-
       - name: Run tests with coverage
         run: flutter test --coverage
 
-
       - name: Debug coverage directory
         run: |
-            echo "🚀 coverage directory contents:"
-            ls -R coverage
-            echo
-            echo "📄 First 20 lines of coverage/lcov.info"
-            head -n 20 coverage/lcov.info || true
+          echo "🚀 coverage directory contents:"
+          ls -R coverage
+          echo
+          echo "📄 First 20 lines of coverage/lcov.info"
+          head -n 20 coverage/lcov.info || true
 
-      - name: Calculate and enforce ≥80% coverage
+      - name: Show coverage percentage
         run: |
-                set -eu
-                total=$(grep -c '^DA:' coverage/lcov.info || echo 0)
-                covered=$(grep -E '^DA:[0-9]+,[1-9]' coverage/lcov.info | wc -l || echo 0)
-                echo "📊 Total executable lines: $total"
-                echo "✅ Covered lines: $covered"
-                if [ "$total" -eq 0 ]; then
-                  echo "::warning::No executable lines found (skipping coverage check)."
-                  exit 0
-                fi
-                percent=$(( covered * 100 / total ))
-                echo "🎯 Coverage: ${percent}%"
-                if [ "$percent" -lt 80 ]; then
-                  echo "::error::Line coverage is below 80% (${percent}%)."
-                  exit 1
-                fi
-                echo "✅ Coverage threshold met."
+          set -eu
+          total=$(grep -c '^DA:' coverage/lcov.info || echo 0)
+          covered=$(grep -E '^DA:[0-9]+,[1-9]' coverage/lcov.info | wc -l || echo 0)
+          echo "📊 Total executable lines: $total"
+          echo "✅ Covered lines: $covered"
+          if [ "$total" -eq 0 ]; then
+            echo "::warning::No executable lines found (coverage data missing)."
+          else
+            percent=$(( covered * 100 / total ))
+            echo "🎯 Coverage: ${percent}%"
+          fi

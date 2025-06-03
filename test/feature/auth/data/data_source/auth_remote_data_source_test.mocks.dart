@@ -391,33 +391,4 @@ class MockApiClient extends _i1.Mock implements _i9.ApiClient {
           ),
         )),
       ) as _i10.Future<_i2.HttpResponse<void>>);
-
-  @override
-  _i10.Future<_i7.ProfileResponseDTO> editVehicle(
-    Map<String, dynamic>? data,
-    String? name,
-    _i12.File? image,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #editVehicle,
-          [
-            data,
-            name,
-            image,
-          ],
-        ),
-        returnValue:
-            _i10.Future<_i7.ProfileResponseDTO>.value(_FakeProfileResponseDTO_5(
-          this,
-          Invocation.method(
-            #editVehicle,
-            [
-              data,
-              name,
-              image,
-            ],
-          ),
-        )),
-      ) as _i10.Future<_i7.ProfileResponseDTO>);
 }

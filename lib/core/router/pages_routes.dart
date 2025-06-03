@@ -9,8 +9,10 @@ abstract class PagesRoutes {
   static const String applyView = 'applyView';
   static const String orderDetails = 'orderDetails';
   static const String layoutView = 'layoutView';
+  static const String orderTabDetails = "order_tab_details";
   static const String changePassword = 'changePassword';
   static const String editProfile = 'editProfile';
   static const String editVehicle = 'editVehicle';
 
+  static const String routeView = 'routeView';
 }
