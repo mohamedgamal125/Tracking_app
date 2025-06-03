@@ -208,7 +208,7 @@ class OrderCard extends StatelessWidget {
                   height: responsiveHeight(36),
                   width: responsiveWidth(112),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: onAccept,
                     child: Text(
                       'Accept',
                       style: AppTextStyles.inter500_14.copyWith(

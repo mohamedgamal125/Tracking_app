@@ -84,16 +84,6 @@ class ProfileTab extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           Navigator.popAndPushNamed(
-                              context, PagesRoutes.editProfile,
-                              arguments: state.user!);
-                        },
-                        child: UserInformationWidget(
-                          userData: state.user!,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.popAndPushNamed(
                               context, PagesRoutes.editVehicle,
                               arguments: state.user!);
                         },
@@ -103,9 +93,6 @@ class ProfileTab extends StatelessWidget {
                       ),
                       SizedBox(
                         height: responsiveHeight(8),
-                      ),
-                      VehicleInformationWidget(
-                        userData: state.user!,
                       ),
                       const LanguageWidget(),
                       const LogoutWidget(),
