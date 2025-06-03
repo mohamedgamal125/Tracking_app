@@ -36,7 +36,7 @@ class AddressWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
                     child: CircleAvatar(
-                      child: address.imgUrl==null||address.imgUrl!.isEmpty?SvgPicture.asset(SvgImags.flowerlyLogo):Image.network(address.imgUrl!),
+                      child: address.imgUrl==null||address.imgUrl!.isEmpty?SvgPicture.asset(SvgImages.flowerlyLogo):Image.network(address.imgUrl!),
                     ),
                   ),
 
@@ -52,7 +52,7 @@ class AddressWidget extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset(
-                              SvgImags.locationIcon,
+                              SvgImages.locationIcon,
                               height: responsiveHeight(12),
                               width: responsiveWidth(12),
                             ),

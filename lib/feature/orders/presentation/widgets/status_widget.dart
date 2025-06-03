@@ -20,12 +20,12 @@ class StatusWidget extends StatelessWidget {
         children: [
           statusEntity.flag
               ? SvgPicture.asset(
-                  SvgImags.DoneIcon,
+                  SvgImages.DoneIcon,
                   height: responsiveHeight(20),
                   width: responsiveWidth(20),
                 )
               : SvgPicture.asset(
-                  SvgImags.errorIcon,
+                  SvgImages.errorIcon,
                   height: responsiveHeight(25),
                   width: responsiveWidth(25),
                 ),

@@ -32,7 +32,7 @@ class OrderDetailsWidget extends StatelessWidget {
                 radius: responsiveHeight(24),
                 backgroundColor: Colors.transparent,
                 child: (entity.imgUrl == null || entity.imgUrl!.isEmpty)
-                    ? SvgPicture.asset(SvgImags.flowerImg)
+                    ? SvgPicture.asset(SvgImages.flowerImg)
                     : Image.network(entity.imgUrl!),
               ),
               const SizedBox(width: 12),
