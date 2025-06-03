@@ -53,7 +53,7 @@ class OrderDetailsSection extends StatelessWidget {
                     fit: BoxFit.cover,
                   )
                 : SvgPicture.asset(
-                    SvgImags.flowerlyLogo,
+                    SvgImages.flowerlyLogo,
                     fit: BoxFit.contain,
                   ),
           ),
