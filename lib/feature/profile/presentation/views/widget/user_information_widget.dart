@@ -16,6 +16,8 @@ class UserInformationWidget extends StatelessWidget {
         horizontal: responsiveWidth(16),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           Container(
               padding: EdgeInsets.only(
@@ -44,37 +46,43 @@ class UserInformationWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: responsiveWidth(16),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${userData.firstName ?? ''} ${userData.lastName ?? ''}',
-                        style: AppTextStyles.inter600_18,
-                      ),
-                      SizedBox(
-                        height: responsiveHeight(8),
-                      ),
-                      Text(
-                        userData.email ?? '',
-                        style: AppTextStyles.inter400_16,
-                      ),
-                      SizedBox(
-                        height: responsiveHeight(8),
-                      ),
-                      Text(
-                        userData.phone ?? '',
-                        style: AppTextStyles.inter400_16,
-                      ),
-                    ],
+                    width: responsiveWidth(8),
                   ),
                   Expanded(
-                    child: SizedBox(
-                      width: responsiveWidth(8),
+                    flex:6,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${userData.firstName ?? ''} ${userData.lastName ?? ''}',
+                          style: AppTextStyles.inter600_18,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: responsiveHeight(8),
+                        ),
+                        Text(
+                          userData.email ?? '',
+                          style: AppTextStyles.inter400_16,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: responsiveHeight(8),
+                        ),
+                        Text(
+                          userData.phone ?? '',
+                          style: AppTextStyles.inter400_16,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios)
+                  Expanded(
+                    flex: 2,
+                      child: Icon(Icons.arrow_forward_ios)),
                 ],
               )),
         ],
