@@ -47,13 +47,13 @@ class OrderDetailsSection extends StatelessWidget {
           SizedBox(
             width: responsiveWidth(44),
             height: responsiveHeight(44),
-            child: image != null
+            child: image!.contains('http')
                 ? Image.network(
                     image!,
                     fit: BoxFit.cover,
                   )
-                : SvgPicture.asset(
-                    SvgImages.flowerlyLogo,
+                : Image.asset(
+                    'assets/images/flower_pocket.png',
                     fit: BoxFit.contain,
                   ),
           ),
