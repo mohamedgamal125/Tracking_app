@@ -21,6 +21,9 @@ class OrderDetailsViewBodyBlocListener extends StatelessWidget {
             EasyLoading.show();
           } else if (state is UpdateOrderStateSuccess) {
             EasyLoading.dismiss();
+            EasyLoading.showSuccess(
+              'Order state updated successfully',
+            );
           } else if (state is UpdateOrderStateError) {
             EasyLoading.dismiss();
             EasyLoading.showError(

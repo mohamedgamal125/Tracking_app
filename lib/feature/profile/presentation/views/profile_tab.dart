@@ -70,29 +70,27 @@ class ProfileTab extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, PagesRoutes.editProfile,
-                                arguments: state.user!);
-                          },
-                          child: UserInformationWidget(
-                            userData: state.user!,
-                          ),
+                        onTap: () {
+                          Navigator.pushNamed(context, PagesRoutes.editProfile,
+                              arguments: state.user!);
+                        },
+                        child: UserInformationWidget(
+                          userData: state.user!,
                         ),
-
+                      ),
                       SizedBox(
                         height: responsiveHeight(8),
                       ),
-                     InkWell(
-                          onTap: () {
-                            Navigator.popAndPushNamed(
-                                context, PagesRoutes.editVehicle,
-                                arguments: state.user!);
-                          },
-                          child: VehicleInformationWidget(
-                            userData: state.user!,
-                          ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.popAndPushNamed(
+                              context, PagesRoutes.editVehicle,
+                              arguments: state.user!);
+                        },
+                        child: VehicleInformationWidget(
+                          userData: state.user!,
                         ),
-
+                      ),
                       SizedBox(
                         height: responsiveHeight(8),
                       ),
